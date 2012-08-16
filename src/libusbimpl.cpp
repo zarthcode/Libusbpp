@@ -1,5 +1,4 @@
 #include "libusbimpl.h"
-#include "libusbcom.h"
 
 
 /// Used by shared_ptr to delete a libusb context

@@ -2,7 +2,11 @@
 
 #include "deviceimpl.h"
 #include "usbexception.h"
+#include "Configuration.h"
+#include "ConfigurationImpl.h"
 #include <libusb/libusb.h>
+#include <iosfwd>
+#include <sstream>
 
 
 LibUSB::DeviceImpl::DeviceImpl( libusb_device* device )
@@ -23,13 +27,13 @@ LibUSB::DeviceImpl::~DeviceImpl()
 std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescriptor()
 {
 
-	if (deviceDescriptor.get() == nullptr)
+	if (m_pDeviceDescriptor.get() == nullptr)
 	{
 	
-		deviceDescriptor.reset(new libusb_device_descriptor);
+		m_pDeviceDescriptor.reset(new libusb_device_descriptor);
 
 		// Obtain the usb device descriptors
-		int Result = libusb_get_device_descriptor(m_pDevice.get(), deviceDescriptor.get());
+		int Result = libusb_get_device_descriptor(m_pDevice.get(), m_pDeviceDescriptor.get());
 
 		if (Result != LIBUSB_SUCCESS)
 		{
@@ -38,7 +42,7 @@ std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescripto
 	
 	}
 
-	return deviceDescriptor;
+	return m_pDeviceDescriptor;
 
 }
 
@@ -156,5 +160,121 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 	}
 
 	return languageId;
+
+}
+
+bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
+{
+	// Obtain the currently active config 
+	libusb_config_descriptor * pConfig;
+
+	int Result = libusb_get_active_config_descriptor(m_pDevice.get(), &pConfig);
+
+	if (Result != LIBUSB_SUCCESS)
+	{
+		switch(Result)
+		{
+		case LIBUSB_ERROR_NOT_FOUND:
+	
+			// The device is in an unconfigured state.
+			ConfigValue = 0;
+			return false;
+			break;
+	
+		default:
+			throw LibUSBException("libusb_get_active_config_descriptor() failed. ", Result);
+			return false;
+			break;
+		}
+	}
+
+	// Obtain the index
+	ConfigValue = pConfig->bConfigurationValue;
+
+	return true;
+	
+}
+
+std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uint8_t ConfigValue )
+{
+	// Check for an existing object.
+	if((m_ConfigurationMap.find(index) != m_ConfigurationMap.end()) && (m_ConfigurationMap[index].expired()))
+	{
+
+		return m_ConfigurationMap[index].lock();
+	
+	}
+
+	// Create a new configuration object
+	libusb_config_descriptor* pConfig = nullptr;
+
+	int Result = libusb_get_config_descriptor_by_value(m_pDevice.get(), index, &pConfig);
+
+	if (Result != LIBUSB_SUCCESS)
+	{
+		std::stringstream exceptionText;
+		exceptionText << "libusb_get_config_descriptor() failed";
+		
+		switch(Result)
+		{
+		case LIBUSB_ERROR_NOT_FOUND:
+
+			exceptionText << "(index " << (int)index << ")";
+			break;
+
+		default:
+			break;
+		}			
+			
+		throw LibUSBException(exceptionText.str(), Result);
+
+	}
+
+	std::shared_ptr<ConfigurationImpl> pConfigImpl = std::make_shared<LibUSB::ConfigurationImpl>(pConfig, this->shared_from_this());
+
+	std::shared_ptr<Configuration> pConfigurationObj = std::make_shared<LibUSB::Configuration>(pConfigImpl);
+
+	// Save a weak_ptr to the configuration object to prevent duplication.
+	m_ConfigurationMap.insert(std::make_pair(index, pConfigurationObj));
+
+	return pConfigurationObj;
+
+}
+
+void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
+{
+
+	// Set the active configuration.
+	int Result = libusb_set_configuration(m_pHandle.get(), index);
+
+	if (Result != LIBUSB_SUCCESS)
+	{
+		std::stringstream exceptionText;
+		exceptionText << "libusb_set_configuration() failed. (index " << (int)index << ") ";
+
+		switch(Result)
+		{
+		case LIBUSB_ERROR_NOT_FOUND:
+			
+			exceptionText << "The requested configuration does not exist.";
+			break;
+
+		case LIBUSB_ERROR_BUSY:
+
+			exceptionText << "Interfaces are currently claimed.";
+			break;
+
+		case LIBUSB_ERROR_NO_DEVICE:
+
+			exceptionText << "Device has been disconnected.";
+			break;
+
+		default:
+			break;
+		}			
+
+		throw LibUSBException(exceptionText.str(), Result);
+
+	}
 
 }

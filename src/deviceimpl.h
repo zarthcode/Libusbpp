@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Configuration.h"
 #include <libusb/libusb.h>
 #include <memory>
 #include <string>
+#include <map>
 
 namespace LibUSB
 {
@@ -21,7 +23,7 @@ namespace LibUSB
 
 	};
 
-	class DeviceImpl
+	class DeviceImpl : public std::enable_shared_from_this<DeviceImpl>
 	{
 
 	public:
@@ -47,12 +49,30 @@ namespace LibUSB
 		/// Obtains a unicode descriptor string
 		std::wstring getStringDescriptorW(uint8_t index);
 
+		/// Returns the index of the active configuration.
+		bool getActiveConfiguration( uint8_t &index )const;
+
+		/// Sets the active configuration
+		void setActiveConfiguration( uint8_t index );
+
+		/// Returns the requested the configuration descriptor.
+		std::shared_ptr<Configuration> getConfiguration(uint8_t ConfigValue);
+
+		/// Device object
 		std::shared_ptr<libusb_device> m_pDevice;
+
+		/// Device handle
 		std::shared_ptr<libusb_device_handle> m_pHandle;
+
+
 
 	private:
 
-		std::shared_ptr<libusb_device_descriptor> deviceDescriptor;
+		/// Weak_ptr collection of other configuration objects.
+		std::map<uint8_t, std::weak_ptr<Configuration>> m_ConfigurationMap;
+
+		/// Device Descriptor
+		std::shared_ptr<libusb_device_descriptor> m_pDeviceDescriptor;
 
 		/// Language ID
 		uint16_t languageId;

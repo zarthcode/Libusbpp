@@ -1,4 +1,6 @@
 #pragma once
+#include "Configuration.h"
+
 #include <stdint.h>
 #include <string>
 #include <memory>
@@ -59,6 +61,14 @@ namespace LibUSB
 		/// Returns the number of possible configurations for this device.
 		uint8_t NumConfigurations();
 
+	// Configurations
+
+		/// Returns the requested configuration
+		std::shared_ptr<Configuration> getConfiguration(uint8_t ConfigValue);
+
+		/// Returns the activeConfiguration
+		std::shared_ptr<Configuration> getActiveConfiguration();
+
 
 	// Transfers
 
@@ -79,13 +89,15 @@ namespace LibUSB
 		/// isochronous transfer IN (from the device)
 
 	protected:
-
 		
 
 	private:
 
+		/// Cached Active Configuration
+		std::shared_ptr<Configuration> m_pActiveConfiguration;
+
 		/// Device Implementation Object
-		std::shared_ptr<DeviceImpl> pDeviceImpl_;
+		std::shared_ptr<DeviceImpl> m_pDeviceImpl_;
 
 		
 		

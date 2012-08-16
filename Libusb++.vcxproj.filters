@@ -24,9 +24,6 @@
     <ClInclude Include="headers\libusbpp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\libusbcom.h">
-      <Filter>Private Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\libusbimpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
@@ -35,6 +32,12 @@
     </ClInclude>
     <ClInclude Include="headers\usbexception.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Configuration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigurationImpl.h">
+      <Filter>Private Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +54,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\usbexception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConfigurationImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -161,15 +161,15 @@ __RTC_InitBase.rtc$IMZ DD FLAT:__RTC_InitBase
 rtc$IMZ	ENDS
 ;	COMDAT ??0LibUSBImpl@LibUSB@@QAE@XZ
 _TEXT	SEGMENT
-$T82649 = -268						; size = 12
-$T82650 = -248						; size = 4
-$T82652 = -233						; size = 1
+$T82626 = -268						; size = 12
+$T82627 = -248						; size = 4
+$T82629 = -233						; size = 1
 _Result$ = -32						; size = 4
 _pContext$ = -20					; size = 4
 _this$ = -8						; size = 4
 ??0LibUSBImpl@LibUSB@@QAE@XZ PROC			; LibUSB::LibUSBImpl::LibUSBImpl, COMDAT
 ; _this$ = ecx
-; Line 14
+; Line 13
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 272				; 00000110H
@@ -183,40 +183,40 @@ _this$ = -8						; size = 4
 	rep stosd
 	pop	ecx
 	mov	DWORD PTR _this$[ebp], ecx
-; Line 16
+; Line 15
 	mov	DWORD PTR _pContext$[ebp], 0
-; Line 17
+; Line 16
 	lea	eax, DWORD PTR _pContext$[ebp]
 	push	eax
 	call	_libusb_init@4
 	mov	DWORD PTR _Result$[ebp], eax
-; Line 18
+; Line 17
 	cmp	DWORD PTR _Result$[ebp], 0
 	je	SHORT $LN1@LibUSBImpl
-; Line 20
-	mov	DWORD PTR $T82650[ebp], OFFSET ??_C@_0BG@JIHFECBL@libusb_init?$CI?$CJ?5failed?4?$AA@
+; Line 19
+	mov	DWORD PTR $T82627[ebp], OFFSET ??_C@_0BG@JIHFECBL@libusb_init?$CI?$CJ?5failed?4?$AA@
 	mov	esi, esp
-	lea	eax, DWORD PTR $T82650[ebp]
+	lea	eax, DWORD PTR $T82627[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T82649[ebp]
+	lea	ecx, DWORD PTR $T82626[ebp]
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	cmp	esi, esp
 	call	__RTC_CheckEsp
 	push	OFFSET __TI1?AVexception@std@@
-	lea	ecx, DWORD PTR $T82649[ebp]
+	lea	ecx, DWORD PTR $T82626[ebp]
 	push	ecx
 	call	__CxxThrowException@8
 $LN1@LibUSBImpl:
-; Line 24
+; Line 23
 	xor	eax, eax
-	mov	BYTE PTR $T82652[ebp], al
-	movzx	ecx, BYTE PTR $T82652[ebp]
+	mov	BYTE PTR $T82629[ebp], al
+	movzx	ecx, BYTE PTR $T82629[ebp]
 	push	ecx
 	mov	edx, DWORD PTR _pContext$[ebp]
 	push	edx
 	mov	ecx, OFFSET ?pLibusb_context@LibUSBImpl@LibUSB@@2V?$shared_ptr@Ulibusb_context@@@tr1@std@@A ; LibUSB::LibUSBImpl::pLibusb_context
 	call	??$reset@Ulibusb_context@@VContextDeleter@@@?$shared_ptr@Ulibusb_context@@@tr1@std@@QAEXPAUlibusb_context@@VContextDeleter@@@Z ; std::tr1::shared_ptr<libusb_context>::reset<libusb_context,ContextDeleter>
-; Line 27
+; Line 26
 	mov	eax, DWORD PTR _this$[ebp]
 $LN3@LibUSBImpl:
 	push	edx
@@ -262,7 +262,7 @@ _TEXT	SEGMENT
 _this$ = -8						; size = 4
 ??1LibUSBImpl@LibUSB@@QAE@XZ PROC			; LibUSB::LibUSBImpl::~LibUSBImpl, COMDAT
 ; _this$ = ecx
-; Line 30
+; Line 29
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 204				; 000000ccH
@@ -276,7 +276,7 @@ _this$ = -8						; size = 4
 	rep stosd
 	pop	ecx
 	mov	DWORD PTR _this$[ebp], ecx
-; Line 32
+; Line 31
 	pop	edi
 	pop	esi
 	pop	ebx
@@ -309,7 +309,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv73 = -240						; size = 4
 tv74 = -236						; size = 4
-$T82670 = -228						; size = 8
+$T82647 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Px$ = 8						; size = 4
@@ -346,7 +346,7 @@ __Dt$ = 12						; size = 1
 	push	ecx
 	mov	edx, DWORD PTR __Px$[ebp]
 	push	edx
-	lea	ecx, DWORD PTR $T82670[ebp]
+	lea	ecx, DWORD PTR $T82647[ebp]
 	call	??$?0Ulibusb_context@@VContextDeleter@@@?$shared_ptr@Ulibusb_context@@@tr1@std@@QAE@PAUlibusb_context@@VContextDeleter@@@Z ; std::tr1::shared_ptr<libusb_context>::shared_ptr<libusb_context><libusb_context,ContextDeleter>
 	mov	DWORD PTR tv74[ebp], eax
 	mov	eax, DWORD PTR tv74[ebp]
@@ -355,7 +355,7 @@ __Dt$ = 12						; size = 1
 	mov	ecx, DWORD PTR tv73[ebp]
 	call	?swap@?$shared_ptr@Ulibusb_context@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<libusb_context>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T82670[ebp]
+	lea	ecx, DWORD PTR $T82647[ebp]
 	call	??1?$shared_ptr@Ulibusb_context@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_context>::~shared_ptr<libusb_context>
 ; Line 1615
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -374,7 +374,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$reset@Ulibusb_context@@VContextDeleter@@@?$shared_ptr@Ulibusb_context@@@tr1@std@@QAEXPAUlibusb_context@@VContextDeleter@@@Z$0:
-	lea	ecx, DWORD PTR $T82670[ebp]
+	lea	ecx, DWORD PTR $T82647[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_context@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_context>::~shared_ptr<libusb_context>
 __ehhandler$??$reset@Ulibusb_context@@VContextDeleter@@@?$shared_ptr@Ulibusb_context@@@tr1@std@@QAEXPAUlibusb_context@@VContextDeleter@@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -925,8 +925,8 @@ _TEXT	SEGMENT
 tv77 = -256						; size = 4
 tv88 = -252						; size = 4
 tv86 = -248						; size = 4
-$T82711 = -240						; size = 4
-$T82712 = -228						; size = 4
+$T82688 = -240						; size = 4
+$T82689 = -228						; size = 4
 _this$ = -24						; size = 4
 __$EHRec$ = -16						; size = 16
 __Px$ = 8						; size = 4
@@ -966,15 +966,15 @@ __Dt$ = 12						; size = 1
 	add	esp, 4
 	mov	DWORD PTR tv86[ebp], eax
 	mov	eax, DWORD PTR tv86[ebp]
-	mov	DWORD PTR $T82712[ebp], eax
+	mov	DWORD PTR $T82689[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
-	cmp	DWORD PTR $T82712[ebp], 0
+	cmp	DWORD PTR $T82689[ebp], 0
 	je	SHORT $LN4@Resetp
 	movzx	ecx, BYTE PTR __Dt$[ebp]
 	push	ecx
 	mov	edx, DWORD PTR __Px$[ebp]
 	push	edx
-	mov	ecx, DWORD PTR $T82712[ebp]
+	mov	ecx, DWORD PTR $T82689[ebp]
 	call	??0?$_Ref_count_del@Ulibusb_context@@VContextDeleter@@@tr1@std@@QAE@PAUlibusb_context@@VContextDeleter@@@Z ; std::tr1::_Ref_count_del<libusb_context,ContextDeleter>::_Ref_count_del<libusb_context,ContextDeleter>
 	mov	DWORD PTR tv88[ebp], eax
 	mov	eax, DWORD PTR tv88[ebp]
@@ -984,9 +984,9 @@ $LN4@Resetp:
 	mov	DWORD PTR tv77[ebp], 0
 $LN5@Resetp:
 	mov	ecx, DWORD PTR tv77[ebp]
-	mov	DWORD PTR $T82711[ebp], ecx
+	mov	DWORD PTR $T82688[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+12], 0
-	mov	edx, DWORD PTR $T82711[ebp]
+	mov	edx, DWORD PTR $T82688[ebp]
 	push	edx
 	mov	eax, DWORD PTR __Px$[ebp]
 	push	eax
@@ -1027,7 +1027,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Resetp@Ulibusb_context@@VContextDeleter@@@?$shared_ptr@Ulibusb_context@@@tr1@std@@AAEXPAUlibusb_context@@VContextDeleter@@@Z$2:
-	mov	eax, DWORD PTR $T82712[ebp]
+	mov	eax, DWORD PTR $T82689[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -1051,7 +1051,7 @@ _ctx$ = 8						; size = 4
 ??RContextDeleter@@QAEXPAUlibusb_context@@@Z PROC	; ContextDeleter::operator(), COMDAT
 ; _this$ = ecx
 ; File d:\workspace\libusb++\src\libusbimpl.cpp
-; Line 9
+; Line 8
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 204				; 000000ccH
@@ -1530,8 +1530,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Delete_this@?$_Ref_count_del@Ulibusb_context@@VContextDeleter@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv74 = -232						; size = 4
-$T82754 = -224						; size = 4
-$T82755 = -212						; size = 4
+$T82731 = -224						; size = 4
+$T82732 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Delete_this@?$_Ref_count_del@Ulibusb_context@@VContextDeleter@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count_del<libusb_context,ContextDeleter>::_Delete_this, COMDAT
 ; _this$ = ecx
@@ -1551,16 +1551,16 @@ _this$ = -8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1142
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR $T82755[ebp], eax
-	mov	ecx, DWORD PTR $T82755[ebp]
-	mov	DWORD PTR $T82754[ebp], ecx
-	cmp	DWORD PTR $T82754[ebp], 0
+	mov	DWORD PTR $T82732[ebp], eax
+	mov	ecx, DWORD PTR $T82732[ebp]
+	mov	DWORD PTR $T82731[ebp], ecx
+	cmp	DWORD PTR $T82731[ebp], 0
 	je	SHORT $LN3@Delete_thi
 	mov	esi, esp
 	push	1
-	mov	edx, DWORD PTR $T82754[ebp]
+	mov	edx, DWORD PTR $T82731[ebp]
 	mov	eax, DWORD PTR [edx]
-	mov	ecx, DWORD PTR $T82754[ebp]
+	mov	ecx, DWORD PTR $T82731[ebp]
 	mov	edx, DWORD PTR [eax+8]
 	call	edx
 	cmp	esi, esp
@@ -1791,7 +1791,7 @@ EXTRN	_atexit:PROC
 text$yc	SEGMENT
 ??__E?pLibusb_context@LibUSBImpl@LibUSB@@2V?$shared_ptr@Ulibusb_context@@@tr1@std@@A@@YAXXZ PROC ; `dynamic initializer for 'LibUSB::LibUSBImpl::pLibusb_context'', COMDAT
 ; File d:\workspace\libusb++\src\libusbimpl.cpp
-; Line 34
+; Line 33
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 192				; 000000c0H

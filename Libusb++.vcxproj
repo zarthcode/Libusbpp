@@ -76,14 +76,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Configuration.h" />
     <ClInclude Include="headers\device.h" />
     <ClInclude Include="headers\libusbpp.h" />
     <ClInclude Include="headers\usbexception.h" />
+    <ClInclude Include="src\ConfigurationImpl.h" />
     <ClInclude Include="src\deviceimpl.h" />
-    <ClInclude Include="src\libusbcom.h" />
     <ClInclude Include="src\libusbimpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Configuration.cpp" />
+    <ClCompile Include="src\ConfigurationImpl.cpp" />
     <ClCompile Include="src\device.cpp" />
     <ClCompile Include="src\deviceimpl.cpp" />
     <ClCompile Include="src\libusbimpl.cpp" />
