@@ -410,7 +410,7 @@ __RTC_InitBase.rtc$IMZ DD FLAT:__RTC_InitBase
 rtc$IMZ	ENDS
 ;	COMDAT ??0Device@LibUSB@@QAE@V?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@@Z
 _TEXT	SEGMENT
-$T103229 = -228						; size = 8
+$T103806 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 _pInit$ = 8						; size = 8
@@ -457,14 +457,14 @@ _pInit$ = 8						; size = 8
 	add	ecx, 12					; 0000000cH
 	call	??4?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAEAAV012@ABV012@@Z ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::operator=
 ; Line 11
-	lea	eax, DWORD PTR $T103229[ebp]
+	lea	eax, DWORD PTR $T103806[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
 	call	??C?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QBEPAVDeviceImpl@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::operator->
 	mov	ecx, eax
 	call	?getDeviceDescriptor@DeviceImpl@LibUSB@@QAE?AV?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@XZ ; LibUSB::DeviceImpl::getDeviceDescriptor
-	lea	ecx, DWORD PTR $T103229[ebp]
+	lea	ecx, DWORD PTR $T103806[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 ; Line 13
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
@@ -652,8 +652,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103268 = -238						; size = 2
-$T103269 = -228						; size = 8
+$T103845 = -238						; size = 2
+$T103846 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?USBSpecification@Device@LibUSB@@QAEGXZ PROC		; LibUSB::Device::USBSpecification, COMDAT
@@ -682,7 +682,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 25
-	lea	eax, DWORD PTR $T103269[ebp]
+	lea	eax, DWORD PTR $T103846[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -696,11 +696,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dx, WORD PTR [eax+2]
-	mov	WORD PTR $T103268[ebp], dx
+	mov	WORD PTR $T103845[ebp], dx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103269[ebp]
+	lea	ecx, DWORD PTR $T103846[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	ax, WORD PTR $T103268[ebp]
+	mov	ax, WORD PTR $T103845[ebp]
 ; Line 27
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -718,7 +718,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?USBSpecification@Device@LibUSB@@QAEGXZ$0:
-	lea	ecx, DWORD PTR $T103269[ebp]
+	lea	ecx, DWORD PTR $T103846[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?USBSpecification@Device@LibUSB@@QAEGXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -748,8 +748,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103279 = -237						; size = 1
-$T103280 = -228						; size = 8
+$T103856 = -237						; size = 1
+$T103857 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?DeviceClass@Device@LibUSB@@QAEEXZ PROC			; LibUSB::Device::DeviceClass, COMDAT
@@ -778,7 +778,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 31
-	lea	eax, DWORD PTR $T103280[ebp]
+	lea	eax, DWORD PTR $T103857[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -792,11 +792,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dl, BYTE PTR [eax+4]
-	mov	BYTE PTR $T103279[ebp], dl
+	mov	BYTE PTR $T103856[ebp], dl
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103280[ebp]
+	lea	ecx, DWORD PTR $T103857[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	al, BYTE PTR $T103279[ebp]
+	mov	al, BYTE PTR $T103856[ebp]
 ; Line 32
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -814,7 +814,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?DeviceClass@Device@LibUSB@@QAEEXZ$0:
-	lea	ecx, DWORD PTR $T103280[ebp]
+	lea	ecx, DWORD PTR $T103857[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?DeviceClass@Device@LibUSB@@QAEEXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -844,8 +844,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103290 = -237						; size = 1
-$T103291 = -228						; size = 8
+$T103867 = -237						; size = 1
+$T103868 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?DeviceSubclass@Device@LibUSB@@QAEEXZ PROC		; LibUSB::Device::DeviceSubclass, COMDAT
@@ -874,7 +874,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 37
-	lea	eax, DWORD PTR $T103291[ebp]
+	lea	eax, DWORD PTR $T103868[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -888,11 +888,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dl, BYTE PTR [eax+5]
-	mov	BYTE PTR $T103290[ebp], dl
+	mov	BYTE PTR $T103867[ebp], dl
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103291[ebp]
+	lea	ecx, DWORD PTR $T103868[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	al, BYTE PTR $T103290[ebp]
+	mov	al, BYTE PTR $T103867[ebp]
 ; Line 38
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -910,7 +910,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?DeviceSubclass@Device@LibUSB@@QAEEXZ$0:
-	lea	ecx, DWORD PTR $T103291[ebp]
+	lea	ecx, DWORD PTR $T103868[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?DeviceSubclass@Device@LibUSB@@QAEEXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -940,8 +940,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103301 = -237						; size = 1
-$T103302 = -228						; size = 8
+$T103878 = -237						; size = 1
+$T103879 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?DeviceProtocol@Device@LibUSB@@QAEEXZ PROC		; LibUSB::Device::DeviceProtocol, COMDAT
@@ -970,7 +970,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 42
-	lea	eax, DWORD PTR $T103302[ebp]
+	lea	eax, DWORD PTR $T103879[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -984,11 +984,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dl, BYTE PTR [eax+6]
-	mov	BYTE PTR $T103301[ebp], dl
+	mov	BYTE PTR $T103878[ebp], dl
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103302[ebp]
+	lea	ecx, DWORD PTR $T103879[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	al, BYTE PTR $T103301[ebp]
+	mov	al, BYTE PTR $T103878[ebp]
 ; Line 43
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -1006,7 +1006,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?DeviceProtocol@Device@LibUSB@@QAEEXZ$0:
-	lea	ecx, DWORD PTR $T103302[ebp]
+	lea	ecx, DWORD PTR $T103879[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?DeviceProtocol@Device@LibUSB@@QAEEXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -1036,8 +1036,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103312 = -238						; size = 2
-$T103313 = -228						; size = 8
+$T103889 = -238						; size = 2
+$T103890 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?vendorID@Device@LibUSB@@QAEGXZ PROC			; LibUSB::Device::vendorID, COMDAT
@@ -1066,7 +1066,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 47
-	lea	eax, DWORD PTR $T103313[ebp]
+	lea	eax, DWORD PTR $T103890[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1080,11 +1080,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dx, WORD PTR [eax+8]
-	mov	WORD PTR $T103312[ebp], dx
+	mov	WORD PTR $T103889[ebp], dx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103313[ebp]
+	lea	ecx, DWORD PTR $T103890[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	ax, WORD PTR $T103312[ebp]
+	mov	ax, WORD PTR $T103889[ebp]
 ; Line 48
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -1102,7 +1102,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?vendorID@Device@LibUSB@@QAEGXZ$0:
-	lea	ecx, DWORD PTR $T103313[ebp]
+	lea	ecx, DWORD PTR $T103890[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?vendorID@Device@LibUSB@@QAEGXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -1132,8 +1132,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103323 = -238						; size = 2
-$T103324 = -228						; size = 8
+$T103900 = -238						; size = 2
+$T103901 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?productID@Device@LibUSB@@QAEGXZ PROC			; LibUSB::Device::productID, COMDAT
@@ -1162,7 +1162,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 52
-	lea	eax, DWORD PTR $T103324[ebp]
+	lea	eax, DWORD PTR $T103901[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1176,11 +1176,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dx, WORD PTR [eax+10]
-	mov	WORD PTR $T103323[ebp], dx
+	mov	WORD PTR $T103900[ebp], dx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103324[ebp]
+	lea	ecx, DWORD PTR $T103901[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	ax, WORD PTR $T103323[ebp]
+	mov	ax, WORD PTR $T103900[ebp]
 ; Line 53
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -1198,7 +1198,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?productID@Device@LibUSB@@QAEGXZ$0:
-	lea	ecx, DWORD PTR $T103324[ebp]
+	lea	ecx, DWORD PTR $T103901[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?productID@Device@LibUSB@@QAEGXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -1228,8 +1228,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv76 = -252						; size = 4
 tv77 = -248						; size = 4
-$T103334 = -237						; size = 1
-$T103335 = -228						; size = 8
+$T103911 = -237						; size = 1
+$T103912 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?NumConfigurations@Device@LibUSB@@QAEEXZ PROC		; LibUSB::Device::NumConfigurations, COMDAT
@@ -1258,7 +1258,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 57
-	lea	eax, DWORD PTR $T103335[ebp]
+	lea	eax, DWORD PTR $T103912[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1272,11 +1272,11 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv76[ebp]
 	call	??C?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QBEPAUlibusb_device_descriptor@@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::operator->
 	mov	dl, BYTE PTR [eax+17]
-	mov	BYTE PTR $T103334[ebp], dl
+	mov	BYTE PTR $T103911[ebp], dl
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103335[ebp]
+	lea	ecx, DWORD PTR $T103912[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	mov	al, BYTE PTR $T103334[ebp]
+	mov	al, BYTE PTR $T103911[ebp]
 ; Line 58
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -1294,7 +1294,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?NumConfigurations@Device@LibUSB@@QAEEXZ$0:
-	lea	ecx, DWORD PTR $T103335[ebp]
+	lea	ecx, DWORD PTR $T103912[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?NumConfigurations@Device@LibUSB@@QAEEXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -1404,11 +1404,11 @@ tv151 = -300						; size = 4
 tv145 = -300						; size = 4
 tv154 = -296						; size = 4
 tv153 = -296						; size = 4
-$T103345 = -288						; size = 12
-$T103347 = -265						; size = 1
-$T103348 = -256						; size = 8
-$T103349 = -240						; size = 8
-$T103352 = -224						; size = 4
+$T103922 = -288						; size = 12
+$T103924 = -265						; size = 1
+$T103925 = -256						; size = 8
+$T103926 = -240						; size = 8
+$T103929 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -1437,7 +1437,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T103352[ebp], 0
+	mov	DWORD PTR $T103929[ebp], 0
 ; Line 64
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?isOpen@Device@LibUSB@@QAE_NXZ		; LibUSB::Device::isOpen
@@ -1446,15 +1446,15 @@ ___$ReturnUdt$ = 8					; size = 4
 	jne	SHORT $LN2@ProductStr
 ; Line 67
 	push	OFFSET ??_C@_0CH@NHEGEDDP@ProductString?$CI?$CJ?5?9?5device?5must?5be@
-	lea	ecx, DWORD PTR $T103345[ebp]
+	lea	ecx, DWORD PTR $T103922[ebp]
 	call	??0runtime_error@std@@QAE@PBD@Z		; std::runtime_error::runtime_error
 	push	OFFSET __TI2?AVruntime_error@std@@
-	lea	eax, DWORD PTR $T103345[ebp]
+	lea	eax, DWORD PTR $T103922[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN2@ProductStr:
 ; Line 72
-	lea	eax, DWORD PTR $T103348[ebp]
+	lea	eax, DWORD PTR $T103925[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1471,11 +1471,11 @@ $LN2@ProductStr:
 	neg	edx
 	sbb	edx, edx
 	add	edx, 1
-	mov	BYTE PTR $T103347[ebp], dl
+	mov	BYTE PTR $T103924[ebp], dl
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T103348[ebp]
+	lea	ecx, DWORD PTR $T103925[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	movzx	eax, BYTE PTR $T103347[ebp]
+	movzx	eax, BYTE PTR $T103924[ebp]
 	test	eax, eax
 	je	SHORT $LN1@ProductStr
 ; Line 75
@@ -1483,14 +1483,14 @@ $LN2@ProductStr:
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@PB_W@Z ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	mov	eax, DWORD PTR $T103352[ebp]
+	mov	eax, DWORD PTR $T103929[ebp]
 	or	eax, 1
-	mov	DWORD PTR $T103352[ebp], eax
+	mov	DWORD PTR $T103929[ebp], eax
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	SHORT $LN4@ProductStr
 $LN1@ProductStr:
 ; Line 79
-	lea	eax, DWORD PTR $T103349[ebp]
+	lea	eax, DWORD PTR $T103926[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1512,11 +1512,11 @@ $LN1@ProductStr:
 	call	??C?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QBEPAVDeviceImpl@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::operator->
 	mov	ecx, eax
 	call	?getStringDescriptorW@DeviceImpl@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@E@Z ; LibUSB::DeviceImpl::getStringDescriptorW
-	mov	ecx, DWORD PTR $T103352[ebp]
+	mov	ecx, DWORD PTR $T103929[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T103352[ebp], ecx
+	mov	DWORD PTR $T103929[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T103349[ebp]
+	lea	ecx, DWORD PTR $T103926[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 $LN4@ProductStr:
@@ -1537,19 +1537,19 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?ProductString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$0:
-	lea	ecx, DWORD PTR $T103348[ebp]
+	lea	ecx, DWORD PTR $T103925[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __unwindfunclet$?ProductString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$1:
-	mov	eax, DWORD PTR $T103352[ebp]
+	mov	eax, DWORD PTR $T103929[ebp]
 	and	eax, 1
 	je	$LN7@ProductStr
-	and	DWORD PTR $T103352[ebp], -2		; fffffffeH
+	and	DWORD PTR $T103929[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 $LN7@ProductStr:
 	ret	0
 __unwindfunclet$?ProductString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$2:
-	lea	ecx, DWORD PTR $T103349[ebp]
+	lea	ecx, DWORD PTR $T103926[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?ProductString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -1825,11 +1825,11 @@ tv155 = -344						; size = 4
 tv149 = -344						; size = 4
 tv160 = -340						; size = 4
 tv159 = -340						; size = 4
-$T103375 = -332						; size = 12
-$T103376 = -309						; size = 1
-$T103377 = -300						; size = 8
-$T103378 = -284						; size = 8
-$T103381 = -268						; size = 4
+$T103952 = -332						; size = 12
+$T103953 = -309						; size = 1
+$T103954 = -300						; size = 8
+$T103955 = -284						; size = 8
+$T103958 = -268						; size = 4
 _resultStr$ = -64					; size = 32
 _this$ = -24						; size = 4
 __$ArrayPad$ = -16					; size = 4
@@ -1861,7 +1861,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T103381[ebp], 0
+	mov	DWORD PTR $T103958[ebp], 0
 ; Line 87
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?isOpen@Device@LibUSB@@QAE_NXZ		; LibUSB::Device::isOpen
@@ -1870,15 +1870,15 @@ ___$ReturnUdt$ = 8					; size = 4
 	jne	SHORT $LN2@Manufactur
 ; Line 90
 	push	OFFSET ??_C@_0CH@NHEGEDDP@ProductString?$CI?$CJ?5?9?5device?5must?5be@
-	lea	ecx, DWORD PTR $T103375[ebp]
+	lea	ecx, DWORD PTR $T103952[ebp]
 	call	??0runtime_error@std@@QAE@PBD@Z		; std::runtime_error::runtime_error
 	push	OFFSET __TI2?AVruntime_error@std@@
-	lea	eax, DWORD PTR $T103375[ebp]
+	lea	eax, DWORD PTR $T103952[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN2@Manufactur:
 ; Line 95
-	lea	eax, DWORD PTR $T103377[ebp]
+	lea	eax, DWORD PTR $T103954[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1895,11 +1895,11 @@ $LN2@Manufactur:
 	neg	edx
 	sbb	edx, edx
 	add	edx, 1
-	mov	BYTE PTR $T103376[ebp], dl
+	mov	BYTE PTR $T103953[ebp], dl
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T103377[ebp]
+	lea	ecx, DWORD PTR $T103954[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	movzx	eax, BYTE PTR $T103376[ebp]
+	movzx	eax, BYTE PTR $T103953[ebp]
 	test	eax, eax
 	je	SHORT $LN1@Manufactur
 ; Line 98
@@ -1907,14 +1907,14 @@ $LN2@Manufactur:
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@PB_W@Z ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	mov	eax, DWORD PTR $T103381[ebp]
+	mov	eax, DWORD PTR $T103958[ebp]
 	or	eax, 1
-	mov	DWORD PTR $T103381[ebp], eax
+	mov	DWORD PTR $T103958[ebp], eax
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	$LN4@Manufactur
 $LN1@Manufactur:
 ; Line 102
-	lea	eax, DWORD PTR $T103378[ebp]
+	lea	eax, DWORD PTR $T103955[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -1937,16 +1937,16 @@ $LN1@Manufactur:
 	mov	ecx, eax
 	call	?getStringDescriptorW@DeviceImpl@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@E@Z ; LibUSB::DeviceImpl::getStringDescriptorW
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
-	lea	ecx, DWORD PTR $T103378[ebp]
+	lea	ecx, DWORD PTR $T103955[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 ; Line 104
 	lea	eax, DWORD PTR _resultStr$[ebp]
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@$$QAV01@@Z ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
-	mov	ecx, DWORD PTR $T103381[ebp]
+	mov	ecx, DWORD PTR $T103958[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T103381[ebp], ecx
+	mov	DWORD PTR $T103958[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR _resultStr$[ebp]
 	call	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
@@ -1998,19 +1998,19 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?ManufacturerString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$0:
-	lea	ecx, DWORD PTR $T103377[ebp]
+	lea	ecx, DWORD PTR $T103954[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __unwindfunclet$?ManufacturerString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$1:
-	mov	eax, DWORD PTR $T103381[ebp]
+	mov	eax, DWORD PTR $T103958[ebp]
 	and	eax, 1
 	je	$LN7@Manufactur
-	and	DWORD PTR $T103381[ebp], -2		; fffffffeH
+	and	DWORD PTR $T103958[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 $LN7@Manufactur:
 	ret	0
 __unwindfunclet$?ManufacturerString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$2:
-	lea	ecx, DWORD PTR $T103378[ebp]
+	lea	ecx, DWORD PTR $T103955[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __unwindfunclet$?ManufacturerString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$3:
 	lea	ecx, DWORD PTR _resultStr$[ebp]
@@ -2052,11 +2052,11 @@ tv151 = -300						; size = 4
 tv145 = -300						; size = 4
 tv154 = -296						; size = 4
 tv153 = -296						; size = 4
-$T103397 = -288						; size = 12
-$T103398 = -265						; size = 1
-$T103399 = -256						; size = 8
-$T103400 = -240						; size = 8
-$T103403 = -224						; size = 4
+$T103974 = -288						; size = 12
+$T103975 = -265						; size = 1
+$T103976 = -256						; size = 8
+$T103977 = -240						; size = 8
+$T103980 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -2085,7 +2085,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T103403[ebp], 0
+	mov	DWORD PTR $T103980[ebp], 0
 ; Line 112
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?isOpen@Device@LibUSB@@QAE_NXZ		; LibUSB::Device::isOpen
@@ -2094,15 +2094,15 @@ ___$ReturnUdt$ = 8					; size = 4
 	jne	SHORT $LN2@SerialStri
 ; Line 115
 	push	OFFSET ??_C@_0CH@NHEGEDDP@ProductString?$CI?$CJ?5?9?5device?5must?5be@
-	lea	ecx, DWORD PTR $T103397[ebp]
+	lea	ecx, DWORD PTR $T103974[ebp]
 	call	??0runtime_error@std@@QAE@PBD@Z		; std::runtime_error::runtime_error
 	push	OFFSET __TI2?AVruntime_error@std@@
-	lea	eax, DWORD PTR $T103397[ebp]
+	lea	eax, DWORD PTR $T103974[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN2@SerialStri:
 ; Line 120
-	lea	eax, DWORD PTR $T103399[ebp]
+	lea	eax, DWORD PTR $T103976[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -2119,11 +2119,11 @@ $LN2@SerialStri:
 	neg	edx
 	sbb	edx, edx
 	add	edx, 1
-	mov	BYTE PTR $T103398[ebp], dl
+	mov	BYTE PTR $T103975[ebp], dl
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T103399[ebp]
+	lea	ecx, DWORD PTR $T103976[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
-	movzx	eax, BYTE PTR $T103398[ebp]
+	movzx	eax, BYTE PTR $T103975[ebp]
 	test	eax, eax
 	je	SHORT $LN1@SerialStri
 ; Line 123
@@ -2131,14 +2131,14 @@ $LN2@SerialStri:
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@PB_W@Z ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	mov	eax, DWORD PTR $T103403[ebp]
+	mov	eax, DWORD PTR $T103980[ebp]
 	or	eax, 1
-	mov	DWORD PTR $T103403[ebp], eax
+	mov	DWORD PTR $T103980[ebp], eax
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	SHORT $LN4@SerialStri
 $LN1@SerialStri:
 ; Line 127
-	lea	eax, DWORD PTR $T103400[ebp]
+	lea	eax, DWORD PTR $T103977[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -2160,11 +2160,11 @@ $LN1@SerialStri:
 	call	??C?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QBEPAVDeviceImpl@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::operator->
 	mov	ecx, eax
 	call	?getStringDescriptorW@DeviceImpl@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@E@Z ; LibUSB::DeviceImpl::getStringDescriptorW
-	mov	ecx, DWORD PTR $T103403[ebp]
+	mov	ecx, DWORD PTR $T103980[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T103403[ebp], ecx
+	mov	DWORD PTR $T103980[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T103400[ebp]
+	lea	ecx, DWORD PTR $T103977[ebp]
 	call	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 $LN4@SerialStri:
@@ -2185,19 +2185,19 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?SerialString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$0:
-	lea	ecx, DWORD PTR $T103399[ebp]
+	lea	ecx, DWORD PTR $T103976[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __unwindfunclet$?SerialString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$1:
-	mov	eax, DWORD PTR $T103403[ebp]
+	mov	eax, DWORD PTR $T103980[ebp]
 	and	eax, 1
 	je	$LN7@SerialStri
-	and	DWORD PTR $T103403[ebp], -2		; fffffffeH
+	and	DWORD PTR $T103980[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 $LN7@SerialStri:
 	ret	0
 __unwindfunclet$?SerialString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ$2:
-	lea	ecx, DWORD PTR $T103400[ebp]
+	lea	ecx, DWORD PTR $T103977[ebp]
 	jmp	??1?$shared_ptr@Ulibusb_device_descriptor@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<libusb_device_descriptor>::~shared_ptr<libusb_device_descriptor>
 __ehhandler$?SerialString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -2297,7 +2297,7 @@ EXTRN	?Value@Configuration@LibUSB@@QBEEXZ:PROC	; LibUSB::Configuration::Value
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?getConfiguration@Device@LibUSB@@QAE?AV?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@E@Z
 _TEXT	SEGMENT
-$T103419 = -212						; size = 4
+$T103996 = -212						; size = 4
 _this$ = -8						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _ConfigValue$ = 12					; size = 1
@@ -2317,7 +2317,7 @@ _ConfigValue$ = 12					; size = 1
 	rep stosd
 	pop	ecx
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T103419[ebp], 0
+	mov	DWORD PTR $T103996[ebp], 0
 ; Line 148
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 4
@@ -2339,9 +2339,9 @@ _ConfigValue$ = 12					; size = 1
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@ABV012@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::shared_ptr<LibUSB::Configuration>
-	mov	ecx, DWORD PTR $T103419[ebp]
+	mov	ecx, DWORD PTR $T103996[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T103419[ebp], ecx
+	mov	DWORD PTR $T103996[ebp], ecx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	SHORT $LN2@getConfigu
 $LN1@getConfigu:
@@ -2355,9 +2355,9 @@ $LN1@getConfigu:
 	call	??C?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QBEPAVDeviceImpl@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::operator->
 	mov	ecx, eax
 	call	?getConfiguration@DeviceImpl@LibUSB@@QAE?AV?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@E@Z ; LibUSB::DeviceImpl::getConfiguration
-	mov	edx, DWORD PTR $T103419[ebp]
+	mov	edx, DWORD PTR $T103996[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T103419[ebp], edx
+	mov	DWORD PTR $T103996[ebp], edx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 $LN2@getConfigu:
 ; Line 155
@@ -2393,8 +2393,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv136 = -264						; size = 4
 tv131 = -260						; size = 4
-$T103426 = -252						; size = 4
-$T103423 = -240						; size = 8
+$T104000 = -252						; size = 8
+$T104003 = -236						; size = 4
 _index$ = -29						; size = 1
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -2424,7 +2424,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T103426[ebp], 0
+	mov	DWORD PTR $T104003[ebp], 0
 ; Line 161
 	mov	BYTE PTR _index$[ebp], 0
 ; Line 163
@@ -2457,7 +2457,7 @@ $LN2@getActiveC:
 ; Line 169
 	movzx	eax, BYTE PTR _index$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T103423[ebp]
+	lea	ecx, DWORD PTR $T104000[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 12					; 0000000cH
@@ -2474,7 +2474,7 @@ $LN2@getActiveC:
 	add	ecx, 4
 	call	??4?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::operator=
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103423[ebp]
+	lea	ecx, DWORD PTR $T104000[ebp]
 	call	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 $LN3@getActiveC:
 ; Line 172
@@ -2491,9 +2491,9 @@ $LN1@getActiveC:
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@ABV012@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::shared_ptr<LibUSB::Configuration>
-	mov	ecx, DWORD PTR $T103426[ebp]
+	mov	ecx, DWORD PTR $T104003[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T103426[ebp], ecx
+	mov	DWORD PTR $T104003[ebp], ecx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 180
 	push	edx
@@ -2533,7 +2533,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?getActiveConfiguration@Device@LibUSB@@QAE?AV?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@XZ$0:
-	lea	ecx, DWORD PTR $T103423[ebp]
+	lea	ecx, DWORD PTR $T104000[ebp]
 	jmp	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 __ehhandler$?getActiveConfiguration@Device@LibUSB@@QAE?AV?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@XZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -2566,7 +2566,7 @@ __ehfuncinfo$??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@
 xdata$x	ENDS
 ;	COMDAT ??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@PB_W@Z
 _TEXT	SEGMENT
-$T103439 = -224						; size = 4
+$T104016 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
@@ -2597,7 +2597,7 @@ __Ptr$ = 8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 	push	ecx
 	mov	ecx, esp
-	mov	DWORD PTR $T103439[ebp], esp
+	mov	DWORD PTR $T104016[ebp], esp
 	call	??0?$allocator@_W@std@@QAE@XZ		; std::allocator<wchar_t>::allocator<wchar_t>
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	??0?$_String_val@_WV?$allocator@_W@std@@@std@@QAE@V?$allocator@_W@1@@Z ; std::_String_val<wchar_t,std::allocator<wchar_t> >::_String_val<wchar_t,std::allocator<wchar_t> >
@@ -2662,7 +2662,7 @@ __ehfuncinfo$??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@
 xdata$x	ENDS
 ;	COMDAT ??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@$$QAV01@@Z
 _TEXT	SEGMENT
-$T103449 = -224						; size = 4
+$T104026 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -2696,7 +2696,7 @@ __Right$ = 8						; size = 4
 	push	eax
 	call	??$forward@V?$allocator@_W@std@@@std@@YA$$QAV?$allocator@_W@0@AAV10@@Z ; std::forward<std::allocator<wchar_t> >
 	mov	ecx, esp
-	mov	DWORD PTR $T103449[ebp], esp
+	mov	DWORD PTR $T104026[ebp], esp
 	push	eax
 	call	??0?$allocator@_W@std@@QAE@ABV01@@Z	; std::allocator<wchar_t>::allocator<wchar_t>
 	mov	ecx, DWORD PTR _this$[ebp]
@@ -2925,7 +2925,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv74 = -240						; size = 4
 tv75 = -236						; size = 4
-$T103472 = -228						; size = 8
+$T104049 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -2962,7 +2962,7 @@ __Right$ = 8						; size = 4
 	call	??$move@AAV?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@@std@@YA$$QAV?$shared_ptr@VConfiguration@LibUSB@@@tr1@0@AAV120@@Z ; std::move<std::tr1::shared_ptr<LibUSB::Configuration> &>
 	add	esp, 4
 	push	eax
-	lea	ecx, DWORD PTR $T103472[ebp]
+	lea	ecx, DWORD PTR $T104049[ebp]
 	call	??0?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::shared_ptr<LibUSB::Configuration>
 	mov	DWORD PTR tv75[ebp], eax
 	mov	edx, DWORD PTR tv75[ebp]
@@ -2971,7 +2971,7 @@ __Right$ = 8						; size = 4
 	mov	ecx, DWORD PTR tv74[ebp]
 	call	?swap@?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103472[ebp]
+	lea	ecx, DWORD PTR $T104049[ebp]
 	call	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 ; Line 1559
 	mov	eax, DWORD PTR _this$[ebp]
@@ -2992,7 +2992,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??4?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z$0:
-	lea	ecx, DWORD PTR $T103472[ebp]
+	lea	ecx, DWORD PTR $T104049[ebp]
 	jmp	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 __ehhandler$??4?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -3057,7 +3057,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv71 = -240						; size = 4
 tv72 = -236						; size = 4
-$T103484 = -228						; size = 8
+$T104061 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ?reset@?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEXXZ PROC ; std::tr1::shared_ptr<LibUSB::Configuration>::reset, COMDAT
@@ -3088,7 +3088,7 @@ __$EHRec$ = -12						; size = 12
 ; Line 1601
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T103484[ebp]
+	lea	ecx, DWORD PTR $T104061[ebp]
 	call	??0?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::shared_ptr<LibUSB::Configuration>
 	mov	DWORD PTR tv72[ebp], eax
 	mov	ecx, DWORD PTR tv72[ebp]
@@ -3097,7 +3097,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR tv71[ebp]
 	call	?swap@?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::Configuration>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103484[ebp]
+	lea	ecx, DWORD PTR $T104061[ebp]
 	call	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 ; Line 1602
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -3116,7 +3116,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?reset@?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEXXZ$0:
-	lea	ecx, DWORD PTR $T103484[ebp]
+	lea	ecx, DWORD PTR $T104061[ebp]
 	jmp	??1?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Configuration>::~shared_ptr<LibUSB::Configuration>
 __ehhandler$?reset@?$shared_ptr@VConfiguration@LibUSB@@@tr1@std@@QAEXXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -3290,7 +3290,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv72 = -240						; size = 4
 tv73 = -236						; size = 4
-$T103502 = -228						; size = 8
+$T104079 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -3324,7 +3324,7 @@ __Right$ = 8						; size = 4
 	push	eax
 	mov	ecx, DWORD PTR __Right$[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T103502[ebp]
+	lea	ecx, DWORD PTR $T104079[ebp]
 	call	??0?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@ABV012@@Z ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::shared_ptr<LibUSB::DeviceImpl>
 	mov	DWORD PTR tv73[ebp], eax
 	mov	edx, DWORD PTR tv73[ebp]
@@ -3333,7 +3333,7 @@ __Right$ = 8						; size = 4
 	mov	ecx, DWORD PTR tv72[ebp]
 	call	?swap@?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T103502[ebp]
+	lea	ecx, DWORD PTR $T104079[ebp]
 	call	??1?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::~shared_ptr<LibUSB::DeviceImpl>
 ; Line 1582
 	mov	eax, DWORD PTR _this$[ebp]
@@ -3354,7 +3354,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??4?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAEAAV012@ABV012@@Z$0:
-	lea	ecx, DWORD PTR $T103502[ebp]
+	lea	ecx, DWORD PTR $T104079[ebp]
 	jmp	??1?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::~shared_ptr<LibUSB::DeviceImpl>
 __ehhandler$??4?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAEAAV012@ABV012@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -3481,8 +3481,8 @@ PUBLIC	?get_allocator@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?assign@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEAAV12@$$QAV12@@Z
 _TEXT	SEGMENT
-$T103518 = -221						; size = 1
-$T103519 = -209						; size = 1
+$T104095 = -221						; size = 1
+$T104096 = -209						; size = 1
 _this$ = -8						; size = 4
 __Right$ = 8						; size = 4
 ?assign@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEAAV12@$$QAV12@@Z PROC ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::assign, COMDAT
@@ -3510,12 +3510,12 @@ __Right$ = 8						; size = 4
 	jmp	$LN5@assign
 $LN6@assign:
 ; Line 717
-	lea	eax, DWORD PTR $T103518[ebp]
+	lea	eax, DWORD PTR $T104095[ebp]
 	push	eax
 	mov	ecx, DWORD PTR __Right$[ebp]
 	call	?get_allocator@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$allocator@_W@2@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::get_allocator
 	push	eax
-	lea	ecx, DWORD PTR $T103519[ebp]
+	lea	ecx, DWORD PTR $T104096[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?get_allocator@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$allocator@_W@2@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::get_allocator
@@ -3800,7 +3800,7 @@ PUBLIC	?copy@?$char_traits@_W@std@@SAPA_WPA_WPB_WI@Z	; std::char_traits<wchar_t>
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Tidy@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEX_NI@Z
 _TEXT	SEGMENT
-__Ptr$99316 = -20					; size = 4
+__Ptr$99893 = -20					; size = 4
 _this$ = -8						; size = 4
 __Built$ = 8						; size = 1
 __Newsize$ = 12						; size = 4
@@ -3834,14 +3834,14 @@ $LN4@Tidy:
 ; Line 1992
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR [eax+4]
-	mov	DWORD PTR __Ptr$99316[ebp], ecx
+	mov	DWORD PTR __Ptr$99893[ebp], ecx
 ; Line 1993
 	cmp	DWORD PTR __Newsize$[ebp], 0
 	jbe	SHORT $LN1@Tidy
 ; Line 1994
 	mov	eax, DWORD PTR __Newsize$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR __Ptr$99316[ebp]
+	mov	ecx, DWORD PTR __Ptr$99893[ebp]
 	push	ecx
 	mov	edx, DWORD PTR _this$[ebp]
 	add	edx, 4
@@ -3854,7 +3854,7 @@ $LN1@Tidy:
 	mov	ecx, DWORD PTR [eax+24]
 	add	ecx, 1
 	push	ecx
-	mov	edx, DWORD PTR __Ptr$99316[ebp]
+	mov	edx, DWORD PTR __Ptr$99893[ebp]
 	push	edx
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 28					; 0000001cH
@@ -3985,7 +3985,7 @@ __ehfuncinfo$??0?$_String_val@_WV?$allocator@_W@std@@@std@@QAE@V?$allocator@_W@1
 xdata$x	ENDS
 ;	COMDAT ??0?$_String_val@_WV?$allocator@_W@std@@@std@@QAE@V?$allocator@_W@1@@Z
 _TEXT	SEGMENT
-$T103536 = -240						; size = 8
+$T104113 = -240						; size = 8
 __Alproxy$ = -29					; size = 1
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -4039,7 +4039,7 @@ __Al$ = 8						; size = 1
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	DWORD PTR [ecx], eax
 ; Line 470
-	lea	ecx, DWORD PTR $T103536[ebp]
+	lea	ecx, DWORD PTR $T104113[ebp]
 	call	??0_Container_proxy@std@@QAE@XZ		; std::_Container_proxy::_Container_proxy
 	push	eax
 	mov	eax, DWORD PTR _this$[ebp]
@@ -5240,7 +5240,7 @@ $LN4@Myptr:
 _TEXT	ENDS
 ;	COMDAT ?erase@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEAAV12@II@Z
 _TEXT	SEGMENT
-__Newsize$99812 = -20					; size = 4
+__Newsize$100389 = -20					; size = 4
 _this$ = -8						; size = 4
 __Off$ = 8						; size = 4
 __Count$ = 12						; size = 4
@@ -5308,9 +5308,9 @@ $LN2@erase:
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR [eax+20]
 	sub	ecx, DWORD PTR __Count$[ebp]
-	mov	DWORD PTR __Newsize$99812[ebp], ecx
+	mov	DWORD PTR __Newsize$100389[ebp], ecx
 ; Line 1118
-	mov	eax, DWORD PTR __Newsize$99812[ebp]
+	mov	eax, DWORD PTR __Newsize$100389[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Eos
@@ -5374,7 +5374,7 @@ PUBLIC	?assign@?$char_traits@_W@std@@SAXAA_WAB_W@Z	; std::char_traits<wchar_t>::
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z
 _TEXT	SEGMENT
-$T103611 = -210						; size = 2
+$T104188 = -210						; size = 2
 _this$ = -8						; size = 4
 __Newsize$ = 8						; size = 4
 ?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z PROC ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Eos, COMDAT
@@ -5395,11 +5395,11 @@ __Newsize$ = 8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1953
 	xor	eax, eax
-	mov	WORD PTR $T103611[ebp], ax
+	mov	WORD PTR $T104188[ebp], ax
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	edx, DWORD PTR __Newsize$[ebp]
 	mov	DWORD PTR [ecx+20], edx
-	lea	eax, DWORD PTR $T103611[ebp]
+	lea	eax, DWORD PTR $T104188[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Myptr@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEPA_WXZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Myptr
@@ -7182,7 +7182,7 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@IPAU10@@Z
 _TEXT	SEGMENT
-$T103715 = -220						; size = 12
+$T104292 = -220						; size = 12
 __Ptr$ = -8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
@@ -7222,10 +7222,10 @@ $LN4@Allocate:
 $LN1@Allocate:
 ; Line 37
 	push	0
-	lea	ecx, DWORD PTR $T103715[ebp]
+	lea	ecx, DWORD PTR $T104292[ebp]
 	call	??0bad_alloc@std@@QAE@PBD@Z		; std::bad_alloc::bad_alloc
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T103715[ebp]
+	lea	eax, DWORD PTR $T104292[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN3@Allocate:
@@ -7414,7 +7414,7 @@ $LN1@scalar@3:
 _TEXT	ENDS
 ;	COMDAT ??$_Allocate@_W@std@@YAPA_WIPA_W@Z
 _TEXT	SEGMENT
-$T103724 = -220						; size = 12
+$T104301 = -220						; size = 12
 __Ptr$ = -8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
@@ -7455,10 +7455,10 @@ $LN4@Allocate@2:
 $LN1@Allocate@2:
 ; Line 37
 	push	0
-	lea	ecx, DWORD PTR $T103724[ebp]
+	lea	ecx, DWORD PTR $T104301[ebp]
 	call	??0bad_alloc@std@@QAE@PBD@Z		; std::bad_alloc::bad_alloc
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T103724[ebp]
+	lea	eax, DWORD PTR $T104301[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN3@Allocate@2:
@@ -7560,7 +7560,7 @@ __TI2?AVbad_weak_ptr@tr1@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ?_Reset@?$_Ptr_base@VConfiguration@LibUSB@@@tr1@std@@QAEXPAVConfiguration@LibUSB@@PAV_Ref_count_base@23@_N@Z
 _TEXT	SEGMENT
-$T103730 = -220						; size = 12
+$T104307 = -220						; size = 12
 _this$ = -8						; size = 4
 __Other_ptr$ = 8					; size = 4
 __Other_rep$ = 12					; size = 4
@@ -7604,10 +7604,10 @@ $LN3@Reset:
 	je	SHORT $LN5@Reset
 ; Line 1363
 	push	0
-	lea	ecx, DWORD PTR $T103730[ebp]
+	lea	ecx, DWORD PTR $T104307[ebp]
 	call	??0bad_weak_ptr@tr1@std@@QAE@PBD@Z	; std::tr1::bad_weak_ptr::bad_weak_ptr
 	push	OFFSET __TI2?AVbad_weak_ptr@tr1@std@@
-	lea	eax, DWORD PTR $T103730[ebp]
+	lea	eax, DWORD PTR $T104307[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN5@Reset:
@@ -7883,7 +7883,7 @@ PUBLIC	?_Reset0@?$_Ptr_base@VDeviceImpl@LibUSB@@@tr1@std@@QAEXPAVDeviceImpl@LibU
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Reset@?$_Ptr_base@VDeviceImpl@LibUSB@@@tr1@std@@QAEXPAVDeviceImpl@LibUSB@@PAV_Ref_count_base@23@_N@Z
 _TEXT	SEGMENT
-$T103745 = -220						; size = 12
+$T104322 = -220						; size = 12
 _this$ = -8						; size = 4
 __Other_ptr$ = 8					; size = 4
 __Other_rep$ = 12					; size = 4
@@ -7927,10 +7927,10 @@ $LN3@Reset@2:
 	je	SHORT $LN5@Reset@2
 ; Line 1363
 	push	0
-	lea	ecx, DWORD PTR $T103745[ebp]
+	lea	ecx, DWORD PTR $T104322[ebp]
 	call	??0bad_weak_ptr@tr1@std@@QAE@PBD@Z	; std::tr1::bad_weak_ptr::bad_weak_ptr
 	push	OFFSET __TI2?AVbad_weak_ptr@tr1@std@@
-	lea	eax, DWORD PTR $T103745[ebp]
+	lea	eax, DWORD PTR $T104322[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN5@Reset@2:
@@ -7965,8 +7965,8 @@ xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@U_Container_proxy@std@@@std@@QAEXPAU_Container_proxy@2@$$QAU32@@Z
 _TEXT	SEGMENT
 tv74 = -244						; size = 4
-$T103748 = -236						; size = 4
-$T103749 = -224						; size = 4
+$T104325 = -236						; size = 4
+$T104326 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
@@ -8002,9 +8002,9 @@ __Val$ = 12						; size = 4
 	push	8
 	call	??2@YAPAXIPAX@Z				; operator new
 	add	esp, 8
-	mov	DWORD PTR $T103749[ebp], eax
+	mov	DWORD PTR $T104326[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	cmp	DWORD PTR $T103749[ebp], 0
+	cmp	DWORD PTR $T104326[ebp], 0
 	je	SHORT $LN3@construct
 	mov	ecx, DWORD PTR __Val$[ebp]
 	push	ecx
@@ -8012,17 +8012,17 @@ __Val$ = 12						; size = 4
 	add	esp, 4
 	mov	edx, DWORD PTR [eax]
 	mov	eax, DWORD PTR [eax+4]
-	mov	ecx, DWORD PTR $T103749[ebp]
+	mov	ecx, DWORD PTR $T104326[ebp]
 	mov	DWORD PTR [ecx], edx
 	mov	DWORD PTR [ecx+4], eax
-	mov	edx, DWORD PTR $T103749[ebp]
+	mov	edx, DWORD PTR $T104326[ebp]
 	mov	DWORD PTR tv74[ebp], edx
 	jmp	SHORT $LN4@construct
 $LN3@construct:
 	mov	DWORD PTR tv74[ebp], 0
 $LN4@construct:
 	mov	eax, DWORD PTR tv74[ebp]
-	mov	DWORD PTR $T103748[ebp], eax
+	mov	DWORD PTR $T104325[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 ; Line 203
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -8043,7 +8043,7 @@ text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@U_Container_proxy@std@@@std@@QAEXPAU_Container_proxy@2@$$QAU32@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T103749[ebp]
+	mov	ecx, DWORD PTR $T104326[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8

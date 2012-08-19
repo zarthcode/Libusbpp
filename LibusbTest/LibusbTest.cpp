@@ -1,7 +1,7 @@
 // LibusbTest.cpp : Defines the entry point for the console application.
 //
 
-#define LIBUSBPP_IGNORE_CONFIGDESCRIPTORSTRING_EXCEPTIONS
+
 
 #include "stdafx.h"
 #include "libusbpp.h"

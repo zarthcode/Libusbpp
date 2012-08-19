@@ -39,6 +39,30 @@
     <ClInclude Include="src\ConfigurationImpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interfaceimpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EndpointImpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Endpoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Endpointdefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\wideconvert.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Transfer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TransferImpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\libusbimpl.cpp">
@@ -60,6 +84,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ConfigurationImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interfaceimpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\endpoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\endpointimpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wideconvert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransferImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransferThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="headers\TransferThread.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Transfer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

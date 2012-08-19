@@ -48,6 +48,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>D:\Workspace\Libusb++\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -78,20 +79,37 @@
   <ItemGroup>
     <ClInclude Include="headers\Configuration.h" />
     <ClInclude Include="headers\device.h" />
+    <ClInclude Include="headers\Endpoint.h" />
+    <ClInclude Include="headers\Endpointdefs.h" />
+    <ClInclude Include="headers\interface.h" />
     <ClInclude Include="headers\libusbpp.h" />
+    <ClInclude Include="headers\Transfer.h" />
     <ClInclude Include="headers\usbexception.h" />
     <ClInclude Include="src\ConfigurationImpl.h" />
     <ClInclude Include="src\deviceimpl.h" />
+    <ClInclude Include="src\EndpointImpl.h" />
+    <ClInclude Include="src\interfaceimpl.h" />
     <ClInclude Include="src\libusbimpl.h" />
+    <ClInclude Include="src\TransferImpl.h" />
+    <ClInclude Include="src\wideconvert.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="headers\TransferThread.h" />
     <ClCompile Include="src\Configuration.cpp" />
     <ClCompile Include="src\ConfigurationImpl.cpp" />
     <ClCompile Include="src\device.cpp" />
     <ClCompile Include="src\deviceimpl.cpp" />
+    <ClCompile Include="src\endpoint.cpp" />
+    <ClCompile Include="src\endpointimpl.cpp" />
+    <ClCompile Include="src\interface.cpp" />
+    <ClCompile Include="src\interfaceimpl.cpp" />
     <ClCompile Include="src\libusbimpl.cpp" />
     <ClCompile Include="src\libusbpp.cpp" />
+    <ClCompile Include="src\Transfer.cpp" />
+    <ClCompile Include="src\TransferImpl.cpp" />
+    <ClCompile Include="src\TransferThread.cpp" />
     <ClCompile Include="src\usbexception.cpp" />
+    <ClCompile Include="src\wideconvert.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,8 @@
 #include <memory>
 #include <libusb/libusb.h>
 #include <string>
+#include "interface.h"
+
 
 namespace LibUSB
 {
@@ -51,6 +53,12 @@ namespace LibUSB
 
 		/// Returns the size of the extra descriptors, in bytes.
 		int getExtraDescriptorSize()const;
+
+		/// Returns the number of interfaces this configuration has.
+		int NumInterfaces()const;
+
+		/// Returns the requested interface
+		std::shared_ptr<Interface> getInterface( int index )const;
 
 	protected:
 

@@ -1,7 +1,14 @@
 #include "ConfigurationImpl.h"
 #include "deviceimpl.h"
+#include "Interface.h"
+#include "Interfaceimpl.h"
 #include "usbexception.h"
+
+
 #include <stdexcept>
+#include <algorithm>
+#include <xlocale>
+#include "wideconvert.h"
 
 LibUSB::ConfigurationImpl::ConfigurationImpl( libusb_config_descriptor* pConfigDescriptor, std::weak_ptr<DeviceImpl> pDeviceImpl)
 {
@@ -22,6 +29,8 @@ LibUSB::ConfigurationImpl::ConfigurationImpl( libusb_config_descriptor* pConfigD
 LibUSB::ConfigurationImpl::~ConfigurationImpl()
 {
 
+	// Ensure that all Interface objects have been released/destroyed.
+
 }
 
 std::wstring LibUSB::ConfigurationImpl::DescriptorString( void ) const
@@ -29,7 +38,7 @@ std::wstring LibUSB::ConfigurationImpl::DescriptorString( void ) const
 
 	if(m_pDeviceImpl.expired())
 	{
-		throw std::runtime_error("LibUSB::ConfigurationImpl::DescriptorString() has an expired DeviceImpl");
+		throw std::logic_error("LibUSB::ConfigurationImpl::DescriptorString() has an expired DeviceImpl");
 	}
 
 	if (m_pConfigDescriptor->iConfiguration == 0)
@@ -47,13 +56,11 @@ std::wstring LibUSB::ConfigurationImpl::DescriptorString( void ) const
 	}
 	catch(LibUSB::LibUSBException &e)
 	{
-		/// \todo Add option/setting to ignore certain exceptions.
-
-#ifdef LIBUSBPP_IGNORE_CONFIGDESCRIPTORSTRING_EXCEPTIONS
-		throw e;
-#endif // LIBUSBPP_IGNORE_CONFIGDESCRIPTORSTRING_EXCEPTIONS
+		std::string resultnStr = e.what();
+		resultStr = Util::StringToWString(resultnStr);
 	}
 
+	return resultStr;
 
 }
 
@@ -108,6 +115,36 @@ void LibUSB::ConfigurationImpl::SetAsActive()
 
 	m_pDeviceImpl.lock()->setActiveConfiguration(m_pConfigDescriptor->bConfigurationValue);
 
+
+}
+
+int LibUSB::ConfigurationImpl::NumInterfaces() const
+{
+
+	return m_pConfigDescriptor->bNumInterfaces;
+
+}
+
+std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int index ) const
+{
+	/// \note I'm at a loss determining if the (array) index is required to correspond to the interface number.
+	
+	// Locate the indicated interface
+	if (index >= m_pConfigDescriptor->bNumInterfaces)
+	{
+
+		/// \note #1 Possibly iterate through the interfaces and check bInterfaceNumber instead???
+
+		throw std::logic_error("LibUSB::ConfigurationImpl::getInterface() - invalid index. (Code Reference \\note #1)");
+	}
+
+
+	// Create the InterfaceImpl object
+	const libusb_interface *pInterface = &(m_pConfigDescriptor->interface[index]);
+	std::shared_ptr<InterfaceImpl> pInterfaceImpl = std::make_shared<InterfaceImpl>(pInterface, m_pDeviceImpl);
+	
+	// Create the interface object.
+	return std::make_shared<Interface>(pInterfaceImpl);
 
 }
 

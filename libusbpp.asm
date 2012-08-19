@@ -636,14 +636,14 @@ tv190 = -364						; size = 4
 tv184 = -364						; size = 4
 tv189 = -360						; size = 4
 tv183 = -360						; size = 4
-$T130463 = -352						; size = 4
-$T130464 = -340						; size = 8
-$T130465 = -324						; size = 4
-$T130466 = -312						; size = 4
-$T130467 = -300						; size = 4
-$T130483 = -288						; size = 4
-_pDevice$120609 = -84					; size = 8
-_i$120360 = -68						; size = 4
+$T131040 = -352						; size = 4
+$T131041 = -340						; size = 8
+$T131042 = -324						; size = 4
+$T131043 = -312						; size = 4
+$T131044 = -300						; size = 4
+$T131060 = -288						; size = 4
+_pDevice$121186 = -84					; size = 8
+_i$120937 = -68						; size = 4
 _deviceList$ = -56					; size = 16
 _NumResults$ = -32					; size = 4
 _device_list$ = -20					; size = 4
@@ -673,7 +673,7 @@ _factory$ = 20						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T130483[ebp], 0
+	mov	DWORD PTR $T131060[ebp], 0
 ; Line 13
 	call	?Initialize@LibUSB@1@CAXXZ		; LibUSB::LibUSB::Initialize
 ; Line 16
@@ -693,36 +693,36 @@ _factory$ = 20						; size = 4
 	call	??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 24
-	mov	DWORD PTR _i$120360[ebp], 0
+	mov	DWORD PTR _i$120937[ebp], 0
 	jmp	SHORT $LN6@FindDevice
 $LN5@FindDevice:
-	mov	eax, DWORD PTR _i$120360[ebp]
+	mov	eax, DWORD PTR _i$120937[ebp]
 	add	eax, 1
-	mov	DWORD PTR _i$120360[ebp], eax
+	mov	DWORD PTR _i$120937[ebp], eax
 $LN6@FindDevice:
-	mov	eax, DWORD PTR _i$120360[ebp]
+	mov	eax, DWORD PTR _i$120937[ebp]
 	cmp	eax, DWORD PTR _NumResults$[ebp]
 	jge	$LN4@FindDevice
 ; Line 28
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??0?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device>
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 ; Line 29
 	cmp	DWORD PTR _factory$[ebp], 0
 	je	SHORT $LN3@FindDevice
 ; Line 31
-	mov	eax, DWORD PTR _i$120360[ebp]
+	mov	eax, DWORD PTR _i$120937[ebp]
 	mov	ecx, DWORD PTR _device_list$[ebp]
 	lea	edx, DWORD PTR [ecx+eax*4]
 	sub	esp, 8
 	mov	eax, esp
-	mov	DWORD PTR $T130463[ebp], esp
+	mov	DWORD PTR $T131040[ebp], esp
 	push	edx
 	push	eax
 	call	??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z ; std::tr1::make_shared<LibUSB::DeviceImpl,libusb_device * &>
 	add	esp, 8
 	mov	DWORD PTR tv183[ebp], eax
-	lea	ecx, DWORD PTR $T130464[ebp]
+	lea	ecx, DWORD PTR $T131041[ebp]
 	push	ecx
 	call	DWORD PTR _factory$[ebp]
 	add	esp, 12					; 0000000cH
@@ -732,10 +732,10 @@ $LN6@FindDevice:
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
 	mov	eax, DWORD PTR tv186[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??4?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Device>::operator=
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	lea	ecx, DWORD PTR $T130464[ebp]
+	lea	ecx, DWORD PTR $T131041[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 ; Line 33
 	jmp	$LN2@FindDevice
@@ -744,22 +744,22 @@ $LN3@FindDevice:
 	push	20					; 00000014H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T130466[ebp], eax
+	mov	DWORD PTR $T131043[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
-	cmp	DWORD PTR $T130466[ebp], 0
+	cmp	DWORD PTR $T131043[ebp], 0
 	je	SHORT $LN9@FindDevice
-	mov	eax, DWORD PTR _i$120360[ebp]
+	mov	eax, DWORD PTR _i$120937[ebp]
 	mov	ecx, DWORD PTR _device_list$[ebp]
 	lea	edx, DWORD PTR [ecx+eax*4]
 	sub	esp, 8
 	mov	eax, esp
-	mov	DWORD PTR $T130467[ebp], esp
+	mov	DWORD PTR $T131044[ebp], esp
 	push	edx
 	push	eax
 	call	??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z ; std::tr1::make_shared<LibUSB::DeviceImpl,libusb_device * &>
 	add	esp, 8
 	mov	DWORD PTR tv189[ebp], eax
-	mov	ecx, DWORD PTR $T130466[ebp]
+	mov	ecx, DWORD PTR $T131043[ebp]
 	call	??0Device@LibUSB@@QAE@V?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@@Z ; LibUSB::Device::Device
 	mov	DWORD PTR tv190[ebp], eax
 	mov	ecx, DWORD PTR tv190[ebp]
@@ -769,15 +769,15 @@ $LN9@FindDevice:
 	mov	DWORD PTR tv157[ebp], 0
 $LN10@FindDevice:
 	mov	edx, DWORD PTR tv157[ebp]
-	mov	DWORD PTR $T130465[ebp], edx
+	mov	DWORD PTR $T131042[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	mov	eax, DWORD PTR $T130465[ebp]
+	mov	eax, DWORD PTR $T131042[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??$reset@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXPAVDevice@LibUSB@@@Z ; std::tr1::shared_ptr<LibUSB::Device>::reset<LibUSB::Device>
 $LN2@FindDevice:
 ; Line 39
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??C?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QBEPAVDevice@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::Device>::operator->
 	mov	ecx, eax
 	call	?vendorID@Device@LibUSB@@QAEGXZ		; LibUSB::Device::vendorID
@@ -785,7 +785,7 @@ $LN2@FindDevice:
 	movzx	ecx, WORD PTR _vendorID$[ebp]
 	cmp	eax, ecx
 	jne	SHORT $LN1@FindDevice
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??C?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QBEPAVDevice@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::Device>::operator->
 	mov	ecx, eax
 	call	?productID@Device@LibUSB@@QAEGXZ	; LibUSB::Device::productID
@@ -794,14 +794,14 @@ $LN2@FindDevice:
 	cmp	eax, ecx
 	jne	SHORT $LN1@FindDevice
 ; Line 42
-	lea	eax, DWORD PTR _pDevice$120609[ebp]
+	lea	eax, DWORD PTR _pDevice$121186[ebp]
 	push	eax
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	call	?push_back@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::push_back
 $LN1@FindDevice:
 ; Line 45
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 	jmp	$LN5@FindDevice
 $LN4@FindDevice:
@@ -815,9 +815,9 @@ $LN4@FindDevice:
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@$$QAV01@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
-	mov	ecx, DWORD PTR $T130483[ebp]
+	mov	ecx, DWORD PTR $T131060[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T130483[ebp], ecx
+	mov	DWORD PTR $T131060[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	call	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
@@ -896,22 +896,22 @@ __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGP6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$1:
-	lea	ecx, DWORD PTR _pDevice$120609[ebp]
+	lea	ecx, DWORD PTR _pDevice$121186[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGP6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$3:
-	lea	ecx, DWORD PTR $T130464[ebp]
+	lea	ecx, DWORD PTR $T131041[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGP6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$4:
-	mov	eax, DWORD PTR $T130466[ebp]
+	mov	eax, DWORD PTR $T131043[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGP6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$6:
-	mov	eax, DWORD PTR $T130483[ebp]
+	mov	eax, DWORD PTR $T131060[ebp]
 	and	eax, 1
 	je	$LN18@FindDevice
-	and	DWORD PTR $T130483[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131060[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 $LN18@FindDevice:
@@ -986,17 +986,17 @@ tv225 = -436						; size = 4
 tv199 = -436						; size = 4
 tv173 = -436						; size = 4
 tv135 = -436						; size = 4
-$T130526 = -425						; size = 1
-$T130534 = -416						; size = 4
-$T121752 = -404						; size = 32
-_pDevice$121693 = -172					; size = 4
-__foreach_continue$121668 = -157			; size = 1
-_$S3$121665 = -148					; size = 12
-__foreach_end$121639 = -128				; size = 4
-_$S2$121636 = -116					; size = 12
-__foreach_cur$121160 = -96				; size = 4
-_$S1$121157 = -84					; size = 4
-__foreach_col$120757 = -72				; size = 4
+$T131103 = -425						; size = 1
+$T131111 = -416						; size = 4
+$T122329 = -404						; size = 32
+_pDevice$122270 = -172					; size = 4
+__foreach_continue$122245 = -157			; size = 1
+_$S3$122242 = -148					; size = 12
+__foreach_end$122216 = -128				; size = 4
+_$S2$122213 = -116					; size = 12
+__foreach_cur$121737 = -96				; size = 4
+_$S1$121734 = -84					; size = 4
+__foreach_col$121334 = -72				; size = 4
 _ResultList$ = -60					; size = 16
 _DeviceList$ = -36					; size = 16
 __$ArrayPad$ = -16					; size = 4
@@ -1028,7 +1028,7 @@ _factory$ = 52						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T130534[ebp], 0
+	mov	DWORD PTR $T131111[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 58
 	mov	eax, DWORD PTR _factory$[ebp]
@@ -1091,13 +1091,13 @@ $LN19@FindDevice@2:
 	push	ecx
 	lea	edx, DWORD PTR _DeviceList$[ebp]
 	push	edx
-	lea	eax, DWORD PTR _$S1$121157[ebp]
+	lea	eax, DWORD PTR _$S1$121734[ebp]
 	push	eax
 	call	??$contain@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@foreach_detail_@boost@@YA?AU?$auto_any@PAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@01@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@PAU?$bool_@$0A@@mpl@1@@Z ; boost::foreach_detail_::contain<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 12					; 0000000cH
-	lea	ecx, DWORD PTR _$S1$121157[ebp]
-	mov	DWORD PTR __foreach_col$120757[ebp], ecx
-	mov	ecx, DWORD PTR __foreach_col$120757[ebp]
+	lea	ecx, DWORD PTR _$S1$121734[ebp]
+	mov	DWORD PTR __foreach_col$121334[ebp], ecx
+	mov	ecx, DWORD PTR __foreach_col$121334[ebp]
 	call	??Bauto_any_base@foreach_detail_@boost@@QBE_NXZ ; boost::foreach_detail_::auto_any_base::operator bool
 	movzx	eax, al
 	test	eax, eax
@@ -1165,16 +1165,16 @@ $LN23@FindDevice@2:
 	push	ecx
 	mov	edx, DWORD PTR tv186[ebp]
 	push	edx
-	mov	eax, DWORD PTR __foreach_col$120757[ebp]
+	mov	eax, DWORD PTR __foreach_col$121334[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _$S2$121636[ebp]
+	lea	ecx, DWORD PTR _$S2$122213[ebp]
 	push	ecx
 	call	??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z ; boost::foreach_detail_::begin<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,boost::mpl::bool_<0> >
 	add	esp, 16					; 00000010H
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
-	lea	edx, DWORD PTR _$S2$121636[ebp]
-	mov	DWORD PTR __foreach_cur$121160[ebp], edx
-	mov	ecx, DWORD PTR __foreach_cur$121160[ebp]
+	lea	edx, DWORD PTR _$S2$122213[ebp]
+	mov	DWORD PTR __foreach_cur$121737[ebp], edx
+	mov	ecx, DWORD PTR __foreach_cur$121737[ebp]
 	call	??Bauto_any_base@foreach_detail_@boost@@QBE_NXZ ; boost::foreach_detail_::auto_any_base::operator bool
 	movzx	eax, al
 	test	eax, eax
@@ -1242,26 +1242,26 @@ $LN27@FindDevice@2:
 	push	ecx
 	mov	edx, DWORD PTR tv238[ebp]
 	push	edx
-	mov	eax, DWORD PTR __foreach_col$120757[ebp]
+	mov	eax, DWORD PTR __foreach_col$121334[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _$S3$121665[ebp]
+	lea	ecx, DWORD PTR _$S3$122242[ebp]
 	push	ecx
 	call	??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z ; boost::foreach_detail_::end<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,boost::mpl::bool_<0> >
 	add	esp, 16					; 00000010H
 	mov	BYTE PTR __$EHRec$[ebp+8], 5
-	lea	edx, DWORD PTR _$S3$121665[ebp]
-	mov	DWORD PTR __foreach_end$121639[ebp], edx
-	mov	ecx, DWORD PTR __foreach_end$121639[ebp]
+	lea	edx, DWORD PTR _$S3$122242[ebp]
+	mov	DWORD PTR __foreach_end$122216[ebp], edx
+	mov	ecx, DWORD PTR __foreach_end$122216[ebp]
 	call	??Bauto_any_base@foreach_detail_@boost@@QBE_NXZ ; boost::foreach_detail_::auto_any_base::operator bool
 	movzx	eax, al
 	test	eax, eax
 	je	SHORT $LN11@FindDevice@2
 	jmp	$LN10@FindDevice@2
 $LN11@FindDevice@2:
-	mov	BYTE PTR __foreach_continue$121668[ebp], 1
+	mov	BYTE PTR __foreach_continue$122245[ebp], 1
 	jmp	SHORT $LN9@FindDevice@2
 $LN8@FindDevice@2:
-	movzx	eax, BYTE PTR __foreach_continue$121668[ebp]
+	movzx	eax, BYTE PTR __foreach_continue$122245[ebp]
 	test	eax, eax
 	je	SHORT $LN9@FindDevice@2
 	mov	ecx, 1
@@ -1283,12 +1283,12 @@ $LN28@FindDevice@2:
 $LN29@FindDevice@2:
 	mov	ecx, DWORD PTR tv258[ebp]
 	push	ecx
-	mov	edx, DWORD PTR __foreach_cur$121160[ebp]
+	mov	edx, DWORD PTR __foreach_cur$121737[ebp]
 	push	edx
 	call	??$next@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YAXABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@@Z ; boost::foreach_detail_::next<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,boost::mpl::bool_<0> >
 	add	esp, 8
 $LN9@FindDevice@2:
-	movzx	eax, BYTE PTR __foreach_continue$121668[ebp]
+	movzx	eax, BYTE PTR __foreach_continue$122245[ebp]
 	test	eax, eax
 	je	$LN10@FindDevice@2
 	mov	eax, 1
@@ -1310,16 +1310,16 @@ $LN32@FindDevice@2:
 $LN33@FindDevice@2:
 	mov	eax, DWORD PTR tv276[ebp]
 	push	eax
-	mov	ecx, DWORD PTR __foreach_end$121639[ebp]
+	mov	ecx, DWORD PTR __foreach_end$122216[ebp]
 	push	ecx
-	mov	edx, DWORD PTR __foreach_cur$121160[ebp]
+	mov	edx, DWORD PTR __foreach_cur$121737[ebp]
 	push	edx
 	call	??$done@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA_NABUauto_any_base@01@0PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@@Z ; boost::foreach_detail_::done<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,boost::mpl::bool_<0> >
 	add	esp, 12					; 0000000cH
 	movzx	eax, al
 	test	eax, eax
 	jne	$LN10@FindDevice@2
-	lea	eax, DWORD PTR __foreach_continue$121668[ebp]
+	lea	eax, DWORD PTR __foreach_continue$122245[ebp]
 	push	eax
 	call	?set_false@foreach_detail_@boost@@YA_NAA_N@Z ; boost::foreach_detail_::set_false
 	add	esp, 4
@@ -1347,24 +1347,24 @@ $LN34@FindDevice@2:
 $LN35@FindDevice@2:
 	mov	eax, DWORD PTR tv297[ebp]
 	push	eax
-	mov	ecx, DWORD PTR __foreach_cur$121160[ebp]
+	mov	ecx, DWORD PTR __foreach_cur$121737[ebp]
 	push	ecx
 	call	??$deref@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YAAAV?$shared_ptr@VDevice@LibUSB@@@tr1@std@@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@@Z ; boost::foreach_detail_::deref<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,boost::mpl::bool_<0> >
 	add	esp, 8
-	mov	DWORD PTR _pDevice$121693[ebp], eax
+	mov	DWORD PTR _pDevice$122270[ebp], eax
 	jmp	SHORT $LN4@FindDevice@2
 $LN3@FindDevice@2:
-	mov	BYTE PTR __foreach_continue$121668[ebp], 1
+	mov	BYTE PTR __foreach_continue$122245[ebp], 1
 $LN4@FindDevice@2:
-	movzx	eax, BYTE PTR __foreach_continue$121668[ebp]
+	movzx	eax, BYTE PTR __foreach_continue$122245[ebp]
 	test	eax, eax
 	jne	SHORT $LN5@FindDevice@2
 ; Line 65
 	lea	eax, DWORD PTR _serialStr$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T121752[ebp]
+	lea	ecx, DWORD PTR $T122329[ebp]
 	push	ecx
-	mov	ecx, DWORD PTR _pDevice$121693[ebp]
+	mov	ecx, DWORD PTR _pDevice$122270[ebp]
 	call	??C?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QBEPAVDevice@LibUSB@@XZ ; std::tr1::shared_ptr<LibUSB::Device>::operator->
 	mov	ecx, eax
 	call	?SerialString@Device@LibUSB@@QAE?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@XZ ; LibUSB::Device::SerialString
@@ -1376,15 +1376,15 @@ $LN4@FindDevice@2:
 	push	eax
 	call	??$?8_WU?$char_traits@_W@std@@V?$allocator@_W@1@@std@@YA_NABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@0@Z ; std::operator==<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 	add	esp, 8
-	mov	BYTE PTR $T130526[ebp], al
+	mov	BYTE PTR $T131103[ebp], al
 	mov	BYTE PTR __$EHRec$[ebp+8], 5
-	lea	ecx, DWORD PTR $T121752[ebp]
+	lea	ecx, DWORD PTR $T122329[ebp]
 	call	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
-	movzx	ecx, BYTE PTR $T130526[ebp]
+	movzx	ecx, BYTE PTR $T131103[ebp]
 	test	ecx, ecx
 	je	SHORT $LN1@FindDevice@2
 ; Line 68
-	mov	eax, DWORD PTR _pDevice$121693[ebp]
+	mov	eax, DWORD PTR _pDevice$122270[ebp]
 	push	eax
 	lea	ecx, DWORD PTR _ResultList$[ebp]
 	call	?push_back@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::push_back
@@ -1397,11 +1397,11 @@ $LN5@FindDevice@2:
 	jmp	$LN8@FindDevice@2
 $LN10@FindDevice@2:
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
-	lea	ecx, DWORD PTR _$S3$121665[ebp]
+	lea	ecx, DWORD PTR _$S3$122242[ebp]
 	call	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 $LN12@FindDevice@2:
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
-	lea	ecx, DWORD PTR _$S2$121636[ebp]
+	lea	ecx, DWORD PTR _$S2$122213[ebp]
 	call	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 $LN14@FindDevice@2:
 ; Line 73
@@ -1409,9 +1409,9 @@ $LN14@FindDevice@2:
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@$$QAV01@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
-	mov	ecx, DWORD PTR $T130534[ebp]
+	mov	ecx, DWORD PTR $T131111[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T130534[ebp], ecx
+	mov	DWORD PTR $T131111[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 	lea	ecx, DWORD PTR _ResultList$[ebp]
 	call	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
@@ -1539,19 +1539,19 @@ __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@
 	lea	ecx, DWORD PTR _ResultList$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@3@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@63@@Z@Z$3:
-	lea	ecx, DWORD PTR _$S2$121636[ebp]
+	lea	ecx, DWORD PTR _$S2$122213[ebp]
 	jmp	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@3@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@63@@Z@Z$4:
-	lea	ecx, DWORD PTR _$S3$121665[ebp]
+	lea	ecx, DWORD PTR _$S3$122242[ebp]
 	jmp	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@3@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@63@@Z@Z$5:
-	lea	ecx, DWORD PTR $T121752[ebp]
+	lea	ecx, DWORD PTR $T122329[ebp]
 	jmp	??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
 __unwindfunclet$?FindDevice@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@GGV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@3@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@63@@Z@Z$6:
-	mov	eax, DWORD PTR $T130534[ebp]
+	mov	eax, DWORD PTR $T131111[ebp]
 	and	eax, 1
 	je	$LN43@FindDevice@2
-	and	DWORD PTR $T130534[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131111[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 $LN43@FindDevice@2:
@@ -2052,14 +2052,14 @@ tv176 = -364						; size = 4
 tv170 = -364						; size = 4
 tv175 = -360						; size = 4
 tv169 = -360						; size = 4
-$T130585 = -352						; size = 4
-$T130586 = -340						; size = 8
-$T130587 = -324						; size = 4
-$T130588 = -312						; size = 4
-$T130589 = -300						; size = 4
-$T130599 = -288						; size = 4
-_pDevice$121816 = -84					; size = 8
-_i$121811 = -68						; size = 4
+$T131162 = -352						; size = 4
+$T131163 = -340						; size = 8
+$T131164 = -324						; size = 4
+$T131165 = -312						; size = 4
+$T131166 = -300						; size = 4
+$T131176 = -288						; size = 4
+_pDevice$122393 = -84					; size = 8
+_i$122388 = -68						; size = 4
 _deviceList$ = -56					; size = 16
 _NumResults$ = -32					; size = 4
 _device_list$ = -20					; size = 4
@@ -2087,7 +2087,7 @@ _factory$ = 12						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T130599[ebp], 0
+	mov	DWORD PTR $T131176[ebp], 0
 ; Line 80
 	call	?Initialize@LibUSB@1@CAXXZ		; LibUSB::LibUSB::Initialize
 ; Line 83
@@ -2107,36 +2107,36 @@ _factory$ = 12						; size = 4
 	call	??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 91
-	mov	DWORD PTR _i$121811[ebp], 0
+	mov	DWORD PTR _i$122388[ebp], 0
 	jmp	SHORT $LN5@FindAllDev
 $LN4@FindAllDev:
-	mov	eax, DWORD PTR _i$121811[ebp]
+	mov	eax, DWORD PTR _i$122388[ebp]
 	add	eax, 1
-	mov	DWORD PTR _i$121811[ebp], eax
+	mov	DWORD PTR _i$122388[ebp], eax
 $LN5@FindAllDev:
-	mov	eax, DWORD PTR _i$121811[ebp]
+	mov	eax, DWORD PTR _i$122388[ebp]
 	cmp	eax, DWORD PTR _NumResults$[ebp]
 	jge	$LN3@FindAllDev
 ; Line 95
-	lea	ecx, DWORD PTR _pDevice$121816[ebp]
+	lea	ecx, DWORD PTR _pDevice$122393[ebp]
 	call	??0?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device>
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 ; Line 96
 	cmp	DWORD PTR _factory$[ebp], 0
 	je	SHORT $LN2@FindAllDev
 ; Line 98
-	mov	eax, DWORD PTR _i$121811[ebp]
+	mov	eax, DWORD PTR _i$122388[ebp]
 	mov	ecx, DWORD PTR _device_list$[ebp]
 	lea	edx, DWORD PTR [ecx+eax*4]
 	sub	esp, 8
 	mov	eax, esp
-	mov	DWORD PTR $T130585[ebp], esp
+	mov	DWORD PTR $T131162[ebp], esp
 	push	edx
 	push	eax
 	call	??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z ; std::tr1::make_shared<LibUSB::DeviceImpl,libusb_device * &>
 	add	esp, 8
 	mov	DWORD PTR tv169[ebp], eax
-	lea	ecx, DWORD PTR $T130586[ebp]
+	lea	ecx, DWORD PTR $T131163[ebp]
 	push	ecx
 	call	DWORD PTR _factory$[ebp]
 	add	esp, 12					; 0000000cH
@@ -2146,10 +2146,10 @@ $LN5@FindAllDev:
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
 	mov	eax, DWORD PTR tv172[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _pDevice$121816[ebp]
+	lea	ecx, DWORD PTR _pDevice$122393[ebp]
 	call	??4?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Device>::operator=
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	lea	ecx, DWORD PTR $T130586[ebp]
+	lea	ecx, DWORD PTR $T131163[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 ; Line 100
 	jmp	$LN1@FindAllDev
@@ -2158,22 +2158,22 @@ $LN2@FindAllDev:
 	push	20					; 00000014H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T130588[ebp], eax
+	mov	DWORD PTR $T131165[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
-	cmp	DWORD PTR $T130588[ebp], 0
+	cmp	DWORD PTR $T131165[ebp], 0
 	je	SHORT $LN8@FindAllDev
-	mov	eax, DWORD PTR _i$121811[ebp]
+	mov	eax, DWORD PTR _i$122388[ebp]
 	mov	ecx, DWORD PTR _device_list$[ebp]
 	lea	edx, DWORD PTR [ecx+eax*4]
 	sub	esp, 8
 	mov	eax, esp
-	mov	DWORD PTR $T130589[ebp], esp
+	mov	DWORD PTR $T131166[ebp], esp
 	push	edx
 	push	eax
 	call	??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z ; std::tr1::make_shared<LibUSB::DeviceImpl,libusb_device * &>
 	add	esp, 8
 	mov	DWORD PTR tv175[ebp], eax
-	mov	ecx, DWORD PTR $T130588[ebp]
+	mov	ecx, DWORD PTR $T131165[ebp]
 	call	??0Device@LibUSB@@QAE@V?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@@Z ; LibUSB::Device::Device
 	mov	DWORD PTR tv176[ebp], eax
 	mov	ecx, DWORD PTR tv176[ebp]
@@ -2183,21 +2183,21 @@ $LN8@FindAllDev:
 	mov	DWORD PTR tv157[ebp], 0
 $LN9@FindAllDev:
 	mov	edx, DWORD PTR tv157[ebp]
-	mov	DWORD PTR $T130587[ebp], edx
+	mov	DWORD PTR $T131164[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	mov	eax, DWORD PTR $T130587[ebp]
+	mov	eax, DWORD PTR $T131164[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _pDevice$121816[ebp]
+	lea	ecx, DWORD PTR _pDevice$122393[ebp]
 	call	??$reset@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXPAVDevice@LibUSB@@@Z ; std::tr1::shared_ptr<LibUSB::Device>::reset<LibUSB::Device>
 $LN1@FindAllDev:
 ; Line 106
-	lea	eax, DWORD PTR _pDevice$121816[ebp]
+	lea	eax, DWORD PTR _pDevice$122393[ebp]
 	push	eax
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	call	?push_back@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::push_back
 ; Line 108
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
-	lea	ecx, DWORD PTR _pDevice$121816[ebp]
+	lea	ecx, DWORD PTR _pDevice$122393[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 	jmp	$LN4@FindAllDev
 $LN3@FindAllDev:
@@ -2211,9 +2211,9 @@ $LN3@FindAllDev:
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@$$QAV01@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
-	mov	ecx, DWORD PTR $T130599[ebp]
+	mov	ecx, DWORD PTR $T131176[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T130599[ebp], ecx
+	mov	DWORD PTR $T131176[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	call	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
@@ -2292,22 +2292,22 @@ __unwindfunclet$?FindAllDevices@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUS
 	lea	ecx, DWORD PTR _deviceList$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 __unwindfunclet$?FindAllDevices@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$1:
-	lea	ecx, DWORD PTR _pDevice$121816[ebp]
+	lea	ecx, DWORD PTR _pDevice$122393[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __unwindfunclet$?FindAllDevices@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$3:
-	lea	ecx, DWORD PTR $T130586[ebp]
+	lea	ecx, DWORD PTR $T131163[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __unwindfunclet$?FindAllDevices@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$4:
-	mov	eax, DWORD PTR $T130588[ebp]
+	mov	eax, DWORD PTR $T131165[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?FindAllDevices@LibUSB@1@SA?AV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@P6A?AV?$shared_ptr@VDevice@LibUSB@@@tr1@3@V?$shared_ptr@VDeviceImpl@LibUSB@@@53@@Z@Z$6:
-	mov	eax, DWORD PTR $T130599[ebp]
+	mov	eax, DWORD PTR $T131176[ebp]
 	and	eax, 1
 	je	$LN17@FindAllDev
-	and	DWORD PTR $T130599[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131176[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::~list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
 $LN17@FindAllDev:
@@ -2341,8 +2341,8 @@ xdata$x	ENDS
 ;	COMDAT ?Initialize@LibUSB@1@CAXXZ
 _TEXT	SEGMENT
 tv75 = -232						; size = 4
-$T130614 = -224						; size = 4
-$T130615 = -212						; size = 4
+$T131191 = -224						; size = 4
+$T131192 = -212						; size = 4
 __$EHRec$ = -12						; size = 12
 ?Initialize@LibUSB@1@CAXXZ PROC				; LibUSB::LibUSB::Initialize, COMDAT
 ; Line 118
@@ -2374,11 +2374,11 @@ __$EHRec$ = -12						; size = 12
 	push	1
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T130615[ebp], eax
+	mov	DWORD PTR $T131192[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	cmp	DWORD PTR $T130615[ebp], 0
+	cmp	DWORD PTR $T131192[ebp], 0
 	je	SHORT $LN4@Initialize
-	mov	ecx, DWORD PTR $T130615[ebp]
+	mov	ecx, DWORD PTR $T131192[ebp]
 	call	??0LibUSBImpl@LibUSB@@QAE@XZ		; LibUSB::LibUSBImpl::LibUSBImpl
 	mov	DWORD PTR tv75[ebp], eax
 	jmp	SHORT $LN5@Initialize
@@ -2386,9 +2386,9 @@ $LN4@Initialize:
 	mov	DWORD PTR tv75[ebp], 0
 $LN5@Initialize:
 	mov	eax, DWORD PTR tv75[ebp]
-	mov	DWORD PTR $T130614[ebp], eax
+	mov	DWORD PTR $T131191[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	ecx, DWORD PTR $T130614[ebp]
+	mov	ecx, DWORD PTR $T131191[ebp]
 	push	ecx
 	mov	ecx, OFFSET ?Impl_@LibUSB@1@0V?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@A ; LibUSB::LibUSB::Impl_
 	call	??$reset@VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAEXPAVLibUSBImpl@LibUSB@@@Z ; std::tr1::shared_ptr<LibUSB::LibUSBImpl>::reset<LibUSB::LibUSBImpl>
@@ -2410,7 +2410,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?Initialize@LibUSB@1@CAXXZ$0:
-	mov	eax, DWORD PTR $T130615[ebp]
+	mov	eax, DWORD PTR $T131192[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -2621,7 +2621,7 @@ PUBLIC	??0?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAE@XZ ; std
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T130642 = -212						; size = 4
+$T131219 = -212						; size = 4
 _this$ = -8						; size = 4
 ??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@XZ PROC ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >, COMDAT
 ; _this$ = ecx
@@ -2642,7 +2642,7 @@ _this$ = -8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 	push	ecx
 	mov	ecx, esp
-	mov	DWORD PTR $T130642[ebp], esp
+	mov	DWORD PTR $T131219[ebp], esp
 	call	??0?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAE@XZ ; std::allocator<std::tr1::shared_ptr<LibUSB::Device> >::allocator<std::tr1::shared_ptr<LibUSB::Device> >
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	??0?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@1@@Z ; std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >
@@ -2678,7 +2678,7 @@ __ehfuncinfo$??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$s
 xdata$x	ENDS
 ;	COMDAT ??0?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@$$QAV01@@Z
 _TEXT	SEGMENT
-$T130646 = -224						; size = 4
+$T131223 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -2711,7 +2711,7 @@ __Right$ = 8						; size = 4
 	add	eax, 13					; 0000000dH
 	push	ecx
 	mov	ecx, esp
-	mov	DWORD PTR $T130646[ebp], esp
+	mov	DWORD PTR $T131223[ebp], esp
 	push	eax
 	call	??0?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAE@ABV01@@Z ; std::allocator<std::tr1::shared_ptr<LibUSB::Device> >::allocator<std::tr1::shared_ptr<LibUSB::Device> >
 	mov	ecx, DWORD PTR _this$[ebp]
@@ -2856,8 +2856,8 @@ _TEXT	SEGMENT
 tv93 = -260						; size = 4
 tv90 = -256						; size = 4
 tv94 = -252						; size = 4
-$T130665 = -244						; size = 4
-$T130666 = -232						; size = 12
+$T131242 = -244						; size = 4
+$T131243 = -232						; size = 12
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Val$ = 8						; size = 4
@@ -2889,7 +2889,7 @@ __Val$ = 8						; size = 4
 ; Line 927
 	mov	eax, DWORD PTR __Val$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T130666[ebp]
+	lea	ecx, DWORD PTR $T131243[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end
@@ -2899,7 +2899,7 @@ __Val$ = 8						; size = 4
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130665[ebp], esp
+	mov	DWORD PTR $T131242[ebp], esp
 	mov	eax, DWORD PTR tv90[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -2907,7 +2907,7 @@ __Val$ = 8						; size = 4
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Insert@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@ABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_Insert
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T130666[ebp]
+	lea	ecx, DWORD PTR $T131243[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 ; Line 928
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -2926,7 +2926,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?push_back@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z$0:
-	lea	ecx, DWORD PTR $T130666[ebp]
+	lea	ecx, DWORD PTR $T131243[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __ehhandler$?push_back@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXABV?$shared_ptr@VDevice@LibUSB@@@tr1@2@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -2995,7 +2995,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv74 = -240						; size = 4
 tv75 = -236						; size = 4
-$T130679 = -228						; size = 8
+$T131256 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -3032,7 +3032,7 @@ __Right$ = 8						; size = 4
 	call	??$move@AAV?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@YA$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@0@AAV120@@Z ; std::move<std::tr1::shared_ptr<LibUSB::Device> &>
 	add	esp, 4
 	push	eax
-	lea	ecx, DWORD PTR $T130679[ebp]
+	lea	ecx, DWORD PTR $T131256[ebp]
 	call	??0?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device>
 	mov	DWORD PTR tv75[ebp], eax
 	mov	edx, DWORD PTR tv75[ebp]
@@ -3041,7 +3041,7 @@ __Right$ = 8						; size = 4
 	mov	ecx, DWORD PTR tv74[ebp]
 	call	?swap@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::Device>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T130679[ebp]
+	lea	ecx, DWORD PTR $T131256[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 ; Line 1559
 	mov	eax, DWORD PTR _this$[ebp]
@@ -3062,7 +3062,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??4?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z$0:
-	lea	ecx, DWORD PTR $T130679[ebp]
+	lea	ecx, DWORD PTR $T131256[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __ehhandler$??4?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEAAV012@$$QAV012@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -3505,7 +3505,7 @@ PUBLIC	?copy@?$char_traits@_W@std@@SAPA_WPA_WPB_WI@Z	; std::char_traits<wchar_t>
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Tidy@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEX_NI@Z
 _TEXT	SEGMENT
-__Ptr$124891 = -20					; size = 4
+__Ptr$125468 = -20					; size = 4
 _this$ = -8						; size = 4
 __Built$ = 8						; size = 1
 __Newsize$ = 12						; size = 4
@@ -3539,14 +3539,14 @@ $LN4@Tidy:
 ; Line 1992
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR [eax+4]
-	mov	DWORD PTR __Ptr$124891[ebp], ecx
+	mov	DWORD PTR __Ptr$125468[ebp], ecx
 ; Line 1993
 	cmp	DWORD PTR __Newsize$[ebp], 0
 	jbe	SHORT $LN1@Tidy
 ; Line 1994
 	mov	eax, DWORD PTR __Newsize$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR __Ptr$124891[ebp]
+	mov	ecx, DWORD PTR __Ptr$125468[ebp]
 	push	ecx
 	mov	edx, DWORD PTR _this$[ebp]
 	add	edx, 4
@@ -3559,7 +3559,7 @@ $LN1@Tidy:
 	mov	ecx, DWORD PTR [eax+24]
 	add	ecx, 1
 	push	ecx
-	mov	edx, DWORD PTR __Ptr$124891[ebp]
+	mov	edx, DWORD PTR __Ptr$125468[ebp]
 	push	edx
 	mov	ecx, DWORD PTR _this$[ebp]
 	add	ecx, 28					; 0000001cH
@@ -3919,12 +3919,12 @@ tv181 = -328						; size = 4
 tv194 = -324						; size = 4
 tv178 = -320						; size = 4
 tv193 = -316						; size = 4
-$T130740 = -308						; size = 4
-$T130741 = -296						; size = 12
-$T130742 = -276						; size = 4
-$T130743 = -264						; size = 12
-$T130744 = -244						; size = 4
-$T130745 = -232						; size = 12
+$T131317 = -308						; size = 4
+$T131318 = -296						; size = 12
+$T131319 = -276						; size = 4
+$T131320 = -264						; size = 12
+$T131321 = -244						; size = 4
+$T131322 = -232						; size = 12
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Right$ = 8						; size = 4
@@ -3970,7 +3970,7 @@ __Right$ = 8						; size = 4
 	mov	eax, DWORD PTR __Right$[ebp]
 	mov	ecx, DWORD PTR [eax+8]
 	push	ecx
-	lea	edx, DWORD PTR $T130741[ebp]
+	lea	edx, DWORD PTR $T131318[ebp]
 	push	edx
 	mov	ecx, DWORD PTR __Right$[ebp]
 	call	?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end
@@ -3980,7 +3980,7 @@ __Right$ = 8						; size = 4
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130740[ebp], esp
+	mov	DWORD PTR $T131317[ebp], esp
 	mov	edx, DWORD PTR tv178[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -3988,7 +3988,7 @@ __Right$ = 8						; size = 4
 	mov	eax, DWORD PTR tv194[ebp]
 	mov	DWORD PTR tv181[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
-	lea	ecx, DWORD PTR $T130743[ebp]
+	lea	ecx, DWORD PTR $T131320[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR __Right$[ebp]
 	call	?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::begin
@@ -3998,7 +3998,7 @@ __Right$ = 8						; size = 4
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130742[ebp], esp
+	mov	DWORD PTR $T131319[ebp], esp
 	mov	eax, DWORD PTR tv183[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -4008,7 +4008,7 @@ __Right$ = 8						; size = 4
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
 	mov	edx, DWORD PTR __Right$[ebp]
 	push	edx
-	lea	eax, DWORD PTR $T130745[ebp]
+	lea	eax, DWORD PTR $T131322[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::begin
@@ -4018,7 +4018,7 @@ __Right$ = 8						; size = 4
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130744[ebp], esp
+	mov	DWORD PTR $T131321[ebp], esp
 	mov	edx, DWORD PTR tv188[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -4027,13 +4027,13 @@ __Right$ = 8						; size = 4
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_Splice
 	mov	BYTE PTR __$EHRec$[ebp+8], 5
-	lea	ecx, DWORD PTR $T130745[ebp]
+	lea	ecx, DWORD PTR $T131322[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T130743[ebp]
+	lea	ecx, DWORD PTR $T131320[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T130741[ebp]
+	lea	ecx, DWORD PTR $T131318[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN3@Assign_rv:
 ; Line 708
@@ -4053,19 +4053,19 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z$0:
-	lea	ecx, DWORD PTR $T130741[ebp]
+	lea	ecx, DWORD PTR $T131318[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z$1:
-	mov	ecx, DWORD PTR $T130740[ebp]
+	mov	ecx, DWORD PTR $T131317[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z$2:
-	lea	ecx, DWORD PTR $T130743[ebp]
+	lea	ecx, DWORD PTR $T131320[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z$3:
-	mov	ecx, DWORD PTR $T130742[ebp]
+	mov	ecx, DWORD PTR $T131319[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z$4:
-	lea	ecx, DWORD PTR $T130745[ebp]
+	lea	ecx, DWORD PTR $T131322[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __ehhandler$?_Assign_rv@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEX$$QAV12@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -4081,7 +4081,7 @@ PUBLIC	??0?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ
 _TEXT	SEGMENT
-$T130761 = -212						; size = 4
+$T131338 = -212						; size = 4
 _this$ = -8						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 ?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ PROC ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end, COMDAT
@@ -4100,7 +4100,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	rep stosd
 	pop	ecx
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T130761[ebp], 0
+	mov	DWORD PTR $T131338[ebp], 0
 ; Line 792
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
@@ -4109,9 +4109,9 @@ ___$ReturnUdt$ = 8					; size = 4
 	push	edx
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@PAU_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@PBV?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@@Z ; std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
-	mov	eax, DWORD PTR $T130761[ebp]
+	mov	eax, DWORD PTR $T131338[ebp]
 	or	eax, 1
-	mov	DWORD PTR $T130761[ebp], eax
+	mov	DWORD PTR $T131338[ebp], eax
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 793
 	pop	edi
@@ -4390,7 +4390,7 @@ __ehfuncinfo$??0?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator
 xdata$x	ENDS
 ;	COMDAT ??0?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@1@@Z
 _TEXT	SEGMENT
-$T130780 = -224						; size = 4
+$T131357 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Al$ = 8						; size = 1
@@ -4421,7 +4421,7 @@ __Al$ = 8						; size = 1
 	mov	DWORD PTR _this$[ebp], ecx
 	push	ecx
 	mov	ecx, esp
-	mov	DWORD PTR $T130780[ebp], esp
+	mov	DWORD PTR $T131357[ebp], esp
 	lea	eax, DWORD PTR __Al$[ebp]
 	push	eax
 	call	??0?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAE@ABV01@@Z ; std::allocator<std::tr1::shared_ptr<LibUSB::Device> >::allocator<std::tr1::shared_ptr<LibUSB::Device> >
@@ -4931,7 +4931,7 @@ PUBLIC	?_Myptr@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@Q
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z
 _TEXT	SEGMENT
-$T130817 = -210						; size = 2
+$T131394 = -210						; size = 2
 _this$ = -8						; size = 4
 __Newsize$ = 8						; size = 4
 ?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z PROC ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Eos, COMDAT
@@ -4953,11 +4953,11 @@ __Newsize$ = 8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1953
 	xor	eax, eax
-	mov	WORD PTR $T130817[ebp], ax
+	mov	WORD PTR $T131394[ebp], ax
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	edx, DWORD PTR __Newsize$[ebp]
 	mov	DWORD PTR [ecx+20], edx
-	lea	eax, DWORD PTR $T130817[ebp]
+	lea	eax, DWORD PTR $T131394[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Myptr@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEPA_WXZ ; std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Myptr
@@ -5098,7 +5098,7 @@ ___formal$ = 12						; size = 4
 _TEXT	ENDS
 ;	COMDAT ?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ
 _TEXT	SEGMENT
-$T130829 = -212						; size = 4
+$T131406 = -212						; size = 4
 _this$ = -8						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 ?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ PROC ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::begin, COMDAT
@@ -5118,7 +5118,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	rep stosd
 	pop	ecx
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T130829[ebp], 0
+	mov	DWORD PTR $T131406[ebp], 0
 ; Line 782
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
@@ -5131,9 +5131,9 @@ ___$ReturnUdt$ = 8					; size = 4
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@PAU_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@PBV?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@@Z ; std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
-	mov	ecx, DWORD PTR $T130829[ebp]
+	mov	ecx, DWORD PTR $T131406[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T130829[ebp], ecx
+	mov	DWORD PTR $T131406[ebp], ecx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 783
 	pop	edi
@@ -5349,17 +5349,17 @@ tv215 = -396						; size = 4
 tv284 = -392						; size = 4
 tv205 = -392						; size = 4
 tv139 = -392						; size = 4
-$T130837 = -384						; size = 4
-$T130838 = -372						; size = 4
-$T130839 = -360						; size = 4
-$T130840 = -348						; size = 4
-$T130841 = -336						; size = 12
-$T130842 = -316						; size = 4
-$T130843 = -304						; size = 4
-$T130844 = -292						; size = 12
-__Next$125525 = -80					; size = 12
-__Iter$125519 = -60					; size = 12
-__Next$125499 = -40					; size = 12
+$T131414 = -384						; size = 4
+$T131415 = -372						; size = 4
+$T131416 = -360						; size = 4
+$T131417 = -348						; size = 4
+$T131418 = -336						; size = 12
+$T131419 = -316						; size = 4
+$T131420 = -304						; size = 4
+$T131421 = -292						; size = 12
+__Next$126102 = -80					; size = 12
+__Iter$126096 = -60					; size = 12
+__Next$126076 = -40					; size = 12
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Where$ = 8						; size = 12
@@ -5427,26 +5427,26 @@ $LN9@Splice:
 ; Line 1442
 	lea	eax, DWORD PTR __First$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Next$125499[ebp]
+	lea	ecx, DWORD PTR __Next$126076[ebp]
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
 $LN6@Splice:
 	lea	eax, DWORD PTR __Last$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Next$125499[ebp]
+	lea	ecx, DWORD PTR __Next$126076[ebp]
 	call	??9?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QBE_NABV01@@Z ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator!=
 	movzx	ecx, al
 	test	ecx, ecx
 	je	SHORT $LN5@Splice
 ; Line 1444
 	push	0
-	lea	eax, DWORD PTR __Iter$125519[ebp]
+	lea	eax, DWORD PTR __Iter$126096[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Next$125499[ebp]
+	lea	ecx, DWORD PTR __Next$126076[ebp]
 	call	??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE?AV01@H@Z ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator++
 	mov	BYTE PTR __$EHRec$[ebp+8], 4
 ; Line 1445
-	mov	eax, DWORD PTR __Iter$125519[ebp+8]
+	mov	eax, DWORD PTR __Iter$126096[ebp+8]
 	push	eax
 	mov	ecx, DWORD PTR __Right$[ebp]
 	push	ecx
@@ -5455,16 +5455,16 @@ $LN6@Splice:
 ; Line 1446
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Iter$125519[ebp]
+	lea	ecx, DWORD PTR __Iter$126096[ebp]
 	call	?_Adopt@_Iterator_base12@std@@QAEXPBU_Container_base12@2@@Z ; std::_Iterator_base12::_Adopt
 ; Line 1447
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
-	lea	ecx, DWORD PTR __Iter$125519[ebp]
+	lea	ecx, DWORD PTR __Iter$126096[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	jmp	SHORT $LN6@Splice
 $LN5@Splice:
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	lea	ecx, DWORD PTR __Next$125499[ebp]
+	lea	ecx, DWORD PTR __Next$126076[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN7@Splice:
 ; Line 1448
@@ -5472,7 +5472,7 @@ $LN7@Splice:
 	push	eax
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130837[ebp], esp
+	mov	DWORD PTR $T131414[ebp], esp
 	lea	edx, DWORD PTR __Last$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -5482,7 +5482,7 @@ $LN7@Splice:
 	mov	BYTE PTR __$EHRec$[ebp+8], 5
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130838[ebp], esp
+	mov	DWORD PTR $T131415[ebp], esp
 	lea	edx, DWORD PTR __First$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -5494,7 +5494,7 @@ $LN7@Splice:
 	push	ecx
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130839[ebp], esp
+	mov	DWORD PTR $T131416[ebp], esp
 	lea	edx, DWORD PTR __Where$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -5508,48 +5508,48 @@ $LN8@Splice:
 ; Line 1458
 	lea	eax, DWORD PTR __First$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	BYTE PTR __$EHRec$[ebp+8], 7
 	jmp	SHORT $LN3@Splice
 $LN2@Splice:
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	call	??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAEAAV01@XZ ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator++
 $LN3@Splice:
 	lea	eax, DWORD PTR __Last$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	call	??9?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QBE_NABV01@@Z ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator!=
 	movzx	ecx, al
 	test	ecx, ecx
 	je	SHORT $LN1@Splice
 ; Line 1459
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	call	??D?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QBEABV?$shared_ptr@VDevice@LibUSB@@@tr1@1@XZ ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator*
 	push	eax
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130840[ebp], esp
+	mov	DWORD PTR $T131417[ebp], esp
 	lea	eax, DWORD PTR __Where$[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	DWORD PTR tv284[ebp], eax
-	lea	ecx, DWORD PTR $T130841[ebp]
+	lea	ecx, DWORD PTR $T131418[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	??$insert@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@1@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::insert<std::tr1::shared_ptr<LibUSB::Device> >
 	mov	DWORD PTR tv215[ebp], eax
-	lea	ecx, DWORD PTR $T130841[ebp]
+	lea	ecx, DWORD PTR $T131418[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	jmp	SHORT $LN2@Splice
 $LN1@Splice:
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 ; Line 1460
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130842[ebp], esp
+	mov	DWORD PTR $T131419[ebp], esp
 	lea	eax, DWORD PTR __Last$[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -5559,18 +5559,18 @@ $LN1@Splice:
 	mov	BYTE PTR __$EHRec$[ebp+8], 8
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130843[ebp], esp
+	mov	DWORD PTR $T131420[ebp], esp
 	lea	edx, DWORD PTR __First$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	DWORD PTR tv291[ebp], eax
-	lea	eax, DWORD PTR $T130844[ebp]
+	lea	eax, DWORD PTR $T131421[ebp]
 	push	eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 	mov	ecx, DWORD PTR __Right$[ebp]
 	call	?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::erase
 	mov	DWORD PTR tv288[ebp], eax
-	lea	ecx, DWORD PTR $T130844[ebp]
+	lea	ecx, DWORD PTR $T131421[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN4@Splice:
 ; Line 1462
@@ -5650,22 +5650,22 @@ __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$alloc
 	lea	ecx, DWORD PTR __Where$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$3:
-	lea	ecx, DWORD PTR __Next$125499[ebp]
+	lea	ecx, DWORD PTR __Next$126076[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$4:
-	lea	ecx, DWORD PTR __Iter$125519[ebp]
+	lea	ecx, DWORD PTR __Iter$126096[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$5:
-	mov	ecx, DWORD PTR $T130837[ebp]
+	mov	ecx, DWORD PTR $T131414[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$6:
-	mov	ecx, DWORD PTR $T130838[ebp]
+	mov	ecx, DWORD PTR $T131415[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$8:
-	lea	ecx, DWORD PTR __Next$125525[ebp]
+	lea	ecx, DWORD PTR __Next$126102[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z$11:
-	mov	ecx, DWORD PTR $T130842[ebp]
+	mov	ecx, DWORD PTR $T131419[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __ehhandler$?_Splice@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAEXV?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@AAV12@00I@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -5978,7 +5978,7 @@ __ehfuncinfo$??0?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator
 xdata$x	ENDS
 ;	COMDAT ??0?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@1@@Z
 _TEXT	SEGMENT
-$T130894 = -240						; size = 8
+$T131471 = -240						; size = 8
 __Alproxy$ = -29					; size = 1
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -6037,7 +6037,7 @@ __Al$ = 8						; size = 1
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	DWORD PTR [ecx], eax
 ; Line 448
-	lea	ecx, DWORD PTR $T130894[ebp]
+	lea	ecx, DWORD PTR $T131471[ebp]
 	call	??0_Container_proxy@std@@QAE@XZ		; std::_Container_proxy::_Container_proxy
 	push	eax
 	mov	eax, DWORD PTR _this$[ebp]
@@ -6696,13 +6696,13 @@ tv189 = -332						; size = 4
 tv216 = -328						; size = 4
 tv211 = -328						; size = 4
 tv206 = -328						; size = 4
-$T130940 = -317						; size = 1
-$T130941 = -308						; size = 12
-$T130942 = -288						; size = 12
-$T130945 = -268						; size = 4
-$T130946 = -256						; size = 12
-$T130947 = -236						; size = 4
-$T130950 = -224						; size = 4
+$T131517 = -317						; size = 1
+$T131518 = -308						; size = 12
+$T131519 = -288						; size = 12
+$T131522 = -268						; size = 4
+$T131523 = -256						; size = 12
+$T131524 = -236						; size = 4
+$T131527 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -6733,10 +6733,10 @@ __Last$ = 24						; size = 12
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T130950[ebp], 0
+	mov	DWORD PTR $T131527[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 ; Line 1082
-	lea	eax, DWORD PTR $T130941[ebp]
+	lea	eax, DWORD PTR $T131518[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::begin
@@ -6744,9 +6744,9 @@ __Last$ = 24						; size = 12
 	mov	ecx, DWORD PTR tv216[ebp]
 	mov	DWORD PTR tv189[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 3
-	mov	edx, DWORD PTR $T130950[ebp]
+	mov	edx, DWORD PTR $T131527[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T130950[ebp], edx
+	mov	DWORD PTR $T131527[ebp], edx
 	mov	eax, DWORD PTR tv189[ebp]
 	push	eax
 	lea	ecx, DWORD PTR __First$[ebp]
@@ -6754,7 +6754,7 @@ __Last$ = 24						; size = 12
 	movzx	ecx, al
 	test	ecx, ecx
 	je	SHORT $LN7@erase
-	lea	edx, DWORD PTR $T130942[ebp]
+	lea	edx, DWORD PTR $T131519[ebp]
 	push	edx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end
@@ -6762,9 +6762,9 @@ __Last$ = 24						; size = 12
 	mov	eax, DWORD PTR tv218[ebp]
 	mov	DWORD PTR tv194[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
-	mov	ecx, DWORD PTR $T130950[ebp]
+	mov	ecx, DWORD PTR $T131527[ebp]
 	or	ecx, 2
-	mov	DWORD PTR $T130950[ebp], ecx
+	mov	DWORD PTR $T131527[ebp], ecx
 	mov	edx, DWORD PTR tv194[ebp]
 	push	edx
 	lea	ecx, DWORD PTR __Last$[ebp]
@@ -6778,24 +6778,24 @@ $LN7@erase:
 	mov	DWORD PTR tv94[ebp], 0
 $LN8@erase:
 	mov	cl, BYTE PTR tv94[ebp]
-	mov	BYTE PTR $T130940[ebp], cl
+	mov	BYTE PTR $T131517[ebp], cl
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
-	mov	edx, DWORD PTR $T130950[ebp]
+	mov	edx, DWORD PTR $T131527[ebp]
 	and	edx, 2
 	je	SHORT $LN15@erase
-	and	DWORD PTR $T130950[ebp], -3		; fffffffdH
-	lea	ecx, DWORD PTR $T130942[ebp]
+	and	DWORD PTR $T131527[ebp], -3		; fffffffdH
+	lea	ecx, DWORD PTR $T131519[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN15@erase:
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
-	mov	eax, DWORD PTR $T130950[ebp]
+	mov	eax, DWORD PTR $T131527[ebp]
 	and	eax, 1
 	je	SHORT $LN16@erase
-	and	DWORD PTR $T130950[ebp], -2		; fffffffeH
-	lea	ecx, DWORD PTR $T130941[ebp]
+	and	DWORD PTR $T131527[ebp], -2		; fffffffeH
+	lea	ecx, DWORD PTR $T131518[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN16@erase:
-	movzx	ecx, BYTE PTR $T130940[ebp]
+	movzx	ecx, BYTE PTR $T131517[ebp]
 	test	ecx, ecx
 	je	SHORT $LN2@erase
 ; Line 1084
@@ -6806,9 +6806,9 @@ $LN16@erase:
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end
-	mov	ecx, DWORD PTR $T130950[ebp]
+	mov	ecx, DWORD PTR $T131527[ebp]
 	or	ecx, 4
-	mov	DWORD PTR $T130950[ebp], ecx
+	mov	DWORD PTR $T131527[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
 	lea	ecx, DWORD PTR __First$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -6831,12 +6831,12 @@ $LN2@erase:
 ; Line 1090
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130945[ebp], esp
+	mov	DWORD PTR $T131522[ebp], esp
 	lea	eax, DWORD PTR __First$[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	DWORD PTR tv206[ebp], eax
-	lea	ecx, DWORD PTR $T130946[ebp]
+	lea	ecx, DWORD PTR $T131523[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::erase
@@ -6849,14 +6849,14 @@ $LN2@erase:
 	lea	ecx, DWORD PTR __First$[ebp]
 	call	??4?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAEAAV01@ABV01@@Z
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
-	lea	ecx, DWORD PTR $T130946[ebp]
+	lea	ecx, DWORD PTR $T131523[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	jmp	SHORT $LN2@erase
 $LN1@erase:
 ; Line 1091
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T130947[ebp], esp
+	mov	DWORD PTR $T131524[ebp], esp
 	lea	eax, DWORD PTR __Last$[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -6866,9 +6866,9 @@ $LN1@erase:
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QBE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_Make_iter
 	mov	DWORD PTR tv212[ebp], eax
-	mov	edx, DWORD PTR $T130950[ebp]
+	mov	edx, DWORD PTR $T131527[ebp]
 	or	edx, 4
-	mov	DWORD PTR $T130950[ebp], edx
+	mov	DWORD PTR $T131527[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
 	lea	ecx, DWORD PTR __First$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -6908,34 +6908,34 @@ __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocat
 	lea	ecx, DWORD PTR __First$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z$2:
-	mov	eax, DWORD PTR $T130950[ebp]
+	mov	eax, DWORD PTR $T131527[ebp]
 	and	eax, 1
 	je	$LN12@erase
-	and	DWORD PTR $T130950[ebp], -2		; fffffffeH
-	lea	ecx, DWORD PTR $T130941[ebp]
+	and	DWORD PTR $T131527[ebp], -2		; fffffffeH
+	lea	ecx, DWORD PTR $T131518[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN12@erase:
 	ret	0
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z$3:
-	mov	eax, DWORD PTR $T130950[ebp]
+	mov	eax, DWORD PTR $T131527[ebp]
 	and	eax, 2
 	je	$LN14@erase
-	and	DWORD PTR $T130950[ebp], -3		; fffffffdH
-	lea	ecx, DWORD PTR $T130942[ebp]
+	and	DWORD PTR $T131527[ebp], -3		; fffffffdH
+	lea	ecx, DWORD PTR $T131519[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN14@erase:
 	ret	0
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z$4:
-	mov	eax, DWORD PTR $T130950[ebp]
+	mov	eax, DWORD PTR $T131527[ebp]
 	and	eax, 4
 	je	$LN18@erase
-	and	DWORD PTR $T130950[ebp], -5		; fffffffbH
+	and	DWORD PTR $T131527[ebp], -5		; fffffffbH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN18@erase:
 	ret	0
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z$6:
-	lea	ecx, DWORD PTR $T130946[ebp]
+	lea	ecx, DWORD PTR $T131523[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __ehhandler$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@0@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -7823,7 +7823,7 @@ __ehfuncinfo$??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB
 xdata$x	ENDS
 ;	COMDAT ??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE?AV01@H@Z
 _TEXT	SEGMENT
-$T131014 = -244						; size = 4
+$T131591 = -244						; size = 4
 __Tmp$ = -40						; size = 12
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -7854,7 +7854,7 @@ ___formal$ = 12						; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T131014[ebp], 0
+	mov	DWORD PTR $T131591[ebp], 0
 ; Line 243
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
@@ -7869,9 +7869,9 @@ ___formal$ = 12						; size = 4
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
-	mov	ecx, DWORD PTR $T131014[ebp]
+	mov	ecx, DWORD PTR $T131591[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131014[ebp], ecx
+	mov	DWORD PTR $T131591[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Tmp$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -7917,10 +7917,10 @@ __unwindfunclet$??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@Lib
 	lea	ecx, DWORD PTR __Tmp$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE?AV01@H@Z$1:
-	mov	eax, DWORD PTR $T131014[ebp]
+	mov	eax, DWORD PTR $T131591[ebp]
 	and	eax, 1
 	je	$LN5@operator@4
-	and	DWORD PTR $T131014[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131591[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN5@operator@4:
@@ -8108,7 +8108,7 @@ __ehfuncinfo$?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$alloc
 xdata$x	ENDS
 ;	COMDAT ?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QBE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z
 _TEXT	SEGMENT
-$T131037 = -224						; size = 4
+$T131614 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -8138,7 +8138,7 @@ __Where$ = 12						; size = 12
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T131037[ebp], 0
+	mov	DWORD PTR $T131614[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 802
 	mov	eax, DWORD PTR _this$[ebp]
@@ -8147,9 +8147,9 @@ __Where$ = 12						; size = 12
 	push	ecx
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@PAU_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@PBV?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@1@@Z ; std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
-	mov	edx, DWORD PTR $T131037[ebp]
+	mov	edx, DWORD PTR $T131614[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131037[ebp], edx
+	mov	DWORD PTR $T131614[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Where$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -8174,10 +8174,10 @@ __unwindfunclet$?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$al
 	lea	ecx, DWORD PTR __Where$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QBE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z$1:
-	mov	eax, DWORD PTR $T131037[ebp]
+	mov	eax, DWORD PTR $T131614[ebp]
 	and	eax, 1
 	je	$LN5@Make_iter
-	and	DWORD PTR $T131037[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131614[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN5@Make_iter:
@@ -8226,9 +8226,9 @@ tv200 = -280						; size = 4
 tv197 = -280						; size = 4
 tv206 = -276						; size = 4
 tv199 = -276						; size = 4
-$T131047 = -268						; size = 12
-$T131048 = -248						; size = 4
-$T131053 = -236						; size = 4
+$T131624 = -268						; size = 12
+$T131625 = -248						; size = 4
+$T131630 = -236						; size = 4
 __Pnode$ = -32						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -8259,7 +8259,7 @@ __Where$ = 12						; size = 12
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T131053[ebp], 0
+	mov	DWORD PTR $T131630[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 1056
 	lea	ecx, DWORD PTR __Where$[ebp]
@@ -8283,7 +8283,7 @@ $LN2@erase@2:
 $LN3@erase@2:
 ; Line 1058
 	push	0
-	lea	eax, DWORD PTR $T131047[ebp]
+	lea	eax, DWORD PTR $T131624[ebp]
 	push	eax
 	lea	ecx, DWORD PTR __Where$[ebp]
 	call	??E?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE?AV01@H@Z ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator++
@@ -8295,7 +8295,7 @@ $LN3@erase@2:
 	call	?_Mynode@?$_List_unchecked_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U_Iterator_base12@2@@std@@QBEPAU_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@2@XZ ; std::_List_unchecked_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >,std::_Iterator_base12>::_Mynode
 	mov	DWORD PTR __Pnode$[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
-	lea	ecx, DWORD PTR $T131047[ebp]
+	lea	ecx, DWORD PTR $T131624[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 ; Line 1059
 	mov	eax, DWORD PTR __Pnode$[ebp]
@@ -8366,7 +8366,7 @@ $LN1@erase@2:
 ; Line 1077
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T131048[ebp], esp
+	mov	DWORD PTR $T131625[ebp], esp
 	lea	eax, DWORD PTR __Where$[ebp]
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -8376,9 +8376,9 @@ $LN1@erase@2:
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QBE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_Make_iter
 	mov	DWORD PTR tv200[ebp], eax
-	mov	edx, DWORD PTR $T131053[ebp]
+	mov	edx, DWORD PTR $T131630[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131053[ebp], edx
+	mov	DWORD PTR $T131630[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Where$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -8403,13 +8403,13 @@ __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocat
 	lea	ecx, DWORD PTR __Where$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z$1:
-	lea	ecx, DWORD PTR $T131047[ebp]
+	lea	ecx, DWORD PTR $T131624[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$?erase@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z$3:
-	mov	eax, DWORD PTR $T131053[ebp]
+	mov	eax, DWORD PTR $T131630[ebp]
 	and	eax, 1
 	je	$LN10@erase@2
-	and	DWORD PTR $T131053[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131630[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN10@erase@2:
@@ -8818,9 +8818,9 @@ xdata$x	ENDS
 ;	COMDAT ??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z
 _TEXT	SEGMENT
 tv74 = -272						; size = 4
-$T131085 = -264						; size = 4
-$T131086 = -252						; size = 4
-$T131092 = -240						; size = 4
+$T131662 = -264						; size = 4
+$T131663 = -252						; size = 4
+$T131669 = -240						; size = 4
 __Ret$ = -36						; size = 8
 __Rx$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
@@ -8847,21 +8847,21 @@ __Ax0$ = 12						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T131092[ebp], 0
+	mov	DWORD PTR $T131669[ebp], 0
 ; Line 35
 	push	68					; 00000044H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131086[ebp], eax
+	mov	DWORD PTR $T131663[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
-	cmp	DWORD PTR $T131086[ebp], 0
+	cmp	DWORD PTR $T131663[ebp], 0
 	je	SHORT $LN3@make_share
 	mov	eax, DWORD PTR __Ax0$[ebp]
 	push	eax
 	call	??$forward@AAPAUlibusb_device@@@std@@YAAAPAUlibusb_device@@AAPAU1@@Z ; std::forward<libusb_device * &>
 	add	esp, 4
 	push	eax
-	mov	ecx, DWORD PTR $T131086[ebp]
+	mov	ecx, DWORD PTR $T131663[ebp]
 	call	??$?0AAPAUlibusb_device@@@?$_Ref_count_obj@VDeviceImpl@LibUSB@@@tr1@std@@QAE@AAPAUlibusb_device@@@Z ; std::tr1::_Ref_count_obj<LibUSB::DeviceImpl>::_Ref_count_obj<LibUSB::DeviceImpl><libusb_device * &>
 	mov	DWORD PTR tv74[ebp], eax
 	jmp	SHORT $LN4@make_share
@@ -8869,9 +8869,9 @@ $LN3@make_share:
 	mov	DWORD PTR tv74[ebp], 0
 $LN4@make_share:
 	mov	ecx, DWORD PTR tv74[ebp]
-	mov	DWORD PTR $T131085[ebp], ecx
+	mov	DWORD PTR $T131662[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	mov	edx, DWORD PTR $T131085[ebp]
+	mov	edx, DWORD PTR $T131662[ebp]
 	mov	DWORD PTR __Rx$[ebp], edx
 ; Line 37
 	lea	ecx, DWORD PTR __Ret$[ebp]
@@ -8890,9 +8890,9 @@ $LN4@make_share:
 	push	eax
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::shared_ptr<LibUSB::DeviceImpl>
-	mov	ecx, DWORD PTR $T131092[ebp]
+	mov	ecx, DWORD PTR $T131669[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131092[ebp], ecx
+	mov	DWORD PTR $T131669[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Ret$[ebp]
 	call	??1?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::~shared_ptr<LibUSB::DeviceImpl>
@@ -8934,7 +8934,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z$0:
-	mov	eax, DWORD PTR $T131086[ebp]
+	mov	eax, DWORD PTR $T131663[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -8943,10 +8943,10 @@ __unwindfunclet$??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@
 	lea	ecx, DWORD PTR __Ret$[ebp]
 	jmp	??1?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::~shared_ptr<LibUSB::DeviceImpl>
 __unwindfunclet$??$make_shared@VDeviceImpl@LibUSB@@AAPAUlibusb_device@@@tr1@std@@YA?AV?$shared_ptr@VDeviceImpl@LibUSB@@@01@AAPAUlibusb_device@@@Z$2:
-	mov	eax, DWORD PTR $T131092[ebp]
+	mov	eax, DWORD PTR $T131669[ebp]
 	and	eax, 1
 	je	$LN8@make_share
-	and	DWORD PTR $T131092[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131669[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$shared_ptr@VDeviceImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::DeviceImpl>::~shared_ptr<LibUSB::DeviceImpl>
 $LN8@make_share:
@@ -9057,7 +9057,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv72 = -240						; size = 4
 tv73 = -236						; size = 4
-$T131109 = -228						; size = 8
+$T131686 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Px$ = 8						; size = 4
@@ -9091,7 +9091,7 @@ __Px$ = 8						; size = 4
 	push	eax
 	mov	ecx, DWORD PTR __Px$[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T131109[ebp]
+	lea	ecx, DWORD PTR $T131686[ebp]
 	call	??$?0VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@PAVDevice@LibUSB@@@Z ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device><LibUSB::Device>
 	mov	DWORD PTR tv73[ebp], eax
 	mov	edx, DWORD PTR tv73[ebp]
@@ -9100,7 +9100,7 @@ __Px$ = 8						; size = 4
 	mov	ecx, DWORD PTR tv72[ebp]
 	call	?swap@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::Device>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T131109[ebp]
+	lea	ecx, DWORD PTR $T131686[ebp]
 	call	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 ; Line 1608
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -9119,7 +9119,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$reset@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXPAVDevice@LibUSB@@@Z$0:
-	lea	ecx, DWORD PTR $T131109[ebp]
+	lea	ecx, DWORD PTR $T131686[ebp]
 	jmp	??1?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::Device>::~shared_ptr<LibUSB::Device>
 __ehhandler$??$reset@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAEXPAVDevice@LibUSB@@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -9324,7 +9324,7 @@ PUBLIC	??$addressof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??$contain@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@foreach_detail_@boost@@YA?AU?$auto_any@PAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@01@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@PAU?$bool_@$0A@@mpl@1@@Z
 _TEXT	SEGMENT
-$T131134 = -200						; size = 4
+$T131711 = -200						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _t$ = 12						; size = 4
 ___formal$ = 16						; size = 4
@@ -9345,8 +9345,8 @@ ___formal$ = 16						; size = 4
 	push	eax
 	call	??$addressof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@boost@@YAPAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@AAV12@@Z ; boost::addressof<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 4
-	mov	DWORD PTR $T131134[ebp], eax
-	lea	ecx, DWORD PTR $T131134[ebp]
+	mov	DWORD PTR $T131711[ebp], eax
+	lea	ecx, DWORD PTR $T131711[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$auto_any@PAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@foreach_detail_@boost@@QAE@ABQAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@Z ; boost::foreach_detail_::auto_any<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > *>::auto_any<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > *>
@@ -9437,8 +9437,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv78 = -244						; size = 4
 tv83 = -240						; size = 4
-$T131141 = -232						; size = 12
-$T131144 = -212						; size = 4
+$T131718 = -232						; size = 12
+$T131721 = -212						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
 _col$ = 12						; size = 4
@@ -9465,7 +9465,7 @@ ___formal$ = 20						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T131144[ebp], 0
+	mov	DWORD PTR $T131721[ebp], 0
 ; Line 670
 	mov	eax, DWORD PTR _col$[ebp]
 	push	eax
@@ -9476,7 +9476,7 @@ ___formal$ = 20						; size = 4
 	call	??$derefof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@foreach_detail_@boost@@YAAAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@PAV23@@Z ; boost::foreach_detail_::derefof<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 4
 	push	eax
-	lea	edx, DWORD PTR $T131141[ebp]
+	lea	edx, DWORD PTR $T131718[ebp]
 	push	edx
 	call	??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z ; boost::range_adl_barrier::begin<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 8
@@ -9488,11 +9488,11 @@ ___formal$ = 20						; size = 4
 	push	ecx
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@ABV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@Z ; boost::foreach_detail_::auto_any<std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > > >::auto_any<std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > > >
-	mov	edx, DWORD PTR $T131144[ebp]
+	mov	edx, DWORD PTR $T131721[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131144[ebp], edx
+	mov	DWORD PTR $T131721[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T131141[ebp]
+	lea	ecx, DWORD PTR $T131718[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 671
@@ -9512,13 +9512,13 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z$0:
-	lea	ecx, DWORD PTR $T131141[ebp]
+	lea	ecx, DWORD PTR $T131718[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z$1:
-	mov	eax, DWORD PTR $T131144[ebp]
+	mov	eax, DWORD PTR $T131721[ebp]
 	and	eax, 1
 	je	$LN5@begin
-	and	DWORD PTR $T131144[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131721[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 $LN5@begin:
@@ -9553,8 +9553,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv78 = -244						; size = 4
 tv83 = -240						; size = 4
-$T131154 = -232						; size = 12
-$T131157 = -212						; size = 4
+$T131731 = -232						; size = 12
+$T131734 = -212						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
 _col$ = 12						; size = 4
@@ -9581,7 +9581,7 @@ ___formal$ = 20						; size = 4
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
-	mov	DWORD PTR $T131157[ebp], 0
+	mov	DWORD PTR $T131734[ebp], 0
 ; Line 710
 	mov	eax, DWORD PTR _col$[ebp]
 	push	eax
@@ -9592,7 +9592,7 @@ ___formal$ = 20						; size = 4
 	call	??$derefof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@foreach_detail_@boost@@YAAAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@PAV23@@Z ; boost::foreach_detail_::derefof<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 4
 	push	eax
-	lea	edx, DWORD PTR $T131154[ebp]
+	lea	edx, DWORD PTR $T131731[ebp]
 	push	edx
 	call	??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z ; boost::range_adl_barrier::end<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 8
@@ -9604,11 +9604,11 @@ ___formal$ = 20						; size = 4
 	push	ecx
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	call	??0?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@ABV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@Z ; boost::foreach_detail_::auto_any<std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > > >::auto_any<std::_List_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > > >
-	mov	edx, DWORD PTR $T131157[ebp]
+	mov	edx, DWORD PTR $T131734[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131157[ebp], edx
+	mov	DWORD PTR $T131734[ebp], edx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
-	lea	ecx, DWORD PTR $T131154[ebp]
+	lea	ecx, DWORD PTR $T131731[ebp]
 	call	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 711
@@ -9628,13 +9628,13 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z$0:
-	lea	ecx, DWORD PTR $T131154[ebp]
+	lea	ecx, DWORD PTR $T131731[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@foreach_detail_@boost@@YA?AU?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@01@ABUauto_any_base@01@PAU?$type2type@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@U?$bool_@$0A@@mpl@boost@@@01@PAU?$bool_@$0A@@mpl@1@@Z$1:
-	mov	eax, DWORD PTR $T131157[ebp]
+	mov	eax, DWORD PTR $T131734[ebp]
 	and	eax, 1
 	je	$LN5@end
-	and	DWORD PTR $T131157[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131734[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$auto_any@V?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@@foreach_detail_@boost@@QAE@XZ
 $LN5@end:
@@ -9826,7 +9826,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv72 = -240						; size = 4
 tv73 = -236						; size = 4
-$T131175 = -228						; size = 8
+$T131752 = -228						; size = 8
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Px$ = 8						; size = 4
@@ -9860,7 +9860,7 @@ __Px$ = 8						; size = 4
 	push	eax
 	mov	ecx, DWORD PTR __Px$[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T131175[ebp]
+	lea	ecx, DWORD PTR $T131752[ebp]
 	call	??$?0VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAE@PAVLibUSBImpl@LibUSB@@@Z ; std::tr1::shared_ptr<LibUSB::LibUSBImpl>::shared_ptr<LibUSB::LibUSBImpl><LibUSB::LibUSBImpl>
 	mov	DWORD PTR tv73[ebp], eax
 	mov	edx, DWORD PTR tv73[ebp]
@@ -9869,7 +9869,7 @@ __Px$ = 8						; size = 4
 	mov	ecx, DWORD PTR tv72[ebp]
 	call	?swap@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAEXAAV123@@Z ; std::tr1::shared_ptr<LibUSB::LibUSBImpl>::swap
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	lea	ecx, DWORD PTR $T131175[ebp]
+	lea	ecx, DWORD PTR $T131752[ebp]
 	call	??1?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::LibUSBImpl>::~shared_ptr<LibUSB::LibUSBImpl>
 ; Line 1608
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -9888,7 +9888,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$reset@VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAEXPAVLibUSBImpl@LibUSB@@@Z$0:
-	lea	ecx, DWORD PTR $T131175[ebp]
+	lea	ecx, DWORD PTR $T131752[ebp]
 	jmp	??1?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAE@XZ ; std::tr1::shared_ptr<LibUSB::LibUSBImpl>::~shared_ptr<LibUSB::LibUSBImpl>
 __ehhandler$??$reset@VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@QAEXPAVLibUSBImpl@LibUSB@@@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -10254,8 +10254,8 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 tv66 = -248						; size = 4
 tv89 = -244						; size = 4
-$T131205 = -236						; size = 4
-$T131209 = -224						; size = 4
+$T131782 = -236						; size = 4
+$T131786 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -10286,7 +10286,7 @@ __Val$ = 24						; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T131209[ebp], 0
+	mov	DWORD PTR $T131786[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 735
 	mov	eax, DWORD PTR __Val$[ebp]
@@ -10296,7 +10296,7 @@ __Val$ = 24						; size = 4
 	push	eax
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T131205[ebp], esp
+	mov	DWORD PTR $T131782[ebp], esp
 	lea	edx, DWORD PTR __Where$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -10306,9 +10306,9 @@ __Val$ = 24						; size = 4
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	??$emplace@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@1@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::emplace<std::tr1::shared_ptr<LibUSB::Device> >
 	mov	DWORD PTR tv66[ebp], eax
-	mov	ecx, DWORD PTR $T131209[ebp]
+	mov	ecx, DWORD PTR $T131786[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131209[ebp], ecx
+	mov	DWORD PTR $T131786[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Where$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -10333,10 +10333,10 @@ __unwindfunclet$??$insert@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$sha
 	lea	ecx, DWORD PTR __Where$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$??$insert@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@1@@Z$2:
-	mov	eax, DWORD PTR $T131209[ebp]
+	mov	eax, DWORD PTR $T131786[ebp]
 	and	eax, 1
 	je	$LN6@insert
-	and	DWORD PTR $T131209[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131786[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN6@insert:
@@ -10542,7 +10542,7 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@U_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@YAPAU_Node@?$_List_nod@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@0@IPAU120@@Z
 _TEXT	SEGMENT
-$T131227 = -220						; size = 12
+$T131804 = -220						; size = 12
 __Ptr$ = -8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
@@ -10582,10 +10582,10 @@ $LN4@Allocate:
 $LN1@Allocate:
 ; Line 37
 	push	0
-	lea	ecx, DWORD PTR $T131227[ebp]
+	lea	ecx, DWORD PTR $T131804[ebp]
 	call	??0bad_alloc@std@@QAE@PBD@Z		; std::bad_alloc::bad_alloc
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T131227[ebp]
+	lea	eax, DWORD PTR $T131804[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN3@Allocate:
@@ -10979,7 +10979,7 @@ $LN3@swap@2:
 _TEXT	ENDS
 ;	COMDAT ??$_Allocate@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@IPAU10@@Z
 _TEXT	SEGMENT
-$T131248 = -220						; size = 12
+$T131825 = -220						; size = 12
 __Ptr$ = -8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
@@ -11020,10 +11020,10 @@ $LN4@Allocate@2:
 $LN1@Allocate@2:
 ; Line 37
 	push	0
-	lea	ecx, DWORD PTR $T131248[ebp]
+	lea	ecx, DWORD PTR $T131825[ebp]
 	call	??0bad_alloc@std@@QAE@PBD@Z		; std::bad_alloc::bad_alloc
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T131248[ebp]
+	lea	eax, DWORD PTR $T131825[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN3@Allocate@2:
@@ -11578,8 +11578,8 @@ xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@U_Container_proxy@std@@@std@@QAEXPAU_Container_proxy@2@$$QAU32@@Z
 _TEXT	SEGMENT
 tv74 = -244						; size = 4
-$T131281 = -236						; size = 4
-$T131282 = -224						; size = 4
+$T131858 = -236						; size = 4
+$T131859 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
@@ -11615,9 +11615,9 @@ __Val$ = 12						; size = 4
 	push	8
 	call	??2@YAPAXIPAX@Z				; operator new
 	add	esp, 8
-	mov	DWORD PTR $T131282[ebp], eax
+	mov	DWORD PTR $T131859[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	cmp	DWORD PTR $T131282[ebp], 0
+	cmp	DWORD PTR $T131859[ebp], 0
 	je	SHORT $LN3@construct
 	mov	ecx, DWORD PTR __Val$[ebp]
 	push	ecx
@@ -11625,17 +11625,17 @@ __Val$ = 12						; size = 4
 	add	esp, 4
 	mov	edx, DWORD PTR [eax]
 	mov	eax, DWORD PTR [eax+4]
-	mov	ecx, DWORD PTR $T131282[ebp]
+	mov	ecx, DWORD PTR $T131859[ebp]
 	mov	DWORD PTR [ecx], edx
 	mov	DWORD PTR [ecx+4], eax
-	mov	edx, DWORD PTR $T131282[ebp]
+	mov	edx, DWORD PTR $T131859[ebp]
 	mov	DWORD PTR tv74[ebp], edx
 	jmp	SHORT $LN4@construct
 $LN3@construct:
 	mov	DWORD PTR tv74[ebp], 0
 $LN4@construct:
 	mov	eax, DWORD PTR tv74[ebp]
-	mov	DWORD PTR $T131281[ebp], eax
+	mov	DWORD PTR $T131858[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 ; Line 203
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -11656,7 +11656,7 @@ text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@U_Container_proxy@std@@@std@@QAEXPAU_Container_proxy@2@$$QAU32@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T131282[ebp]
+	mov	ecx, DWORD PTR $T131859[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -12544,8 +12544,8 @@ xdata$x	ENDS
 ;	COMDAT ??$?0AAPAUlibusb_device@@@?$_Ref_count_obj@VDeviceImpl@LibUSB@@@tr1@std@@QAE@AAPAUlibusb_device@@@Z
 _TEXT	SEGMENT
 tv94 = -244						; size = 4
-$T131333 = -236						; size = 4
-$T131334 = -224						; size = 4
+$T131910 = -236						; size = 4
+$T131911 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ax0$ = 8						; size = 4
@@ -12586,9 +12586,9 @@ __Ax0$ = 8						; size = 4
 	push	56					; 00000038H
 	call	??2@YAPAXIPAX@Z				; operator new
 	add	esp, 8
-	mov	DWORD PTR $T131334[ebp], eax
+	mov	DWORD PTR $T131911[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
-	cmp	DWORD PTR $T131334[ebp], 0
+	cmp	DWORD PTR $T131911[ebp], 0
 	je	SHORT $LN3@DeviceImpl
 	mov	ecx, DWORD PTR __Ax0$[ebp]
 	push	ecx
@@ -12596,7 +12596,7 @@ __Ax0$ = 8						; size = 4
 	add	esp, 4
 	mov	edx, DWORD PTR [eax]
 	push	edx
-	mov	ecx, DWORD PTR $T131334[ebp]
+	mov	ecx, DWORD PTR $T131911[ebp]
 	call	??0DeviceImpl@LibUSB@@QAE@PAUlibusb_device@@@Z ; LibUSB::DeviceImpl::DeviceImpl
 	mov	DWORD PTR tv94[ebp], eax
 	jmp	SHORT $LN4@DeviceImpl
@@ -12604,7 +12604,7 @@ $LN3@DeviceImpl:
 	mov	DWORD PTR tv94[ebp], 0
 $LN4@DeviceImpl:
 	mov	eax, DWORD PTR tv94[ebp]
-	mov	DWORD PTR $T131333[ebp], eax
+	mov	DWORD PTR $T131910[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 ; Line 14
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
@@ -12631,7 +12631,7 @@ __unwindfunclet$??$?0AAPAUlibusb_device@@@?$_Ref_count_obj@VDeviceImpl@LibUSB@@@
 	mov	eax, DWORD PTR _this$[ebp]
 	add	eax, 12					; 0000000cH
 	push	eax
-	mov	ecx, DWORD PTR $T131334[ebp]
+	mov	ecx, DWORD PTR $T131911[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -12851,8 +12851,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Delete_this@?$_Ref_count_obj@VDeviceImpl@LibUSB@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv74 = -232						; size = 4
-$T131357 = -224						; size = 4
-$T131358 = -212						; size = 4
+$T131934 = -224						; size = 4
+$T131935 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Delete_this@?$_Ref_count_obj@VDeviceImpl@LibUSB@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count_obj<LibUSB::DeviceImpl>::_Delete_this, COMDAT
 ; _this$ = ecx
@@ -12872,16 +12872,16 @@ _this$ = -8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1843
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR $T131358[ebp], eax
-	mov	ecx, DWORD PTR $T131358[ebp]
-	mov	DWORD PTR $T131357[ebp], ecx
-	cmp	DWORD PTR $T131357[ebp], 0
+	mov	DWORD PTR $T131935[ebp], eax
+	mov	ecx, DWORD PTR $T131935[ebp]
+	mov	DWORD PTR $T131934[ebp], ecx
+	cmp	DWORD PTR $T131934[ebp], 0
 	je	SHORT $LN3@Delete_thi
 	mov	esi, esp
 	push	1
-	mov	edx, DWORD PTR $T131357[ebp]
+	mov	edx, DWORD PTR $T131934[ebp]
 	mov	eax, DWORD PTR [edx]
-	mov	ecx, DWORD PTR $T131357[ebp]
+	mov	ecx, DWORD PTR $T131934[ebp]
 	mov	edx, DWORD PTR [eax+8]
 	call	edx
 	cmp	esi, esp
@@ -13045,7 +13045,7 @@ PUBLIC	??0?$addr_impl_ref@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$all
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??$addressof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@boost@@YAPAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@AAV12@@Z
 _TEXT	SEGMENT
-$T131369 = -200						; size = 4
+$T131946 = -200						; size = 4
 _v$ = 8							; size = 4
 ??$addressof@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@boost@@YAPAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@AAV12@@Z PROC ; boost::addressof<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >, COMDAT
 ; File d:\libraries\boost (win32)\include\boost\utility\addressof.hpp
@@ -13064,7 +13064,7 @@ _v$ = 8							; size = 4
 	push	0
 	mov	eax, DWORD PTR _v$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T131369[ebp]
+	lea	ecx, DWORD PTR $T131946[ebp]
 	call	??0?$addr_impl_ref@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@detail@boost@@QAE@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@Z ; boost::detail::addr_impl_ref<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::addr_impl_ref<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	mov	ecx, eax
 	call	??B?$addr_impl_ref@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@detail@boost@@QBEAAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@XZ ; boost::detail::addr_impl_ref<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > &
@@ -13142,7 +13142,7 @@ PUBLIC	??$range_begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocat
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z
 _TEXT	SEGMENT
-$T131377 = -200						; size = 4
+$T131954 = -200						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _r$ = 12						; size = 4
 ??$begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z PROC ; boost::range_adl_barrier::begin<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >, COMDAT
@@ -13158,7 +13158,7 @@ _r$ = 12						; size = 4
 	mov	ecx, 51					; 00000033H
 	mov	eax, -858993460				; ccccccccH
 	rep stosd
-	mov	DWORD PTR $T131377[ebp], 0
+	mov	DWORD PTR $T131954[ebp], 0
 ; Line 108
 	mov	eax, DWORD PTR _r$[ebp]
 	push	eax
@@ -13166,9 +13166,9 @@ _r$ = 12						; size = 4
 	push	ecx
 	call	??$range_begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z ; boost::range_detail::range_begin<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 8
-	mov	edx, DWORD PTR $T131377[ebp]
+	mov	edx, DWORD PTR $T131954[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131377[ebp], edx
+	mov	DWORD PTR $T131954[ebp], edx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 109
 	pop	edi
@@ -13186,7 +13186,7 @@ PUBLIC	??$range_end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z
 _TEXT	SEGMENT
-$T131382 = -200						; size = 4
+$T131959 = -200						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _r$ = 12						; size = 4
 ??$end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_adl_barrier@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z PROC ; boost::range_adl_barrier::end<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >, COMDAT
@@ -13202,7 +13202,7 @@ _r$ = 12						; size = 4
 	mov	ecx, 51					; 00000033H
 	mov	eax, -858993460				; ccccccccH
 	rep stosd
-	mov	DWORD PTR $T131382[ebp], 0
+	mov	DWORD PTR $T131959[ebp], 0
 ; Line 102
 	mov	eax, DWORD PTR _r$[ebp]
 	push	eax
@@ -13210,9 +13210,9 @@ _r$ = 12						; size = 4
 	push	ecx
 	call	??$range_end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z ; boost::range_detail::range_end<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >
 	add	esp, 8
-	mov	edx, DWORD PTR $T131382[ebp]
+	mov	edx, DWORD PTR $T131959[ebp]
 	or	edx, 1
-	mov	DWORD PTR $T131382[ebp], edx
+	mov	DWORD PTR $T131959[ebp], edx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 103
 	pop	edi
@@ -13383,9 +13383,9 @@ _TEXT	SEGMENT
 tv141 = -260						; size = 4
 tv140 = -256						; size = 4
 tv138 = -256						; size = 4
-$T131394 = -248						; size = 4
-$T131395 = -236						; size = 4
-$T131400 = -224						; size = 4
+$T131971 = -248						; size = 4
+$T131972 = -236						; size = 4
+$T131977 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -13416,7 +13416,7 @@ __Val$ = 24						; size = 4
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	mov	DWORD PTR $T131400[ebp], 0
+	mov	DWORD PTR $T131977[ebp], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 ; Line 741
 	mov	eax, DWORD PTR __Val$[ebp]
@@ -13426,7 +13426,7 @@ __Val$ = 24						; size = 4
 	push	eax
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T131394[ebp], esp
+	mov	DWORD PTR $T131971[ebp], esp
 	lea	edx, DWORD PTR __Where$[ebp]
 	push	edx
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
@@ -13438,7 +13438,7 @@ __Val$ = 24						; size = 4
 	call	??F?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAEAAV01@XZ ; std::_List_const_iterator<std::_List_val<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >::operator--
 	sub	esp, 12					; 0000000cH
 	mov	ecx, esp
-	mov	DWORD PTR $T131395[ebp], esp
+	mov	DWORD PTR $T131972[ebp], esp
 	push	eax
 	call	??0?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@ABV01@@Z
 	mov	DWORD PTR tv140[ebp], eax
@@ -13447,9 +13447,9 @@ __Val$ = 24						; size = 4
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?_Make_iter@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QBE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@@Z ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::_Make_iter
 	mov	DWORD PTR tv141[ebp], eax
-	mov	ecx, DWORD PTR $T131400[ebp]
+	mov	ecx, DWORD PTR $T131977[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131400[ebp], ecx
+	mov	DWORD PTR $T131977[ebp], ecx
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	lea	ecx, DWORD PTR __Where$[ebp]
 	call	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
@@ -13474,10 +13474,10 @@ __unwindfunclet$??$emplace@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$sh
 	lea	ecx, DWORD PTR __Where$[ebp]
 	jmp	??1?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 __unwindfunclet$??$emplace@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@V?$_List_const_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@1@$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@1@@Z$3:
-	mov	eax, DWORD PTR $T131400[ebp]
+	mov	eax, DWORD PTR $T131977[ebp]
 	and	eax, 1
 	je	$LN7@emplace
-	and	DWORD PTR $T131400[ebp], -2		; fffffffeH
+	and	DWORD PTR $T131977[ebp], -2		; fffffffeH
 	mov	ecx, DWORD PTR ___$ReturnUdt$[ebp]
 	jmp	??1?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@QAE@XZ
 $LN7@emplace:
@@ -13619,8 +13619,8 @@ xdata$x	ENDS
 ;	COMDAT ??$_Construct@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@ABV123@@std@@YAXPAV?$shared_ptr@VDevice@LibUSB@@@tr1@0@ABV120@@Z
 _TEXT	SEGMENT
 tv76 = -244						; size = 4
-$T131418 = -236						; size = 4
-$T131419 = -224						; size = 4
+$T131995 = -236						; size = 4
+$T131996 = -224						; size = 4
 __Vptr$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
@@ -13655,16 +13655,16 @@ __Val$ = 12						; size = 4
 	push	8
 	call	??2@YAPAXIPAX@Z				; operator new
 	add	esp, 8
-	mov	DWORD PTR $T131419[ebp], eax
+	mov	DWORD PTR $T131996[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	cmp	DWORD PTR $T131419[ebp], 0
+	cmp	DWORD PTR $T131996[ebp], 0
 	je	SHORT $LN3@Construct
 	mov	ecx, DWORD PTR __Val$[ebp]
 	push	ecx
 	call	??$forward@ABV?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@YAABV?$shared_ptr@VDevice@LibUSB@@@tr1@0@ABV120@@Z ; std::forward<std::tr1::shared_ptr<LibUSB::Device> const &>
 	add	esp, 4
 	push	eax
-	mov	ecx, DWORD PTR $T131419[ebp]
+	mov	ecx, DWORD PTR $T131996[ebp]
 	call	??0?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@ABV012@@Z ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device>
 	mov	DWORD PTR tv76[ebp], eax
 	jmp	SHORT $LN4@Construct
@@ -13672,7 +13672,7 @@ $LN3@Construct:
 	mov	DWORD PTR tv76[ebp], 0
 $LN4@Construct:
 	mov	edx, DWORD PTR tv76[ebp]
-	mov	DWORD PTR $T131418[ebp], edx
+	mov	DWORD PTR $T131995[ebp], edx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 ; Line 49
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -13693,7 +13693,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Construct@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@ABV123@@std@@YAXPAV?$shared_ptr@VDevice@LibUSB@@@tr1@0@ABV120@@Z$0:
 	mov	eax, DWORD PTR __Vptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T131419[ebp]
+	mov	ecx, DWORD PTR $T131996[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -14504,10 +14504,10 @@ tv76 = -280						; size = 4
 tv92 = -276						; size = 4
 tv90 = -272						; size = 4
 tv85 = -272						; size = 4
-$T131473 = -264						; size = 4
-$T131474 = -252						; size = 4
-$T131477 = -240						; size = 4
-$T131478 = -228						; size = 4
+$T132050 = -264						; size = 4
+$T132051 = -252						; size = 4
+$T132054 = -240						; size = 4
+$T132055 = -228						; size = 4
 _this$ = -24						; size = 4
 __$EHRec$ = -16						; size = 16
 __Px$ = 8						; size = 4
@@ -14546,13 +14546,13 @@ __Px$ = 8						; size = 4
 	add	esp, 4
 	mov	DWORD PTR tv90[ebp], eax
 	mov	eax, DWORD PTR tv90[ebp]
-	mov	DWORD PTR $T131474[ebp], eax
+	mov	DWORD PTR $T132051[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
-	cmp	DWORD PTR $T131474[ebp], 0
+	cmp	DWORD PTR $T132051[ebp], 0
 	je	SHORT $LN4@Resetp
 	mov	ecx, DWORD PTR __Px$[ebp]
 	push	ecx
-	mov	ecx, DWORD PTR $T131474[ebp]
+	mov	ecx, DWORD PTR $T132051[ebp]
 	call	??0?$_Ref_count@VDevice@LibUSB@@@tr1@std@@QAE@PAVDevice@LibUSB@@@Z ; std::tr1::_Ref_count<LibUSB::Device>::_Ref_count<LibUSB::Device>
 	mov	DWORD PTR tv92[ebp], eax
 	mov	edx, DWORD PTR tv92[ebp]
@@ -14562,9 +14562,9 @@ $LN4@Resetp:
 	mov	DWORD PTR tv76[ebp], 0
 $LN5@Resetp:
 	mov	eax, DWORD PTR tv76[ebp]
-	mov	DWORD PTR $T131473[ebp], eax
+	mov	DWORD PTR $T132050[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+12], 0
-	mov	ecx, DWORD PTR $T131473[ebp]
+	mov	ecx, DWORD PTR $T132050[ebp]
 	push	ecx
 	mov	edx, DWORD PTR __Px$[ebp]
 	push	edx
@@ -14574,16 +14574,16 @@ $LN5@Resetp:
 __catch$??$_Resetp@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@AAEXPAVDevice@LibUSB@@@Z$0:
 ; Line 1664
 	mov	eax, DWORD PTR __Px$[ebp]
-	mov	DWORD PTR $T131478[ebp], eax
-	mov	ecx, DWORD PTR $T131478[ebp]
-	mov	DWORD PTR $T131477[ebp], ecx
-	cmp	DWORD PTR $T131477[ebp], 0
+	mov	DWORD PTR $T132055[ebp], eax
+	mov	ecx, DWORD PTR $T132055[ebp]
+	mov	DWORD PTR $T132054[ebp], ecx
+	cmp	DWORD PTR $T132054[ebp], 0
 	je	SHORT $LN6@Resetp
 	mov	esi, esp
 	push	1
-	mov	edx, DWORD PTR $T131477[ebp]
+	mov	edx, DWORD PTR $T132054[ebp]
 	mov	eax, DWORD PTR [edx]
-	mov	ecx, DWORD PTR $T131477[ebp]
+	mov	ecx, DWORD PTR $T132054[ebp]
 	mov	edx, DWORD PTR [eax]
 	call	edx
 	cmp	esi, esp
@@ -14621,7 +14621,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Resetp@VDevice@LibUSB@@@?$shared_ptr@VDevice@LibUSB@@@tr1@std@@AAEXPAVDevice@LibUSB@@@Z$2:
-	mov	eax, DWORD PTR $T131474[ebp]
+	mov	eax, DWORD PTR $T132051[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -14639,7 +14639,7 @@ text$x	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??$range_begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z
 _TEXT	SEGMENT
-$T131498 = -200						; size = 4
+$T132075 = -200						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _c$ = 12						; size = 4
 ??$range_begin@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z PROC ; boost::range_detail::range_begin<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >, COMDAT
@@ -14655,15 +14655,15 @@ _c$ = 12						; size = 4
 	mov	ecx, 51					; 00000033H
 	mov	eax, -858993460				; ccccccccH
 	rep stosd
-	mov	DWORD PTR $T131498[ebp], 0
+	mov	DWORD PTR $T132075[ebp], 0
 ; Line 49
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _c$[ebp]
 	call	?begin@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::begin
-	mov	ecx, DWORD PTR $T131498[ebp]
+	mov	ecx, DWORD PTR $T132075[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131498[ebp], ecx
+	mov	DWORD PTR $T132075[ebp], ecx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 50
 	pop	edi
@@ -14680,7 +14680,7 @@ _c$ = 12						; size = 4
 _TEXT	ENDS
 ;	COMDAT ??$range_end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z
 _TEXT	SEGMENT
-$T131503 = -200						; size = 4
+$T132080 = -200						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _c$ = 12						; size = 4
 ??$range_end@V?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@range_detail@boost@@YA?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@std@@AAV?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@3@@Z PROC ; boost::range_detail::range_end<std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > > >, COMDAT
@@ -14696,15 +14696,15 @@ _c$ = 12						; size = 4
 	mov	ecx, 51					; 00000033H
 	mov	eax, -858993460				; ccccccccH
 	rep stosd
-	mov	DWORD PTR $T131503[ebp], 0
+	mov	DWORD PTR $T132080[ebp], 0
 ; Line 50
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _c$[ebp]
 	call	?end@?$list@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@QAE?AV?$_List_iterator@V?$_List_val@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@V?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@3@@std@@@2@XZ ; std::list<std::tr1::shared_ptr<LibUSB::Device>,std::allocator<std::tr1::shared_ptr<LibUSB::Device> > >::end
-	mov	ecx, DWORD PTR $T131503[ebp]
+	mov	ecx, DWORD PTR $T132080[ebp]
 	or	ecx, 1
-	mov	DWORD PTR $T131503[ebp], ecx
+	mov	DWORD PTR $T132080[ebp], ecx
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 51
 	pop	edi
@@ -14755,10 +14755,10 @@ tv76 = -280						; size = 4
 tv90 = -276						; size = 4
 tv88 = -272						; size = 4
 tv83 = -272						; size = 4
-$T131507 = -264						; size = 4
-$T131508 = -252						; size = 4
-$T131511 = -240						; size = 4
-$T131512 = -228						; size = 4
+$T132084 = -264						; size = 4
+$T132085 = -252						; size = 4
+$T132088 = -240						; size = 4
+$T132089 = -228						; size = 4
 _this$ = -24						; size = 4
 __$EHRec$ = -16						; size = 16
 __Px$ = 8						; size = 4
@@ -14797,13 +14797,13 @@ __Px$ = 8						; size = 4
 	add	esp, 4
 	mov	DWORD PTR tv88[ebp], eax
 	mov	eax, DWORD PTR tv88[ebp]
-	mov	DWORD PTR $T131508[ebp], eax
+	mov	DWORD PTR $T132085[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
-	cmp	DWORD PTR $T131508[ebp], 0
+	cmp	DWORD PTR $T132085[ebp], 0
 	je	SHORT $LN4@Resetp@2
 	mov	ecx, DWORD PTR __Px$[ebp]
 	push	ecx
-	mov	ecx, DWORD PTR $T131508[ebp]
+	mov	ecx, DWORD PTR $T132085[ebp]
 	call	??0?$_Ref_count@VLibUSBImpl@LibUSB@@@tr1@std@@QAE@PAVLibUSBImpl@LibUSB@@@Z ; std::tr1::_Ref_count<LibUSB::LibUSBImpl>::_Ref_count<LibUSB::LibUSBImpl>
 	mov	DWORD PTR tv90[ebp], eax
 	mov	edx, DWORD PTR tv90[ebp]
@@ -14813,9 +14813,9 @@ $LN4@Resetp@2:
 	mov	DWORD PTR tv76[ebp], 0
 $LN5@Resetp@2:
 	mov	eax, DWORD PTR tv76[ebp]
-	mov	DWORD PTR $T131507[ebp], eax
+	mov	DWORD PTR $T132084[ebp], eax
 	mov	BYTE PTR __$EHRec$[ebp+12], 0
-	mov	ecx, DWORD PTR $T131507[ebp]
+	mov	ecx, DWORD PTR $T132084[ebp]
 	push	ecx
 	mov	edx, DWORD PTR __Px$[ebp]
 	push	edx
@@ -14825,13 +14825,13 @@ $LN5@Resetp@2:
 __catch$??$_Resetp@VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@AAEXPAVLibUSBImpl@LibUSB@@@Z$0:
 ; Line 1664
 	mov	eax, DWORD PTR __Px$[ebp]
-	mov	DWORD PTR $T131512[ebp], eax
-	mov	ecx, DWORD PTR $T131512[ebp]
-	mov	DWORD PTR $T131511[ebp], ecx
-	cmp	DWORD PTR $T131511[ebp], 0
+	mov	DWORD PTR $T132089[ebp], eax
+	mov	ecx, DWORD PTR $T132089[ebp]
+	mov	DWORD PTR $T132088[ebp], ecx
+	cmp	DWORD PTR $T132088[ebp], 0
 	je	SHORT $LN6@Resetp@2
 	push	1
-	mov	ecx, DWORD PTR $T131511[ebp]
+	mov	ecx, DWORD PTR $T132088[ebp]
 	call	??_GLibUSBImpl@LibUSB@@QAEPAXI@Z
 	mov	DWORD PTR tv83[ebp], eax
 	jmp	SHORT $LN7@Resetp@2
@@ -14866,7 +14866,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Resetp@VLibUSBImpl@LibUSB@@@?$shared_ptr@VLibUSBImpl@LibUSB@@@tr1@std@@AAEXPAVLibUSBImpl@LibUSB@@@Z$2:
-	mov	eax, DWORD PTR $T131508[ebp]
+	mov	eax, DWORD PTR $T132085[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -15204,7 +15204,7 @@ __TI2?AVbad_weak_ptr@tr1@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ?_Reset@?$_Ptr_base@VDevice@LibUSB@@@tr1@std@@QAEXPAVDevice@LibUSB@@PAV_Ref_count_base@23@_N@Z
 _TEXT	SEGMENT
-$T131548 = -220						; size = 12
+$T132125 = -220						; size = 12
 _this$ = -8						; size = 4
 __Other_ptr$ = 8					; size = 4
 __Other_rep$ = 12					; size = 4
@@ -15248,10 +15248,10 @@ $LN3@Reset:
 	je	SHORT $LN5@Reset
 ; Line 1363
 	push	0
-	lea	ecx, DWORD PTR $T131548[ebp]
+	lea	ecx, DWORD PTR $T132125[ebp]
 	call	??0bad_weak_ptr@tr1@std@@QAE@PBD@Z	; std::tr1::bad_weak_ptr::bad_weak_ptr
 	push	OFFSET __TI2?AVbad_weak_ptr@tr1@std@@
-	lea	eax, DWORD PTR $T131548[ebp]
+	lea	eax, DWORD PTR $T132125[ebp]
 	push	eax
 	call	__CxxThrowException@8
 $LN5@Reset:
@@ -15621,8 +15621,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Destroy@?$_Ref_count@VDevice@LibUSB@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv71 = -232						; size = 4
-$T131566 = -224						; size = 4
-$T131567 = -212						; size = 4
+$T132143 = -224						; size = 4
+$T132144 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Destroy@?$_Ref_count@VDevice@LibUSB@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count<LibUSB::Device>::_Destroy, COMDAT
 ; _this$ = ecx
@@ -15643,16 +15643,16 @@ _this$ = -8						; size = 4
 ; Line 1107
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR [eax+12]
-	mov	DWORD PTR $T131567[ebp], ecx
-	mov	edx, DWORD PTR $T131567[ebp]
-	mov	DWORD PTR $T131566[ebp], edx
-	cmp	DWORD PTR $T131566[ebp], 0
+	mov	DWORD PTR $T132144[ebp], ecx
+	mov	edx, DWORD PTR $T132144[ebp]
+	mov	DWORD PTR $T132143[ebp], edx
+	cmp	DWORD PTR $T132143[ebp], 0
 	je	SHORT $LN3@Destroy
 	mov	esi, esp
 	push	1
-	mov	eax, DWORD PTR $T131566[ebp]
+	mov	eax, DWORD PTR $T132143[ebp]
 	mov	edx, DWORD PTR [eax]
-	mov	ecx, DWORD PTR $T131566[ebp]
+	mov	ecx, DWORD PTR $T132143[ebp]
 	mov	eax, DWORD PTR [edx]
 	call	eax
 	cmp	esi, esp
@@ -15678,8 +15678,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Delete_this@?$_Ref_count@VDevice@LibUSB@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv74 = -232						; size = 4
-$T131572 = -224						; size = 4
-$T131573 = -212						; size = 4
+$T132149 = -224						; size = 4
+$T132150 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Delete_this@?$_Ref_count@VDevice@LibUSB@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count<LibUSB::Device>::_Delete_this, COMDAT
 ; _this$ = ecx
@@ -15699,16 +15699,16 @@ _this$ = -8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1112
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR $T131573[ebp], eax
-	mov	ecx, DWORD PTR $T131573[ebp]
-	mov	DWORD PTR $T131572[ebp], ecx
-	cmp	DWORD PTR $T131572[ebp], 0
+	mov	DWORD PTR $T132150[ebp], eax
+	mov	ecx, DWORD PTR $T132150[ebp]
+	mov	DWORD PTR $T132149[ebp], ecx
+	cmp	DWORD PTR $T132149[ebp], 0
 	je	SHORT $LN3@Delete_thi@2
 	mov	esi, esp
 	push	1
-	mov	edx, DWORD PTR $T131572[ebp]
+	mov	edx, DWORD PTR $T132149[ebp]
 	mov	eax, DWORD PTR [edx]
-	mov	ecx, DWORD PTR $T131572[ebp]
+	mov	ecx, DWORD PTR $T132149[ebp]
 	mov	edx, DWORD PTR [eax+8]
 	call	edx
 	cmp	esi, esp
@@ -15828,8 +15828,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Destroy@?$_Ref_count@VLibUSBImpl@LibUSB@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv69 = -232						; size = 4
-$T131581 = -224						; size = 4
-$T131582 = -212						; size = 4
+$T132158 = -224						; size = 4
+$T132159 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Destroy@?$_Ref_count@VLibUSBImpl@LibUSB@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count<LibUSB::LibUSBImpl>::_Destroy, COMDAT
 ; _this$ = ecx
@@ -15850,13 +15850,13 @@ _this$ = -8						; size = 4
 ; Line 1107
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR [eax+12]
-	mov	DWORD PTR $T131582[ebp], ecx
-	mov	edx, DWORD PTR $T131582[ebp]
-	mov	DWORD PTR $T131581[ebp], edx
-	cmp	DWORD PTR $T131581[ebp], 0
+	mov	DWORD PTR $T132159[ebp], ecx
+	mov	edx, DWORD PTR $T132159[ebp]
+	mov	DWORD PTR $T132158[ebp], edx
+	cmp	DWORD PTR $T132158[ebp], 0
 	je	SHORT $LN3@Destroy@2
 	push	1
-	mov	ecx, DWORD PTR $T131581[ebp]
+	mov	ecx, DWORD PTR $T132158[ebp]
 	call	??_GLibUSBImpl@LibUSB@@QAEPAXI@Z
 	mov	DWORD PTR tv69[ebp], eax
 	jmp	SHORT $LN1@Destroy@2
@@ -15879,8 +15879,8 @@ _TEXT	ENDS
 ;	COMDAT ?_Delete_this@?$_Ref_count@VLibUSBImpl@LibUSB@@@tr1@std@@EAEXXZ
 _TEXT	SEGMENT
 tv74 = -232						; size = 4
-$T131587 = -224						; size = 4
-$T131588 = -212						; size = 4
+$T132164 = -224						; size = 4
+$T132165 = -212						; size = 4
 _this$ = -8						; size = 4
 ?_Delete_this@?$_Ref_count@VLibUSBImpl@LibUSB@@@tr1@std@@EAEXXZ PROC ; std::tr1::_Ref_count<LibUSB::LibUSBImpl>::_Delete_this, COMDAT
 ; _this$ = ecx
@@ -15900,16 +15900,16 @@ _this$ = -8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 ; Line 1112
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR $T131588[ebp], eax
-	mov	ecx, DWORD PTR $T131588[ebp]
-	mov	DWORD PTR $T131587[ebp], ecx
-	cmp	DWORD PTR $T131587[ebp], 0
+	mov	DWORD PTR $T132165[ebp], eax
+	mov	ecx, DWORD PTR $T132165[ebp]
+	mov	DWORD PTR $T132164[ebp], ecx
+	cmp	DWORD PTR $T132164[ebp], 0
 	je	SHORT $LN3@Delete_thi@3
 	mov	esi, esp
 	push	1
-	mov	edx, DWORD PTR $T131587[ebp]
+	mov	edx, DWORD PTR $T132164[ebp]
 	mov	eax, DWORD PTR [edx]
-	mov	ecx, DWORD PTR $T131587[ebp]
+	mov	ecx, DWORD PTR $T132164[ebp]
 	mov	edx, DWORD PTR [eax+8]
 	call	edx
 	cmp	esi, esp
@@ -16705,8 +16705,8 @@ xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAEXPAV?$shared_ptr@VDevice@LibUSB@@@tr1@2@$$QAV342@@Z
 _TEXT	SEGMENT
 tv76 = -244						; size = 4
-$T131639 = -236						; size = 4
-$T131640 = -224						; size = 4
+$T132216 = -236						; size = 4
+$T132217 = -224						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
@@ -16742,16 +16742,16 @@ __Val$ = 12						; size = 4
 	push	8
 	call	??2@YAPAXIPAX@Z				; operator new
 	add	esp, 8
-	mov	DWORD PTR $T131640[ebp], eax
+	mov	DWORD PTR $T132217[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
-	cmp	DWORD PTR $T131640[ebp], 0
+	cmp	DWORD PTR $T132217[ebp], 0
 	je	SHORT $LN3@construct@2
 	mov	ecx, DWORD PTR __Val$[ebp]
 	push	ecx
 	call	??$forward@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@YA$$QAV?$shared_ptr@VDevice@LibUSB@@@tr1@0@AAV120@@Z ; std::forward<std::tr1::shared_ptr<LibUSB::Device> >
 	add	esp, 4
 	push	eax
-	mov	ecx, DWORD PTR $T131640[ebp]
+	mov	ecx, DWORD PTR $T132217[ebp]
 	call	??0?$shared_ptr@VDevice@LibUSB@@@tr1@std@@QAE@$$QAV012@@Z ; std::tr1::shared_ptr<LibUSB::Device>::shared_ptr<LibUSB::Device>
 	mov	DWORD PTR tv76[ebp], eax
 	jmp	SHORT $LN4@construct@2
@@ -16759,7 +16759,7 @@ $LN3@construct@2:
 	mov	DWORD PTR tv76[ebp], 0
 $LN4@construct@2:
 	mov	edx, DWORD PTR tv76[ebp]
-	mov	DWORD PTR $T131639[ebp], edx
+	mov	DWORD PTR $T132216[ebp], edx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 ; Line 203
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
@@ -16780,7 +16780,7 @@ text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@V?$shared_ptr@VDevice@LibUSB@@@tr1@std@@@std@@QAEXPAV?$shared_ptr@VDevice@LibUSB@@@tr1@2@$$QAV342@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T131640[ebp]
+	mov	ecx, DWORD PTR $T132217[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8

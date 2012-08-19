@@ -22,6 +22,9 @@ LibUSB::DeviceImpl::DeviceImpl( libusb_device* device )
 LibUSB::DeviceImpl::~DeviceImpl()
 {
 
+	// Ensure that all Configuration objects have been released/destroyed.
+
+
 }
 
 std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescriptor()
@@ -198,17 +201,17 @@ bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
 std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uint8_t ConfigValue )
 {
 	// Check for an existing object.
-	if((m_ConfigurationMap.find(index) != m_ConfigurationMap.end()) && (m_ConfigurationMap[index].expired()))
+	if((m_ConfigurationMap.find(ConfigValue) != m_ConfigurationMap.end()) && (m_ConfigurationMap[ConfigValue].expired()))
 	{
 
-		return m_ConfigurationMap[index].lock();
+		return m_ConfigurationMap[ConfigValue].lock();
 	
 	}
 
 	// Create a new configuration object
 	libusb_config_descriptor* pConfig = nullptr;
 
-	int Result = libusb_get_config_descriptor_by_value(m_pDevice.get(), index, &pConfig);
+	int Result = libusb_get_config_descriptor_by_value(m_pDevice.get(), ConfigValue, &pConfig);
 
 	if (Result != LIBUSB_SUCCESS)
 	{
@@ -219,7 +222,7 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
 
-			exceptionText << "(index " << (int)index << ")";
+			exceptionText << "(index " << (int)ConfigValue << ")";
 			break;
 
 		default:
@@ -235,7 +238,7 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 	std::shared_ptr<Configuration> pConfigurationObj = std::make_shared<LibUSB::Configuration>(pConfigImpl);
 
 	// Save a weak_ptr to the configuration object to prevent duplication.
-	m_ConfigurationMap.insert(std::make_pair(index, pConfigurationObj));
+	m_ConfigurationMap.insert(std::make_pair(ConfigValue, pConfigurationObj));
 
 	return pConfigurationObj;
 
@@ -245,12 +248,12 @@ void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
 {
 
 	// Set the active configuration.
-	int Result = libusb_set_configuration(m_pHandle.get(), index);
+	int Result = libusb_set_configuration(m_pHandle.get(), ConfigValue);
 
 	if (Result != LIBUSB_SUCCESS)
 	{
 		std::stringstream exceptionText;
-		exceptionText << "libusb_set_configuration() failed. (index " << (int)index << ") ";
+		exceptionText << "libusb_set_configuration() failed. (index " << (int)ConfigValue << ") ";
 
 		switch(Result)
 		{

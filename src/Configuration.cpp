@@ -11,7 +11,8 @@ LibUSB::Configuration::Configuration( std::shared_ptr<ConfigurationImpl> pInit )
 
 LibUSB::Configuration::~Configuration()
 {
-
+	// Destroy Implementation
+	m_pConfigImpl_.reset();
 }
 
 std::wstring LibUSB::Configuration::DescriptorString()const
@@ -60,5 +61,15 @@ bool LibUSB::Configuration::supportsRemoteWakeup() const
 bool LibUSB::Configuration::isSelfPowered() const
 {
 	return m_pConfigImpl_->isSelfPowered();
+}
+
+int LibUSB::Configuration::NumInterfaces() const
+{
+	return m_pConfigImpl_->NumInterfaces();
+}
+
+std::shared_ptr<LibUSB::Interface> LibUSB::Configuration::getInterface( int index ) const
+{
+	return m_pConfigImpl_->getInterface(index);
 }
 
