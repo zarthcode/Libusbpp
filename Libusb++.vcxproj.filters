@@ -18,31 +18,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\device.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\libusbpp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\libusbimpl.h">
-      <Filter>Private Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\deviceimpl.h">
-      <Filter>Private Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\usbexception.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ConfigurationImpl.h">
-      <Filter>Private Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\interface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interfaceimpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\EndpointImpl.h">
@@ -63,39 +42,36 @@
     <ClInclude Include="src\TransferImpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Transferdefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Libusbpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DeviceImpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InterfaceImpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LibusbImpl.h">
+      <Filter>Private Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\UsbException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\libusbimpl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\device.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\deviceimpl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\libusbpp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\usbexception.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Configuration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ConfigurationImpl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interfaceimpl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\endpoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\endpointimpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\wideconvert.cpp">
@@ -104,13 +80,34 @@
     <ClCompile Include="src\TransferImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TransferThread.cpp">
+    <ClCompile Include="src\Transfer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="headers\TransferThread.h">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="src\Device.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Transfer.cpp">
+    <ClCompile Include="src\DeviceImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Endpoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EndpointImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InterfaceImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LibusbImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Libusbpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UsbException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -52,8 +52,11 @@ namespace LibUSB
 		/// Returns the number of interfaces supported by this configuration.
 		int NumInterfaces()const;
 
-		/// Returns the specified interface.
-		std::shared_ptr<Interface> getInterface(int index)const;
+		/// Returns the specified interface by index.
+		std::shared_ptr<Interface> getInterfaceByIndex(int index)const;
+
+		/// Returns the specified interface by Interface number.
+		std::shared_ptr<Interface> getInterface(int InterfaceNumber)const;
 
 	protected:
 

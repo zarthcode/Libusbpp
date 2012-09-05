@@ -179,6 +179,27 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::Device::getActiveConfiguration()
 
 }
 
+void LibUSB::Device::TransferEventNotification( std::shared_ptr<Transfer> pCompletedTransfer )
+{
+
+	// By default: Do nothing.
+
+}
+
+void LibUSB::Device::Init()
+{
+
+	m_pDeviceImpl_->setParentDevice(shared_from_this());
+
+}
+
+std::shared_ptr<LibUSB::Endpoint> LibUSB::Device::getControlEndpoint()
+{
+
+	return m_pDeviceImpl_->getControlEndpoint();
+
+}
+
 
 
 

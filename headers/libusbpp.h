@@ -1,6 +1,8 @@
 #pragma once
 
 #include "device.h"
+#include "Transfer.h"
+#include "Endpointdefs.h"
 #include <memory>
 #include <list>
 
@@ -50,13 +52,27 @@ namespace LibUSB
 		/// Returns all devices attached to the system.
 		static std::list<std::shared_ptr<Device>> FindAllDevices(DeviceFactory_t factory = nullptr);
 
+		/// Starts a dedicated event handler thread.
+		static void StartEventHandlerThread();
+
+		/// Signals the event hander thread to stop.
+		static void StopEventHandlerThread(bool blockUntilStopped = false);
+
+		/// Manually Performs event handling
+		static void HandleEvents(bool bBlock = false);
+
+		/// Enables/Disables Synchronous Transfers
+		static void SetAsynchronousTransferMode(bool enable = true);
+
+		/// Returns TRUE if transfers will run in async mode.
+		static bool AsynchronousTransferMode();
+
 	private:
+
+		friend class TransferImpl;
 		
 		static void Initialize();
 
-		friend class Device;
-
-		
 
 		/// LibUSBImpl Singleton object
 		static std::shared_ptr<LibUSBImpl> Impl_;
@@ -67,4 +83,3 @@ namespace LibUSB
 
 
 }
-

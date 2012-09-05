@@ -1,5 +1,6 @@
 #include "libusbimpl.h"
-
+#include "usbexception.h"
+#include <iostream>
 
 /// Used by shared_ptr to delete a libusb context
 class ContextDeleter
@@ -20,7 +21,7 @@ LibUSB::LibUSBImpl::LibUSBImpl()
 	}
 
 	// Store in a shared_ptr
-	pLibusb_context.reset(pContext, ContextDeleter());
+	m_pLibusb_context.reset(pContext, ContextDeleter());
 
 
 }
@@ -30,4 +31,5 @@ LibUSB::LibUSBImpl::~LibUSBImpl()
 
 }
 
-std::shared_ptr<libusb_context> LibUSB::LibUSBImpl::pLibusb_context;
+
+std::shared_ptr<libusb_context> LibUSB::LibUSBImpl::m_pLibusb_context;

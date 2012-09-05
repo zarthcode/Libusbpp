@@ -24,6 +24,8 @@ LibUSB::ConfigurationImpl::ConfigurationImpl( libusb_config_descriptor* pConfigD
 
 	m_pDeviceImpl = pDeviceImpl;
 
+	CreateInterfaces();
+
 }
 
 LibUSB::ConfigurationImpl::~ConfigurationImpl()
@@ -125,7 +127,7 @@ int LibUSB::ConfigurationImpl::NumInterfaces() const
 
 }
 
-std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int index ) const
+std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterfaceByIndex( int index ) const
 {
 	/// \note I'm at a loss determining if the (array) index is required to correspond to the interface number.
 	
@@ -135,7 +137,7 @@ std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int 
 
 		/// \note #1 Possibly iterate through the interfaces and check bInterfaceNumber instead???
 
-		throw std::logic_error("LibUSB::ConfigurationImpl::getInterface() - invalid index. (Code Reference \\note #1)");
+		throw std::logic_error("LibUSB::ConfigurationImpl::getInterfaceByIndex() - invalid index. [Perhaps you meant to use getInterface(int interfacenumber)?]");
 	}
 
 
@@ -146,5 +148,37 @@ std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int 
 	// Create the interface object.
 	return std::make_shared<Interface>(pInterfaceImpl);
 
+}
+
+void LibUSB::ConfigurationImpl::CreateInterfaces()
+{
+
+	if (!m_InterfaceMap.empty())
+	{
+		throw std::logic_error("LibUSB::ConfigurationImpl::CreateInterfaces() - Interfaces already present.");
+	}
+
+	for (int i = 0; i < NumInterfaces(); i++)
+	{
+		std::shared_ptr<Interface> pInterface = getInterfaceByIndex(i);
+		m_InterfaceMap.insert(std::make_pair(pInterface->Number(), pInterface));
+	}
+
+}
+
+std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int InterfaceNumber ) const
+{
+
+	// From what I can tell, interface number 0 isn't exactly invalid/disallowed - so no range check.
+	
+	InterfaceMap_t::const_iterator itInterface = m_InterfaceMap.find(InterfaceNumber);
+
+	if (itInterface == m_InterfaceMap.end())
+	{
+		throw std::logic_error("LibUSB::ConfigurationImpl::getInterface() - interface number not found.");
+	}
+
+	return itInterface->second;
+	
 }
 

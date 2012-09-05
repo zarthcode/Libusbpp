@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Configuration.h"
+#include "Device.h"
 #include <libusb/libusb.h>
 #include <memory>
 #include <string>
@@ -65,17 +65,34 @@ namespace LibUSB
 		std::shared_ptr<libusb_device_handle> m_pHandle;
 
 
+		/// Returns the LibUSB++ device object/owner
+		std::weak_ptr<Device> getDevice()const;
+
+		/// Allows device to set the parent device after initial construction.
+		void setParentDevice(std::weak_ptr<Device> pParentDevice);
+
+		/// Returns endpoint 0
+		std::shared_ptr<Endpoint> getControlEndpoint();
 
 	private:
 
+	
 		/// Weak_ptr collection of other configuration objects.
 		std::map<uint8_t, std::weak_ptr<Configuration>> m_ConfigurationMap;
 
 		/// Device Descriptor
 		std::shared_ptr<libusb_device_descriptor> m_pDeviceDescriptor;
 
+		/// Libusb++ device/parent
+		std::weak_ptr<Device> m_ParentDevice;
+
 		/// Language ID
 		uint16_t languageId;
+
+		/// Dummy descriptor for Endpoint zero.
+		libusb_endpoint_descriptor m_EndpointZeroDescriptor;
+
+		std::shared_ptr<Endpoint> m_pEndpointZero;
 
 	};
 

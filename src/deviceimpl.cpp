@@ -4,6 +4,8 @@
 #include "usbexception.h"
 #include "Configuration.h"
 #include "ConfigurationImpl.h"
+#include "Endpoint.h"
+#include "EndpointImpl.h"
 #include <libusb/libusb.h>
 #include <iosfwd>
 #include <sstream>
@@ -24,6 +26,7 @@ LibUSB::DeviceImpl::~DeviceImpl()
 
 	// Ensure that all Configuration objects have been released/destroyed.
 
+		/// \todo Release all claimed interfaces here.
 
 }
 
@@ -280,4 +283,51 @@ void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
 
 	}
 
+}
+
+std::weak_ptr<LibUSB::Device> LibUSB::DeviceImpl::getDevice() const
+{
+
+	if (m_ParentDevice.expired())
+	{
+		throw std::logic_error("LibUSB::DeviceImpl::getDevice() - expired pointer to parent LibUSB::Device object.");
+	}
+	
+	return m_ParentDevice;
+
+}
+
+void LibUSB::DeviceImpl::setParentDevice( std::weak_ptr<Device> pParentDevice )
+{
+
+	if (pParentDevice.expired())
+	{
+		throw std::logic_error("LibUSB::DeviceImpl::setParentDevice() - new parent device pointer is expired.");
+	}
+
+	m_ParentDevice = pParentDevice;
+}
+
+std::shared_ptr<LibUSB::Endpoint> LibUSB::DeviceImpl::getControlEndpoint()
+{
+
+	if (m_pEndpointZero.get() == nullptr)
+	{
+
+		// Initialize Endpoint Zero Dummy Descriptor
+		m_EndpointZeroDescriptor.bLength = 0x07;
+		m_EndpointZeroDescriptor.bDescriptorType = libusb_descriptor_type::LIBUSB_DT_ENDPOINT;
+		m_EndpointZeroDescriptor.bEndpointAddress = 0;
+		m_EndpointZeroDescriptor.bmAttributes = 0;
+		m_EndpointZeroDescriptor.wMaxPacketSize = getDeviceDescriptor()->bMaxPacketSize0;
+		m_EndpointZeroDescriptor.bInterval = 0;
+
+		// All your endpoints are belong to us.
+		std::shared_ptr<LibUSB::EndpointImpl> pEPImpl = std::make_shared<LibUSB::EndpointImpl>(&m_EndpointZeroDescriptor, shared_from_this());
+		m_pEndpointZero = std::make_shared<LibUSB::Endpoint>(pEPImpl);
+
+	}
+
+	return m_pEndpointZero;
+	
 }

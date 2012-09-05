@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Endpointdefs.h"
+
 #include <memory>
 
-
+#include "Transfer.h"
 
 namespace LibUSB
 {
@@ -19,8 +20,10 @@ namespace LibUSB
 		Endpoint(std::shared_ptr<EndpointImpl> pImpl);
 		~Endpoint();
 
+		/// Raw Endpoint Address
+		uint8_t Address()const;
 
-		/// Endpoint Address
+		/// Endpoint Number
 		int Number()const;
 
 		/// Returns the direction of this endpoint
@@ -44,13 +47,14 @@ namespace LibUSB
 	// Transfer
 
 		/// Creates a new data transfer object
+		std::shared_ptr<Transfer> CreateTransfer();
 
-		/// Cancels all transfers that are in progress.
 		
 
 	protected:
 	private:
 
+		/// Endpoint Implementation
 		std::shared_ptr<EndpointImpl> m_pEndpointImpl;
 	};
 

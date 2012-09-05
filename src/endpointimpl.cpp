@@ -1,4 +1,6 @@
 #include "EndpointImpl.h"
+#include "TransferImpl.h"
+#include "deviceimpl.h"
 #include <stdexcept>
 
 
@@ -19,6 +21,14 @@ LibUSB::EndpointImpl::~EndpointImpl()
 
 }
 
+uint8_t LibUSB::EndpointImpl::Address() const
+{
+
+	return m_pEndpointDescriptor->bEndpointAddress;
+
+}
+
+
 uint8_t LibUSB::EndpointImpl::Number() const
 {
 
@@ -30,7 +40,7 @@ uint8_t LibUSB::EndpointImpl::Number() const
 LibUSB::Direction_t LibUSB::EndpointImpl::Direction() const
 {
 	// Bit 7 holds the direction.
-	bool bDirection = ((m_pEndpointDescriptor->bEndpointAddress & 0x80) >> 7);
+	bool bDirection = (((m_pEndpointDescriptor->bEndpointAddress & 0x80) >> 7) != 0);
 
 	return bDirection ? Direction_t::DIR_IN : Direction_t::DIR_OUT;
 }
@@ -87,4 +97,96 @@ uint8_t LibUSB::EndpointImpl::PollingInterval() const
 
 	return m_pEndpointDescriptor->bInterval;
 
+}
+
+
+std::weak_ptr<LibUSB::DeviceImpl> LibUSB::EndpointImpl::getDeviceImpl() const
+{
+
+	if (m_pDeviceImpl.expired())
+	{
+		throw std::logic_error("LibUSB::EndpointImpl::getDeviceImpl() - expired DeviceImpl.");
+	}
+
+	return m_pDeviceImpl;
+}
+
+std::shared_ptr<LibUSB::Transfer> LibUSB::EndpointImpl::CreateTransfer()
+{
+
+
+	std::shared_ptr<LibUSB::Transfer> pTransferObj;
+
+	// Create the proper transfer implementation
+	switch (TransferType())
+	{
+	case Transfer_t::CONTROL:
+
+		{
+
+			std::shared_ptr<LibUSB::TransferImpl> pImpl = std::static_pointer_cast<LibUSB::TransferImpl>(std::make_shared<LibUSB::ControlTransferImpl>(shared_from_this()));
+
+			pTransferObj = std::static_pointer_cast<LibUSB::Transfer>(std::make_shared<LibUSB::ControlTransfer>(pImpl));
+
+			pTransferObj->Init();	// Required.
+
+		}
+
+		break;
+
+	case Transfer_t::INTERRUPT:
+		
+		{
+
+			std::shared_ptr<LibUSB::TransferImpl> pImpl = std::static_pointer_cast<LibUSB::TransferImpl>(std::make_shared<LibUSB::InterruptTransferImpl>(shared_from_this()));
+
+			pTransferObj = std::static_pointer_cast<LibUSB::Transfer>(std::make_shared<LibUSB::InterruptTransfer>(pImpl));
+
+			pTransferObj->Init();	// Required.
+
+		}
+
+		break;
+
+	case Transfer_t::BULK:
+		{
+
+			std::shared_ptr<LibUSB::TransferImpl> pImpl = std::static_pointer_cast<LibUSB::TransferImpl>(std::make_shared<LibUSB::BulkTransferImpl>(shared_from_this()));
+
+			pTransferObj = std::static_pointer_cast<LibUSB::Transfer>(std::make_shared<LibUSB::BulkTransfer>(pImpl));
+
+			pTransferObj->Init();	// Required.
+
+		}
+		break;
+
+	case Transfer_t::ISOCHRONOUS:
+		{
+			std::shared_ptr<LibUSB::TransferImpl> pImpl = std::static_pointer_cast<LibUSB::TransferImpl>(std::make_shared<LibUSB::IsochronousTransferImpl>(shared_from_this()));
+
+			pTransferObj = std::static_pointer_cast<LibUSB::Transfer>(std::make_shared<LibUSB::IsochronousTransfer>(pImpl));
+
+			pTransferObj->Init();	// Required.
+
+		}
+		break;
+
+	default:
+
+		throw std::logic_error("LibUSB::Endpoint::CreateTransfer() - Unrecognized transfer type!");
+		break;
+	}
+
+
+	// Validate the transfer object
+	if (pTransferObj.get() == nullptr)
+	{
+		throw std::logic_error("LibUSB::Endpoint::CreateTransfer() - Allocation failed!");
+	}
+
+
+
+	return pTransferObj;
+
+	
 }

@@ -3,6 +3,7 @@
 #include <libusb/libusb.h>
 #include <string>
 #include "interface.h"
+#include <map>
 
 
 namespace LibUSB
@@ -57,14 +58,22 @@ namespace LibUSB
 		/// Returns the number of interfaces this configuration has.
 		int NumInterfaces()const;
 
-		/// Returns the requested interface
-		std::shared_ptr<Interface> getInterface( int index )const;
+		/// Returns the requested interface (by index)
+		std::shared_ptr<Interface> getInterfaceByIndex( int index )const;
 
+		/// Returns the requested interface (by bInterfaceNumber)
+		std::shared_ptr<Interface> getInterface(int InterfaceNumber)const;
 	protected:
 
+		/// Create all interfaces
+		void CreateInterfaces();
 
 
 	private:
+
+		/// Interface Objects
+		typedef std::map<int, std::shared_ptr<LibUSB::Interface>> InterfaceMap_t;
+		InterfaceMap_t m_InterfaceMap;
 
 		/// Configuration Descriptor
 		std::shared_ptr<libusb_config_descriptor> m_pConfigDescriptor;

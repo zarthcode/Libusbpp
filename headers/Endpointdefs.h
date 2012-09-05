@@ -10,7 +10,7 @@ namespace LibUSB
 	typedef enum { CONTROL, ISOCHRONOUS, BULK, INTERRUPT } Transfer_t;
 
 	/// Synchronization Types 
-	typedef enum { NONE, ASYNCRONOUS , ADAPTIVE, SYNCRONOUS } Synchronization_t;
+	typedef enum { NONE, ASYNCRONOUS , ADAPTIVE, SYNCHRONOUS } Synchronization_t;
 
 	/// Usage Type
 	typedef enum { DATA, FEEDBACK, EXPLICITFEEDBACKDATA, RESERVED } Usage_t;

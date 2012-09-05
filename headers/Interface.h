@@ -43,6 +43,9 @@ namespace LibUSB
 		/// Claims this interface for use.
 		void Claim();
 
+		/// Returns TRUE if the interface is claimed.
+		bool isClaimed()const;
+
 		/// Releases this interface
 		void Release();
 

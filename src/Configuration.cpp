@@ -68,8 +68,13 @@ int LibUSB::Configuration::NumInterfaces() const
 	return m_pConfigImpl_->NumInterfaces();
 }
 
-std::shared_ptr<LibUSB::Interface> LibUSB::Configuration::getInterface( int index ) const
+std::shared_ptr<LibUSB::Interface> LibUSB::Configuration::getInterfaceByIndex( int index ) const
 {
-	return m_pConfigImpl_->getInterface(index);
+	return m_pConfigImpl_->getInterfaceByIndex(index);
+}
+
+std::shared_ptr<LibUSB::Interface> LibUSB::Configuration::getInterface( int InterfaceNumber ) const
+{
+	return m_pConfigImpl_->getInterface(InterfaceNumber);
 }
 

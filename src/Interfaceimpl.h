@@ -46,6 +46,8 @@ namespace LibUSB
 		/// Releases this interface
 		void Release();
 
+		/// Returns TRUE if the interface is claimed
+		bool isClaimed()const;
 		
 		/*!
 		 * \brief Selects an alternate interface setting.
@@ -68,7 +70,7 @@ namespace LibUSB
 	protected:
 
 		/// Resets all endpoints
-		void  ReleaseEndpoints();
+		void ReleaseEndpoints();
 
 		/// Creates all endpoint objects.
 		void CreateEndpoints();

@@ -27,7 +27,16 @@ LibUSB::InterfaceImpl::~InterfaceImpl()
 	// Ensure all endpoints are released.
 	
 	// Release the device
-	Release();
+
+	
+	try
+	{
+		Release();
+	}
+	catch (...)
+	{
+		/// We're not going to throw, in this particular situation.
+	}
 }
 
 uint8_t LibUSB::InterfaceImpl::Number() const
@@ -102,9 +111,11 @@ uint8_t LibUSB::InterfaceImpl::NumAlternateSettings() const
 void LibUSB::InterfaceImpl::Claim()
 {
 	
+	
+
 	if (m_pDeviceImpl.expired())
 	{
-		throw std::logic_error("LibUSB::InterfaceImpl::Claim() called with expired DeviceImpl.");
+		throw std::logic_error("LibUSB::InterfaceImpl::Claim() - called with expired DeviceImpl.");
 	}
 
 	// Claim the interface
@@ -116,22 +127,19 @@ void LibUSB::InterfaceImpl::Claim()
 		{
 			m_bClaimed = true;
 
-			int altResult = libusb_set_interface_alt_setting(m_pDeviceImpl.lock()->m_pHandle.get(), m_pInterface->altsetting[m_alternateSetting].bInterfaceNumber, m_pInterface->altsetting[m_alternateSetting].bAlternateSetting);
-			if (altResult != LIBUSB_SUCCESS)
-			{
-				throw LibUSBException("LibUSB::InterfaceImpl::Claim() failed to set requested alternate setting.", altResult);
-			}
+			SetAlternate(m_alternateSetting);
+
 		}
 		break;
 
 	case LIBUSB_ERROR_NOT_FOUND:
 		// The requested interface does not exist.
-		throw std::runtime_error("The requested interface does not exist.");
+		throw std::runtime_error("LibUSB::InterfaceImpl::Claim() - The requested interface does not exist.");
 		break;
 
 	case LIBUSB_ERROR_NO_DEVICE:
 		// The device has been disconnected.
-		throw std::runtime_error("Device has been disconnected");
+		throw std::runtime_error("LibUSB::InterfaceImpl::Claim() - Device has been disconnected");
 		break;
 
 	default:
@@ -158,6 +166,12 @@ void LibUSB::InterfaceImpl::Release()
 		throw std::logic_error("LibUSB::InterfaceImpl::Release() called with expired DeviceImpl.");
 	}
 
+	if (m_pDeviceImpl.lock()->m_pHandle.get() == nullptr)
+	{
+		// There is no device handle.
+		throw std::logic_error("LibUSB::InterfaceImpl::Release() called with no device handle.");
+	}
+
 
 	int Result = libusb_release_interface(m_pDeviceImpl.lock()->m_pHandle.get(), m_pInterface->altsetting[m_alternateSetting].bInterfaceNumber);
 
@@ -167,16 +181,16 @@ void LibUSB::InterfaceImpl::Release()
 
 	case LIBUSB_ERROR_NOT_FOUND:
 		// The interface was not claimed.
+		throw std::runtime_error("LibUSB::InterfaceImpl::Release() - The interface was not claimed successfully.");
+		break;
 	case LIBUSB_SUCCESS:
-		
 		// Done.
-
-
+		
 		break;
 
 	case LIBUSB_ERROR_NO_DEVICE:
 		// The device has been disconnected. (Is this a Bad Thing™ in this situation?)
-		throw std::runtime_error("Device has been disconnected");
+		throw std::runtime_error("LibUSB::InterfaceImpl::Release() - Device has been disconnected");
 		break;
 
 	default:
@@ -185,6 +199,8 @@ void LibUSB::InterfaceImpl::Release()
 		break;
 
 	}
+
+	m_bClaimed = false;
 	
 }
 
@@ -197,12 +213,42 @@ void LibUSB::InterfaceImpl::SetAlternate( uint8_t AlternateSetting /*= 0*/ )
 		throw std::logic_error("Requested alternate setting not within expected range.");
 	}
 
+	if (AlternateSetting != m_alternateSetting)
+	{
+		// Reset endpoint objects!!
+		ReleaseEndpoints();
+	}
+
 	m_alternateSetting = AlternateSetting;
 
-	// Set the alternate setting
-	int Result = libusb_set_interface_alt_setting(m_pDeviceImpl.lock()->m_pHandle.get(), m_pInterface->altsetting[m_alternateSetting].bInterfaceNumber, m_pInterface->altsetting[m_alternateSetting].bAlternateSetting);
 
-	// Reset endpoint objects!!
+	if (m_bClaimed)
+	{
+	
+		// Set the alternate setting
+		int Result = libusb_set_interface_alt_setting(m_pDeviceImpl.lock()->m_pHandle.get(), m_pInterface->altsetting[m_alternateSetting].bInterfaceNumber, m_pInterface->altsetting[m_alternateSetting].bAlternateSetting);
+
+		switch (Result)
+		{
+		case LIBUSB_SUCCESS:
+			// No error.
+			break;
+		case LIBUSB_ERROR_NOT_FOUND:
+			// Invalid alt setting
+			throw std::logic_error("LibUSB::InterfaceImpl::SetAlternate() - Requested alt setting not found.");
+			break;
+		case LIBUSB_ERROR_NO_DEVICE:
+			throw std::runtime_error("LibUSB::InterfaceImpl::SetAlternate() - device disconnected.");
+			break;
+		default:
+			throw LibUSB::LibUSBException("LibUSB::InterfaceImpl::SetAlternate() ", Result);
+			break;
+		}
+
+	}
+
+
+
 	CreateEndpoints();
 
 }
@@ -215,8 +261,21 @@ uint8_t LibUSB::InterfaceImpl::NumEndpoints() const
 
 std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t index )
 {
+	if (index == 0)
+	{
 
-	if (index >= m_pInterface->altsetting[m_alternateSetting].bNumEndpoints)
+		// Return the device control endpoint zero.
+	
+		if (m_pDeviceImpl.expired())
+		{
+			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint(0) - has an expired DeviceImpl.");
+		}
+
+		return m_pDeviceImpl.lock()->getControlEndpoint();
+
+	}
+
+	if (index > m_pInterface->altsetting[m_alternateSetting].bNumEndpoints)
 	{
 		throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - index out of range.");
 	}
@@ -233,7 +292,7 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 		pEndpoint = m_EndpointContainer.find(index)->second;
 		
 		/// \note #1 Validate endpoint number against its index.
-		if (pEndpoint)
+		if (pEndpoint->Number() != index)
 		{
 			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - endpoint and index do not match as expected! (note #1)");
 		}
@@ -250,11 +309,6 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 
 void LibUSB::InterfaceImpl::ReleaseEndpoints()
 {
-	// Cannot release endpoints until interface has been claimed.
-	if (m_bClaimed)
-	{
-		throw std::logic_error("bool LibUSB::InterfaceImpl::ReleaseEndpoints() - You must release the interface first.");
-	}
 
 	// Each Endpoint must be released/destroyed.
 	EndpointContainer_t::iterator itEndpoint = m_EndpointContainer.begin();
@@ -290,22 +344,43 @@ void LibUSB::InterfaceImpl::ReleaseEndpoints()
 void LibUSB::InterfaceImpl::CreateEndpoints()
 {
 
-	// Release old endpoints
-	ReleaseEndpoints();
-
-	// Make sure deviceimpl is still current.
-	if (m_pDeviceImpl.expired())
-	{
-		throw std::logic_error("LibUSB::InterfaceImpl::CreateEndpoints() - DeviceImpl is expired.");
-	}
-
-	// Create each endpoint
-	for (int i = 0; i < NumEndpoints(); i++)
+	if (m_EndpointContainer.empty())
 	{
 
-		std::shared_ptr<EndpointImpl> pEPImpl = std::make_shared<EndpointImpl>(&(m_pInterface->altsetting[m_alternateSetting].endpoint[i]), m_pDeviceImpl);
+		// Make sure deviceimpl is still current.
+		if (m_pDeviceImpl.expired())
+		{
+			throw std::logic_error("LibUSB::InterfaceImpl::CreateEndpoints() - DeviceImpl is expired.");
+		}
+
+		// Create each endpoint
+		for (int i = 0; i < NumEndpoints(); i++)
+		{
+
+			// Create the endpoint implementation
+			std::shared_ptr<EndpointImpl> pEPImpl = std::make_shared<EndpointImpl>(&(m_pInterface->altsetting[m_alternateSetting].endpoint[i]), m_pDeviceImpl);
+
+			// Create the endpoint
+			std::shared_ptr<Endpoint> pEndpoint = std::make_shared<Endpoint>(pEPImpl);
+
+			// Store it
+			m_EndpointContainer.insert(std::make_pair(pEndpoint->Number(), pEndpoint));
+
+		}
+
+	}
+	else
+	{
+		
+		// I'm not positive that I want to disallow reusing already existing endpoints (ie, claim() the same interface 
 
 	}
 
-	// 
+
+}
+
+bool LibUSB::InterfaceImpl::isClaimed() const
+{
+
+	return m_bClaimed;
 }

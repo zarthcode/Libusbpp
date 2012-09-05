@@ -1,8 +1,8 @@
 #include "usbexception.h"
 #include <libusb/libusb.h>
-
+#include <sstream>
 LibUSB::LibUSBException::LibUSBException( std::string text, int errorCode )
-	: runtime_error(text.append(translateError(errorCode)))
+	: runtime_error(text.append(translateError(errorCode))), m_ErrorCode(errorCode)
 {
 
 }
@@ -72,4 +72,12 @@ std::string LibUSB::LibUSBException::translateError( int ErrorCode )
 	}
 
 	return Result;
+}
+
+const char* LibUSB::LibUSBException::what()
+{
+
+	std::stringstream errStr;
+	errStr <<  exception::what() << this->translateError(m_ErrorCode);
+	return errStr.str().c_str();
 }

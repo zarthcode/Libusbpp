@@ -2,7 +2,6 @@
 #include "libusbpp.h"
 #include "deviceimpl.h"
 #include "libusbimpl.h"
-#include <boost\foreach.hpp>
 
 
 
@@ -15,7 +14,7 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 	// Create a list of attached devices
 	libusb_device **device_list = nullptr;
 
-	ssize_t NumResults = libusb_get_device_list(Impl_->pLibusb_context.get(), &device_list);
+	ssize_t NumResults = libusb_get_device_list(Impl_->m_pLibusb_context.get(), &device_list);
 
 
 	// Iterate each device.
@@ -28,12 +27,16 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 		std::shared_ptr<Device> pDevice;
 		if(factory != nullptr)
 		{
+			
 			pDevice = factory(std::make_shared<DeviceImpl>(device_list[i]));
+
 		}
 		else
 		{
 			pDevice.reset(new Device(std::make_shared<DeviceImpl>(device_list[i])));
 		}
+
+		pDevice->Init();
 
 		// Check the device
 		if ((pDevice->vendorID() == vendorID) && (pDevice->productID() == productID))
@@ -60,7 +63,7 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 	std::list<std::shared_ptr<Device>> ResultList;
 
 	// Open each device and locate a matching serial.
-	BOOST_FOREACH( std::shared_ptr<Device> &pDevice, DeviceList )
+	for( std::shared_ptr<Device> &pDevice : DeviceList )
 	{
 		if(pDevice->SerialString() == serialStr)
 		{
@@ -82,7 +85,7 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindAllDevices( Devic
 	// Create a list of attached devices
 	libusb_device **device_list = nullptr;
 
-	ssize_t NumResults = libusb_get_device_list(Impl_->pLibusb_context.get(), &device_list);
+	ssize_t NumResults = libusb_get_device_list(Impl_->m_pLibusb_context.get(), &device_list);
 
 
 	// Iterate each device.
@@ -101,6 +104,8 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindAllDevices( Devic
 		{
 			pDevice.reset(new Device(std::make_shared<DeviceImpl>(device_list[i])));
 		}
+
+		pDevice->Init();
 
 		// Add device to the output list
 		deviceList.push_back(pDevice);

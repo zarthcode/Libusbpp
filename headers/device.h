@@ -1,6 +1,6 @@
 #pragma once
 #include "Configuration.h"
-
+#include "Endpoint.h"
 #include <stdint.h>
 #include <string>
 #include <memory>
@@ -13,13 +13,15 @@ namespace LibUSB
 	class DeviceImpl;
 
 	/// Libusb device interface
-	class Device
+	class Device : public std::enable_shared_from_this<Device>
 	{
 	public:
 
 		Device(std::shared_ptr<DeviceImpl> pInit);
 
 		virtual ~Device();
+
+		void Init();
 
 	// Device State
 
@@ -69,9 +71,13 @@ namespace LibUSB
 		/// Returns the activeConfiguration
 		std::shared_ptr<Configuration> getActiveConfiguration();
 
+	// Control endpoint
+
+		/// Returns the control endpoint (Endpoint 0)
+		std::shared_ptr<Endpoint> getControlEndpoint();
 
 	// Transfers
-
+		
 		/// Control transfer OUT
 
 		/// Control transfer IN
@@ -89,7 +95,13 @@ namespace LibUSB
 		/// isochronous transfer IN (from the device)
 
 	protected:
+
+		friend class TransferImpl;
 		
+		/// Notification of a completed transfer
+		/// \warning This function can be called from other threads when using asynchronous transfers!
+		virtual void TransferEventNotification(std::shared_ptr<Transfer> pCompletedTransfer);
+
 
 	private:
 

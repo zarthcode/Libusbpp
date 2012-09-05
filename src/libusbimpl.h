@@ -2,10 +2,13 @@
 
 #include <libusb/libusb.h>
 #include <memory>
-
+#include <thread>
+#include <atomic>
+#include <condition_variable>
 
 namespace LibUSB
 {
+
 
 	class LibUSBImpl
 	{
@@ -14,9 +17,9 @@ namespace LibUSB
 		LibUSBImpl();
 		~LibUSBImpl();
 
-		static std::shared_ptr<libusb_context> pLibusb_context;
+		static std::shared_ptr<libusb_context> m_pLibusb_context;
+		
 
-		// Find Device
 	};
 
 }

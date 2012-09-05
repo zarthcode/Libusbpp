@@ -60,6 +60,11 @@ int LibUSB::Interface::NumAlternateSettings() const
 void LibUSB::Interface::Claim()
 {
 
+	if (isClaimed())
+	{
+		return;
+	}
+
 	m_pInterfaceImpl->Claim();
 
 }
@@ -82,5 +87,11 @@ int LibUSB::Interface::NumEndpoints() const
 std::shared_ptr<LibUSB::Endpoint> LibUSB::Interface::getEndpoint( int index )
 {
 	return m_pInterfaceImpl->getEndpoint(index);
+}
+
+bool LibUSB::Interface::isClaimed() const
+{
+
+	return m_pInterfaceImpl->isClaimed();
 }
 

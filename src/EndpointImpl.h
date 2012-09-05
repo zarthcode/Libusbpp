@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include "Endpointdefs.h"
+#include "Transfer.h"
 
 namespace LibUSB
 {
@@ -12,7 +13,7 @@ namespace LibUSB
 	class DeviceImpl;
 
 	/// Endpoint Implementation
-	class EndpointImpl
+	class EndpointImpl : public std::enable_shared_from_this<EndpointImpl>
 	{
 	public:
 
@@ -23,6 +24,9 @@ namespace LibUSB
 		~EndpointImpl();
 
 		/// Endpoint Address
+		uint8_t Address()const;
+
+		/// Endpoint Number
 		uint8_t Number()const;
 
 		/// Returns the direction of this endpoint
@@ -43,7 +47,15 @@ namespace LibUSB
 		/// Returns the polling interval (in frames, 1f = 1mS @ low/full speed, 125uS at high), ignore for bulk/control, 1 for iso, 1-255 for interrupt.
 		uint8_t PollingInterval()const;
 
-	// Data transfer methods.
+	// Transfer creation
+
+		/// Creates a new transfer object
+		std::shared_ptr<Transfer> CreateTransfer();
+
+	// Utility methods
+
+		std::weak_ptr<DeviceImpl> getDeviceImpl()const;
+
 
 	private:
 
