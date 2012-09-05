@@ -14,7 +14,7 @@
 // Oh, and you'll need a device to connect to. An Arduino Leonardo, PIC 18F4550, ...anything with real USB - and not some dingy ftdi serial interface :-p
 // (Maybe I or someone else get an Arduino Leonardo and build a test app with commands/descriptors that correspond to this app)
 
-#include "stdafx.h"
+
 #include "libusbpp.h"
 #include <iostream>
 #include <sstream>
@@ -43,7 +43,7 @@
 // No using statements - I want it to be clear where everything is located.
 
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 
 	std::wcout << L"LibUSB++ - Feature Demonstration & Test Suite" << std::endl;

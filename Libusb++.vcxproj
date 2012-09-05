@@ -39,10 +39,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;D:\Libraries\boost %28win32%29\include;D:\Libraries\Xerces-c\include;D:\Libraries\poco-1.4.3p1\Foundation\include;D:\Libraries\poco-1.4.3p1\Net\include;D:\Libraries\poco-1.4.3p1\Util\include;D:\Libraries\poco-1.4.3p1\XML\include;D:\Libraries\poco-1.4.3p1\CppUnit\include;D:\Libraries\libusbx\libroot;$(IncludePath);$(ProjectDir)\src</IncludePath>
+    <IncludePath>D:\Libraries\libusbx\libroot;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;D:\Libraries\boost %28win32%29\include;D:\Libraries\Xerces-c\include;D:\Libraries\poco-1.4.3p1\Foundation\include;D:\Libraries\poco-1.4.3p1\Net\include;D:\Libraries\poco-1.4.3p1\Util\include;D:\Libraries\poco-1.4.3p1\XML\include;D:\Libraries\poco-1.4.3p1\CppUnit\include;D:\Libraries\libusbx\libroot;$(IncludePath);$(ProjectDir)\src</IncludePath>
+    <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>D:\Libraries\libusbx\libroot;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -77,6 +79,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libusb-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="headers\Configuration.h" />
