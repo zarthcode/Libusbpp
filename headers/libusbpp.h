@@ -12,12 +12,14 @@ namespace LibUSB
 	/// LibUSBImpl forward declaration
 	class LibUSBImpl;
 	
+	/// Contains static methods for enumerating devices
 	class LibUSB
 	{
 
 	public:
 
 		/// Function pointer to a LibUSB device object factory.
+		/// \todo Replace with std::function?
 		typedef std::shared_ptr<Device> (*DeviceFactory_t)(std::shared_ptr<DeviceImpl>);
 	
 		/*!
@@ -51,21 +53,6 @@ namespace LibUSB
 
 		/// Returns all devices attached to the system.
 		static std::list<std::shared_ptr<Device>> FindAllDevices(DeviceFactory_t factory = nullptr);
-
-		/// Starts a dedicated event handler thread.
-		static void StartEventHandlerThread();
-
-		/// Signals the event hander thread to stop.
-		static void StopEventHandlerThread(bool blockUntilStopped = false);
-
-		/// Manually Performs event handling
-		static void HandleEvents(bool bBlock = false);
-
-		/// Enables/Disables Synchronous Transfers
-		static void SetAsynchronousTransferMode(bool enable = true);
-
-		/// Returns TRUE if transfers will run in async mode.
-		static bool AsynchronousTransferMode();
 
 	private:
 

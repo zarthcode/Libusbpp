@@ -45,10 +45,10 @@ namespace LibUSB
 		/// USB-IF protocol code for the device, qualified by the bDeviceClass and bDeviceSubClass values. 
 		uint8_t DeviceProtocol();
 
-		// USB-IF vendor ID
+		/// USB-IF vendor ID
 		uint16_t vendorID();
 
-		// USB-IF product ID
+		/// USB-IF product ID
 		uint16_t productID();
 
 		/// Returns a string describing the product.
@@ -76,26 +76,11 @@ namespace LibUSB
 		/// Returns the control endpoint (Endpoint 0)
 		std::shared_ptr<Endpoint> getControlEndpoint();
 
-	// Transfers
-		
-		/// Control transfer OUT
 
-		/// Control transfer IN
-
-		/// bulk transfer OUT (to the device)
-
-		/// bulk transfer IN (from the device)
-
-		/// interrupt transfer OUT (to the device)
-
-		/// interrupt transfer IN (from the device)
-
-		/// isochronous transfer OUT (to the device)
-
-		/// isochronous transfer IN (from the device)
 
 	protected:
 
+		/// Transfers need access to the transfer event notification method of their target device.
 		friend class TransferImpl;
 		
 		/// Notification of a completed transfer
