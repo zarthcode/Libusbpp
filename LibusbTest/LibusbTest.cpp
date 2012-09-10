@@ -20,7 +20,6 @@
 #include <sstream>
 #include <string>
 #include <ios>
-#include "conio.h"
 #include <wchar.h>
 #include <list>
 
@@ -48,8 +47,9 @@ int main(int argc, char* argv[])
 
 	std::wcout << L"LibUSB++ - Feature Demonstration & Test Suite" << std::endl;
 	std::wcout << L"To understand The Force ...YOU MUST READ THE SOURCE! (LibusbTest.cpp)" << std::endl << std::endl;
+	std::wcout << L"Press ENTER to begin." << std::endl << std::endl;
 
-	if(_getch() == 27)
+	if(std::cin.get() == 27)
 	{
 		return 0;
 	}
@@ -905,7 +905,8 @@ int main(int argc, char* argv[])
 		std::wcout << std::endl;
 	}
 
-	_getch();
+	std::wcout << L"Finished - Press ENTER to exit." << std::endl << std::endl;
+	std::cin.get();
 
 	// Return the result.
 	return failBit ? EXIT_FAILURE : EXIT_SUCCESS;
