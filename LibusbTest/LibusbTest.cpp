@@ -22,7 +22,8 @@
 #include <ios>
 #include <wchar.h>
 #include <list>
-
+#include <algorithm>
+#include <cstring>
 
 // Utility functions
 		
@@ -87,7 +88,7 @@ int main(int argc, char* argv[])
 
 			if (deviceList.empty())
 			{
-				throw std::exception("No compatible device found");
+				throw std::runtime_error("No compatible device found");
 			}
 
 			// For this demo, we'll just take the first one.
@@ -192,7 +193,7 @@ int main(int argc, char* argv[])
 					{
 
 						// Well, that does it...Maybe your device skipped the number ONE?
-						throw std::exception("Could not locate a configuration descriptor.");
+						throw std::runtime_error("Could not locate a configuration descriptor.");
 
 					}
 
@@ -360,7 +361,7 @@ int main(int argc, char* argv[])
 
 			if (deviceList.empty())
 			{
-				throw std::exception("No compatible device found");
+				throw std::runtime_error("No compatible device found");
 			}
 
 			std::shared_ptr<LibUSB::Device> pDevice = *deviceList.begin();
@@ -444,7 +445,7 @@ int main(int argc, char* argv[])
 
 			if (deviceList.empty())
 			{
-				throw std::exception("No compatible device found");
+				throw std::runtime_error("No compatible device found");
 			}
 
 			std::shared_ptr<LibUSB::Device> pDevice = *deviceList.begin();
@@ -480,7 +481,7 @@ int main(int argc, char* argv[])
 			
 			size_t returnDataSize = 32; // 6 * sizeof(wchar_t);
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
-			memset(pReturnString.get(), '\0', returnDataSize);
+			std::fill_n(pReturnString.get(), returnDataSize, '\0');
 			pTransferIN->setTransferBuffer(pReturnString, returnDataSize);
 
 
@@ -577,7 +578,7 @@ int main(int argc, char* argv[])
 
 			if (deviceList.empty())
 			{
-				throw std::exception("No compatible device found");
+				throw std::runtime_error("No compatible device found");
 			}
 
 			std::shared_ptr<LibUSB::Device> pDevice = *deviceList.begin();
@@ -624,7 +625,7 @@ int main(int argc, char* argv[])
 			
 			size_t returnDataSize = pingDataSize;
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
-			memset(pReturnString.get(), '\0', returnDataSize);
+			std::fill_n(pReturnString.get(), returnDataSize, '\0');
 			pTransferIN->SetTimeout(std::chrono::milliseconds(5000));
 			pTransferIN->setTransferBuffer(pReturnString, returnDataSize);
 
@@ -720,7 +721,7 @@ int main(int argc, char* argv[])
 
 			if (deviceList.empty())
 			{
-				throw std::exception("No compatible device found");
+				throw std::runtime_error("No compatible device found");
 			}
 
 			std::shared_ptr<LibUSB::Device> pDevice = *deviceList.begin();
@@ -769,7 +770,7 @@ int main(int argc, char* argv[])
 			
 			size_t returnDataSize = pingDataSize;
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
-			memset(pReturnString.get(), '\0', returnDataSize);
+			std::fill_n(pReturnString.get(), returnDataSize, '\0');
 			
 			pTransferIN->SetTimeout(std::chrono::milliseconds(5000));
 			pTransferIN->setNumPackets(1);		// Just sending one packet
