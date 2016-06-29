@@ -1,11 +1,32 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "Interfaceimpl.h"
-#include "deviceimpl.h"
-#include "Endpoint.h"
-#include "EndpointImpl.h"
-#include "usbexception.h"
 #include <sstream>
+
+#include <libusbpp/Endpoint.hpp>
+#include <libusbpp/Exception.hpp>
+
+#include "InterfaceImpl.hpp"
+#include "DeviceImpl.hpp"
+#include "EndpointImpl.hpp"
+
 
 LibUSB::InterfaceImpl::InterfaceImpl( const libusb_interface* pInterface, std::weak_ptr<DeviceImpl> pDeviceImpl )
 	: m_pInterface(pInterface), m_alternateSetting(0), m_bClaimed(false)
@@ -14,7 +35,7 @@ LibUSB::InterfaceImpl::InterfaceImpl( const libusb_interface* pInterface, std::w
 	if (!pDeviceImpl.expired())
 	{
 		m_pDeviceImpl = pDeviceImpl;
-	} 
+	}
 	else
 	{
 		throw std::logic_error("LibUSB::InterfaceImpl::InterfaceImpl() constructed with expired DeviceImpl.");
@@ -25,10 +46,10 @@ LibUSB::InterfaceImpl::InterfaceImpl( const libusb_interface* pInterface, std::w
 LibUSB::InterfaceImpl::~InterfaceImpl()
 {
 	// Ensure all endpoints are released.
-	
+
 	// Release the device
 
-	
+
 	try
 	{
 		Release();
@@ -110,8 +131,8 @@ uint8_t LibUSB::InterfaceImpl::NumAlternateSettings() const
 
 void LibUSB::InterfaceImpl::Claim()
 {
-	
-	
+
+
 
 	if (m_pDeviceImpl.expired())
 	{
@@ -149,8 +170,8 @@ void LibUSB::InterfaceImpl::Claim()
 
 	}
 
-	
-	
+
+
 }
 
 void LibUSB::InterfaceImpl::Release()
@@ -185,7 +206,7 @@ void LibUSB::InterfaceImpl::Release()
 		break;
 	case LIBUSB_SUCCESS:
 		// Done.
-		
+
 		break;
 
 	case LIBUSB_ERROR_NO_DEVICE:
@@ -201,7 +222,7 @@ void LibUSB::InterfaceImpl::Release()
 	}
 
 	m_bClaimed = false;
-	
+
 }
 
 void LibUSB::InterfaceImpl::SetAlternate( uint8_t AlternateSetting /*= 0*/ )
@@ -224,7 +245,7 @@ void LibUSB::InterfaceImpl::SetAlternate( uint8_t AlternateSetting /*= 0*/ )
 
 	if (m_bClaimed)
 	{
-	
+
 		// Set the alternate setting
 		int Result = libusb_set_interface_alt_setting(m_pDeviceImpl.lock()->m_pHandle.get(), m_pInterface->altsetting[m_alternateSetting].bInterfaceNumber, m_pInterface->altsetting[m_alternateSetting].bAlternateSetting);
 
@@ -265,7 +286,7 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 	{
 
 		// Return the device control endpoint zero.
-	
+
 		if (m_pDeviceImpl.expired())
 		{
 			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint(0) - has an expired DeviceImpl.");
@@ -290,7 +311,7 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 	{
 
 		pEndpoint = m_EndpointContainer.find(index)->second;
-		
+
 		/// \note #1 Validate endpoint number against its index.
 		if (pEndpoint->Number() != index)
 		{
@@ -302,7 +323,7 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 	{
 		throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - endpoint not found.");
 	}
-	
+
 
 	return pEndpoint;
 }
@@ -317,24 +338,24 @@ void LibUSB::InterfaceImpl::ReleaseEndpoints()
 		// There must be no other references to the endpoint.
 		if (m_EndpointContainer.begin()->second.unique())
 		{
-			// Release 
+			// Release
 			m_EndpointContainer.erase(itEndpoint++);
 
 		}
-		
+
 	}
 
-	
+
 	if (!m_EndpointContainer.empty())
 	{
-		
+
 		// Unreleased objects remain - this is a problem.
 
 		std::stringstream errorStr;
 		errorStr << "LibUSB::InterfaceImpl::ReleaseEndpoints() - Could not release " << m_EndpointContainer.size()
 			<< " Endpoints objects.";
 
-		
+
 		throw std::logic_error(errorStr.str());
 
 	}
@@ -371,8 +392,8 @@ void LibUSB::InterfaceImpl::CreateEndpoints()
 	}
 	else
 	{
-		
-		// I'm not positive that I want to disallow reusing already existing endpoints (ie, claim() the same interface 
+
+		// I'm not positive that I want to disallow reusing already existing endpoints (ie, claim() the same interface
 
 	}
 

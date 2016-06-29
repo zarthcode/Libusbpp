@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Libusb++", "Libusb++.vcxproj", "{30392DF7-2449-406E-B2DF-40CEA218C8C1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibusbTest", "LibusbTest\LibusbTest.vcxproj", "{C0929D1D-39E5-4859-B60F-4A24D69CD73C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibusbTest", "examples\LibusbTest.vcxproj", "{C0929D1D-39E5-4859-B60F-4A24D69CD73C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{30392DF7-2449-406E-B2DF-40CEA218C8C1} = {30392DF7-2449-406E-B2DF-40CEA218C8C1}
 	EndProjectSection

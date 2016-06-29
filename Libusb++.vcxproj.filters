@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Configuration.h">
+    <ClInclude Include="headers\libusbpp\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ConfigurationImpl.h">
@@ -27,31 +27,31 @@
     <ClInclude Include="src\EndpointImpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Endpoint.h">
+    <ClInclude Include="headers\libusbpp\Endpoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Endpointdefs.h">
+    <ClInclude Include="headers\libusbpp\EndpointDefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\wideconvert.h">
+    <ClInclude Include="src\Wideconvert.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Transfer.h">
+    <ClInclude Include="headers\libusbpp\Transfer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TransferImpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Transferdefs.h">
+    <ClInclude Include="headers\libusbpp\TransferDefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Device.h">
+    <ClInclude Include="headers\libusbpp\Device.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Interface.h">
+    <ClInclude Include="headers\libusbpp\Interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Libusbpp.h">
+    <ClInclude Include="headers\libusbpp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DeviceImpl.h">
@@ -63,7 +63,7 @@
     <ClInclude Include="src\LibusbImpl.h">
       <Filter>Private Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\UsbException.h">
+    <ClInclude Include="headers\libusbpp\Exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,7 +74,7 @@
     <ClCompile Include="src\ConfigurationImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\wideconvert.cpp">
+    <ClCompile Include="src\Wideconvert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TransferImpl.cpp">
@@ -107,7 +107,7 @@
     <ClCompile Include="src\Libusbpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UsbException.cpp">
+    <ClCompile Include="src\Exception.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

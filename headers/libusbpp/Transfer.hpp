@@ -1,10 +1,32 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef LIBUSBPP_TRANSFER_HPP
+#define LIBUSBPP_TRANSFER_HPP
 
 #include <memory>
 #include <chrono>
 #include <future>
 
-#include "Transferdefs.h"
+#include <libusbpp/TransferDefs.hpp>
+
 
 namespace LibUSB
 {
@@ -15,7 +37,7 @@ namespace LibUSB
 	{
 
 	public:
-		
+
 		/// Constructor
 		Transfer(std::shared_ptr<TransferImpl> pTransferImpl);
 
@@ -62,11 +84,11 @@ namespace LibUSB
 		bool WaitForCompletion();
 
 		/// Resolves Completion
-		
 
 
 
-		
+
+
 
 	protected:
 
@@ -127,9 +149,11 @@ namespace LibUSB
 		IsochronousTransfer(std::shared_ptr<TransferImpl> pTransferImpl);
 		virtual ~IsochronousTransfer();
 
-		/// Sets the number of packets 
+		/// Sets the number of packets
 		void setNumPackets(int Packets);
 	protected:
 	private:
 	};
 }
+
+#endif // LIBUSBPP_TRANSFER_HPP

@@ -1,7 +1,7 @@
 // LibusbTest.cpp : Just a test/demonstration on how to use Libusb++
 // Anthony Clay, ZarthCode LLC
 
-// Hopefully, spending a while studying this file and stepping around in debug mode should make it clear how easy 
+// Hopefully, spending a while studying this file and stepping around in debug mode should make it clear how easy
 // (AND FAAAAST!) it can be to use LibUSB++ to create intuitive device interfaces.
 
 // BUT...
@@ -15,18 +15,19 @@
 // (Maybe I or someone else get an Arduino Leonardo and build a test app with commands/descriptors that correspond to this app)
 
 
-#include "libusbpp.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <ios>
-#include <wchar.h>
 #include <list>
 #include <algorithm>
 #include <cstring>
+#include <wchar.h>
+
+#include <libusbpp.hpp>
 
 // Utility functions
-		
+
 	/// Creates a std::shared_ptr<unsigned char> containing a wide string. (demo)
 	std::shared_ptr<unsigned char> allocWString(wchar_t* pString, size_t& outSize);
 
@@ -56,7 +57,7 @@ int main(int argc, char* argv[])
 	}
 
 	/*
-		To run this test suite, you're going to need a device. (Add the parameters below)	
+		To run this test suite, you're going to need a device. (Add the parameters below)
 	*/
 
 	uint16_t vendorID = 0x04D8;
@@ -64,8 +65,8 @@ int main(int argc, char* argv[])
 
 // TEST 1 - The Basics: Device Initialization, CONTROL transfers.
 /*
-	
-	
+
+
 
 */
 	{
@@ -139,11 +140,11 @@ int main(int argc, char* argv[])
 		// wait for user input.
 		std::wcout << L"Test 1 - Basic Init & Transfer - " << (passed ? L"PASSED" : L"FAILED") << std::endl << std::endl;
 		testResults.push_back(passed);
-		
+
 	}
 
 // TEST 2 - Enumeration and Descriptors
-/* 
+/*
 	All descriptors are accessible using the Device class. This is the way to get right down to your config/interface/endpoints, and start making transfers.
 */
 
@@ -152,7 +153,7 @@ int main(int argc, char* argv[])
 		// wait for user input.
 		testNames.push_back(L"Enumeration and descriptors");
 		std::wcout << L"Test 2 - Enumeration and descriptors" << std::endl << std::endl;
-		
+
 		bool passed = true;
 
 		// Get a list of my devices (Works with any winusb/libusb0.sys/libusbK device)
@@ -335,7 +336,7 @@ int main(int argc, char* argv[])
 
 			}
 
-		} 
+		}
 
 
 		// wait for user input.
@@ -419,14 +420,14 @@ int main(int argc, char* argv[])
 		// wait for user input.
 		std::wcout << L"Test complete." << std::endl;
 		testResults.push_back(passed);
-	
+
 	}
 
 // Test 4 - Interrupt Transfers
 /*
 	Interrupts are designed to be low-latency messages, and only move in one direction, per endpoint.
 
-	
+
 */
 	{
 
@@ -453,7 +454,7 @@ int main(int argc, char* argv[])
 			pDevice->Open();
 
 			std::shared_ptr<LibUSB::Interface> pInterface = pDevice->getActiveConfiguration()->getInterface(0);
-			
+
 
 					// Note that at this point, the alternate setting is in it's default position. You can get endpoints, or choose a different alternate setting, if you wanted.
 
@@ -463,29 +464,29 @@ int main(int argc, char* argv[])
 
 
 			// We need an endpoint object in order to create transfers (Oh yeah, don't be cute and deallocate it, either.  Or you'll break your transfers!)
-			
+
 			std::shared_ptr<LibUSB::Endpoint> pInterruptOUTEndpoint = pInterface->getEndpoint(1);		// Note that endpoint 0 is ALWAYS the default control endpoint, no matter the interface.
 			std::shared_ptr<LibUSB::Endpoint> pInterruptINEndpoint = pInterface->getEndpoint(2);
 
 
 			// Create Transfer objects and allocate memory
 			std::wcout << L"Creating transfer objects..." << std::endl;
-			
+
 			std::shared_ptr<LibUSB::InterruptTransfer> pTransferOUT = std::static_pointer_cast<LibUSB::InterruptTransfer>(pInterruptOUTEndpoint->CreateTransfer());
-						
+
 			std::shared_ptr<LibUSB::InterruptTransfer> pTransferIN = std::static_pointer_cast<LibUSB::InterruptTransfer>(pInterruptINEndpoint->CreateTransfer());
 
 			size_t pingDataSize = 0;
 			std::shared_ptr<unsigned char> pPingString = allocString("PING!", pingDataSize);
 			pTransferOUT->setTransferBuffer(pPingString, pingDataSize);
-			
+
 			size_t returnDataSize = 32; // 6 * sizeof(wchar_t);
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
 			std::fill_n(pReturnString.get(), returnDataSize, '\0');
 			pTransferIN->setTransferBuffer(pReturnString, returnDataSize);
 
 
-	
+
 			// Send "Ping!" to the device
 			std::wcout << L"Sending Interrupt with string data \"Ping!\"" << std::endl;
 			pTransferOUT->Start();
@@ -519,7 +520,7 @@ int main(int argc, char* argv[])
 				std::wstringstream errorStr;
 				if(passed)
 				{
-					
+
 					errorStr << L"Return interrupt not received (Reason " << pTransferIN->Result() << L")";
 				}
 				else
@@ -559,7 +560,7 @@ int main(int argc, char* argv[])
 /*
 
 	Bulk transfers are designed to carry data with high integrity, but no time/speed guarantees, and only move in one direction per endpoint.
-	
+
 */
 	{
 
@@ -586,7 +587,7 @@ int main(int argc, char* argv[])
 			pDevice->Open();
 
 			std::shared_ptr<LibUSB::Interface> pInterface = pDevice->getActiveConfiguration()->getInterface(0);
-			
+
 
 					// Note that at this point, the alternate setting is in it's default position. You can get endpoints, or choose a different alternate setting, if you wanted.
 
@@ -596,14 +597,14 @@ int main(int argc, char* argv[])
 
 
 			// We need an endpoint object in order to create transfers (Oh yeah, don't be cute and deallocate it, either.  Or you'll break your transfers!)
-			
+
 			std::shared_ptr<LibUSB::Endpoint> pBulkOUTEndpoint = pInterface->getEndpoint(4);		// Note that endpoint 0 is ALWAYS the default control endpoint, no matter the interface.
 			std::shared_ptr<LibUSB::Endpoint> pBulkINEndpoint = pInterface->getEndpoint(3);
 
 
 			// Create Transfer objects and allocate memory
 			std::wcout << L"Creating transfer objects..." << std::endl;
-			
+
 
 			if (pBulkOUTEndpoint->Direction() != LibUSB::Direction_t::DIR_OUT)
 			{
@@ -616,13 +617,13 @@ int main(int argc, char* argv[])
 			}
 
 			std::shared_ptr<LibUSB::BulkTransfer> pTransferOUT = std::static_pointer_cast<LibUSB::BulkTransfer>(pBulkOUTEndpoint->CreateTransfer());
-						
+
 			std::shared_ptr<LibUSB::BulkTransfer> pTransferIN = std::static_pointer_cast<LibUSB::BulkTransfer>(pBulkINEndpoint->CreateTransfer());
 
 			size_t pingDataSize = 0;
 			std::shared_ptr<unsigned char> pPingString = allocString("apostle", pingDataSize);
 			pTransferOUT->setTransferBuffer(pPingString, pingDataSize);
-			
+
 			size_t returnDataSize = pingDataSize;
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
 			std::fill_n(pReturnString.get(), returnDataSize, '\0');
@@ -630,7 +631,7 @@ int main(int argc, char* argv[])
 			pTransferIN->setTransferBuffer(pReturnString, returnDataSize);
 
 
-	
+
 			// Send "Ping!" to the device
 			std::wcout << L"Sending Bulk string data \"" << (char*)pPingString.get() << "\"" << std::endl;
 			pTransferOUT->Start();
@@ -664,7 +665,7 @@ int main(int argc, char* argv[])
 				std::wstringstream errorStr;
 				if(passed)
 				{
-					
+
 					errorStr << L"Return data IN not received (Reason " << pTransferIN->Result() << L")";
 				}
 				else
@@ -700,9 +701,9 @@ int main(int argc, char* argv[])
 
 // Test 6 - Isochronous Transfers
 /*
-	
+
 	Isochronous transfers are designed to carry data with low latency, but with no delivery guarantee (data packets can be dropped), and only move in one direction per endpoint.
-	
+
 */
 	{
 
@@ -729,7 +730,7 @@ int main(int argc, char* argv[])
 			pDevice->Open();
 
 			std::shared_ptr<LibUSB::Interface> pInterface = pDevice->getActiveConfiguration()->getInterface(0);
-			
+
 
 					// Note that at this point, the alternate setting is in it's default position. You can get endpoints, or choose a different alternate setting, if you wanted.
 
@@ -739,14 +740,14 @@ int main(int argc, char* argv[])
 
 
 			// We need an endpoint object in order to create transfers (Oh yeah, don't be cute and deallocate it, either.  Or you'll break your transfers!)
-			
+
 			std::shared_ptr<LibUSB::Endpoint> pIsochronousOUTEndpoint = pInterface->getEndpoint(5);		// Note that endpoint 0 is ALWAYS the default control endpoint, no matter the interface.
 			std::shared_ptr<LibUSB::Endpoint> pIsochronousINEndpoint = pInterface->getEndpoint(6);
 
 
 			// Create Transfer objects and allocate memory
 			std::wcout << L"Creating transfer objects..." << std::endl;
-			
+
 
 			if (pIsochronousOUTEndpoint->Direction() != LibUSB::Direction_t::DIR_OUT)
 			{
@@ -759,26 +760,26 @@ int main(int argc, char* argv[])
 			}
 
 			std::shared_ptr<LibUSB::IsochronousTransfer> pTransferOUT = std::static_pointer_cast<LibUSB::IsochronousTransfer>(pIsochronousOUTEndpoint->CreateTransfer());
-						
+
 			std::shared_ptr<LibUSB::IsochronousTransfer> pTransferIN = std::static_pointer_cast<LibUSB::IsochronousTransfer>(pIsochronousINEndpoint->CreateTransfer());
 
 			size_t pingDataSize = 0;
 			std::shared_ptr<unsigned char> pPingString = allocString("apostle", pingDataSize);
-			
+
 			pTransferOUT->setNumPackets(1);
 			pTransferOUT->setTransferBuffer(pPingString, pingDataSize);
-			
+
 			size_t returnDataSize = pingDataSize;
 			std::shared_ptr<unsigned char> pReturnString(new unsigned char[returnDataSize], [](unsigned char* ptr){ delete [] ptr; });
 			std::fill_n(pReturnString.get(), returnDataSize, '\0');
-			
+
 			pTransferIN->SetTimeout(std::chrono::milliseconds(5000));
 			pTransferIN->setNumPackets(1);		// Just sending one packet
 
 			pTransferIN->setTransferBuffer(pReturnString, returnDataSize);
 
 
-	
+
 			// Send "Ping!" to the device
 			std::wcout << L"Sending Isochronous string data \"" << (char*)pPingString.get() << "\"" << std::endl;
 			pTransferOUT->Start();
@@ -812,7 +813,7 @@ int main(int argc, char* argv[])
 				std::wstringstream errorStr;
 				if(passed)
 				{
-					
+
 					errorStr << L"Return data IN not received (Reason " << pTransferIN->Result() << L")";
 				}
 				else

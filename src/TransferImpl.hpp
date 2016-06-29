@@ -1,14 +1,38 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef __LIBUSBPP_TRANSFER_IMPL_HPP
+#define __LIBUSBPP_TRANSFER_IMPL_HPP
 
 #include <memory>
-#include <libusb/libusb.h>
 #include <chrono>
 #include <map>
 #include <atomic>
 
-#include "EndpointImpl.h"
-#include "Transferdefs.h"
-#include "Transfer.h"
+#include <libusb.h>
+
+#include <libusbpp/TransferDefs.hpp>
+#include <libusbpp/Transfer.hpp>
+
+#include "EndpointImpl.hpp"
+
 
 namespace LibUSB
 {
@@ -78,10 +102,10 @@ namespace LibUSB
 
 		/// Fill the transfer object
 		virtual void Setup() = 0;
-		
+
 		/// Create libusb transfer struct
 		void AllocTransfer(int iso_packets = 0);
-		
+
 		/// Transfer Timeout
 		unsigned int m_Timeout;
 
@@ -100,7 +124,7 @@ namespace LibUSB
 		/// Libusb asynchronous transfer callback function
 		static void __stdcall AsyncTransferCallback(libusb_transfer* pTransfer);
 
-	
+
 		/// Notifies the device that the usb transfer is completed.
 		virtual void NotifyComplete();
 
@@ -109,7 +133,7 @@ namespace LibUSB
 
 	private:
 
-	
+
 		/// Weak pointers to all active transfer objects
 		static std::map<TransferImpl*, std::weak_ptr<TransferImpl>> m_TransferMap;
 
@@ -129,8 +153,8 @@ namespace LibUSB
 
 	};
 
-	
-	
+
+
 
 
 	// Control Transfer Implementation
@@ -179,7 +203,7 @@ namespace LibUSB
 
 		/// Resets the transfer object for reuse.
 		virtual void Reset();
-		
+
 		/// Sets the number of isochronous packets
 		virtual void setNumPackets(int numPackets);
 
@@ -226,3 +250,5 @@ namespace LibUSB
 	};
 
 }
+
+#endif // __LIBUSBPP_TRANSFER_IMPL_HPP

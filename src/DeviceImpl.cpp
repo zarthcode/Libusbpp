@@ -1,14 +1,35 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "deviceimpl.h"
-#include "usbexception.h"
-#include "Configuration.h"
-#include "ConfigurationImpl.h"
-#include "Endpoint.h"
-#include "EndpointImpl.h"
-#include <libusb/libusb.h>
 #include <iosfwd>
 #include <sstream>
+
+#include <libusb/libusb.h>
+
+#include <libusbpp/Configuration.hpp>
+#include <libusbpp/Endpoint.hpp>
+#include <libusbpp/Exception.hpp>
+
+#include "DeviceImpl.hpp"
+#include "ConfigurationImpl.hpp"
+#include "EndpointImpl.hpp"
 
 
 LibUSB::DeviceImpl::DeviceImpl( libusb_device* device )
@@ -35,7 +56,7 @@ std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescripto
 
 	if (m_pDeviceDescriptor.get() == nullptr)
 	{
-	
+
 		m_pDeviceDescriptor.reset(new libusb_device_descriptor);
 
 		// Obtain the usb device descriptors
@@ -45,7 +66,7 @@ std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescripto
 		{
 			throw std::exception("libusb_get_device_descriptor() failed.");
 		}
-	
+
 	}
 
 	return m_pDeviceDescriptor;
@@ -137,7 +158,7 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 }
 
 uint16_t LibUSB::DeviceImpl::getLangId()
-{	
+{
 
 	/// \note This descriptor is described here: http://www.beyondlogic.org/usbnutshell/usb5.shtml
 
@@ -150,7 +171,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		{
 			throw LibUSBException("libusb_get_string_descriptor() failed.", Result);
 		}
-		
+
 		// First element is the size of the descriptor, in bytes
 		uint8_t descriptorSize = data[0];
 
@@ -159,7 +180,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		{
 			throw std::runtime_error("USB language string descriptor (index 0) is invalid.");
 		}
-		
+
 		// Grab the first/default language.
 		languageId = data[2] | data[3]<<8;
 
@@ -171,7 +192,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 
 bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
 {
-	// Obtain the currently active config 
+	// Obtain the currently active config
 	libusb_config_descriptor * pConfig;
 
 	int Result = libusb_get_active_config_descriptor(m_pDevice.get(), &pConfig);
@@ -181,12 +202,12 @@ bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
 		switch(Result)
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
-	
+
 			// The device is in an unconfigured state.
 			ConfigValue = 0;
 			return false;
 			break;
-	
+
 		default:
 			throw LibUSBException("libusb_get_active_config_descriptor() failed. ", Result);
 			return false;
@@ -198,7 +219,7 @@ bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
 	ConfigValue = pConfig->bConfigurationValue;
 
 	return true;
-	
+
 }
 
 std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uint8_t ConfigValue )
@@ -208,7 +229,7 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 	{
 
 		return m_ConfigurationMap[ConfigValue].lock();
-	
+
 	}
 
 	// Create a new configuration object
@@ -220,7 +241,7 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 	{
 		std::stringstream exceptionText;
 		exceptionText << "libusb_get_config_descriptor() failed";
-		
+
 		switch(Result)
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
@@ -230,8 +251,8 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 
 		default:
 			break;
-		}			
-			
+		}
+
 		throw LibUSBException(exceptionText.str(), Result);
 
 	}
@@ -261,7 +282,7 @@ void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
 		switch(Result)
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
-			
+
 			exceptionText << "The requested configuration does not exist.";
 			break;
 
@@ -277,7 +298,7 @@ void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
 
 		default:
 			break;
-		}			
+		}
 
 		throw LibUSBException(exceptionText.str(), Result);
 
@@ -292,7 +313,7 @@ std::weak_ptr<LibUSB::Device> LibUSB::DeviceImpl::getDevice() const
 	{
 		throw std::logic_error("LibUSB::DeviceImpl::getDevice() - expired pointer to parent LibUSB::Device object.");
 	}
-	
+
 	return m_ParentDevice;
 
 }
@@ -329,5 +350,5 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::DeviceImpl::getControlEndpoint()
 	}
 
 	return m_pEndpointZero;
-	
+
 }

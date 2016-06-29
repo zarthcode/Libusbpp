@@ -1,7 +1,28 @@
-#include "EndpointImpl.h"
-#include "TransferImpl.h"
-#include "deviceimpl.h"
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <stdexcept>
+
+#include "EndpointImpl.hpp"
+#include "TransferImpl.hpp"
+#include "DeviceImpl.hpp"
 
 
 LibUSB::EndpointImpl::EndpointImpl( const libusb_endpoint_descriptor* pDescriptor, std::weak_ptr<DeviceImpl> pDeviceImpl )
@@ -135,7 +156,7 @@ std::shared_ptr<LibUSB::Transfer> LibUSB::EndpointImpl::CreateTransfer()
 		break;
 
 	case Transfer_t::INTERRUPT:
-		
+
 		{
 
 			std::shared_ptr<LibUSB::TransferImpl> pImpl = std::static_pointer_cast<LibUSB::TransferImpl>(std::make_shared<LibUSB::InterruptTransferImpl>(shared_from_this()));
@@ -188,5 +209,5 @@ std::shared_ptr<LibUSB::Transfer> LibUSB::EndpointImpl::CreateTransfer()
 
 	return pTransferObj;
 
-	
+
 }

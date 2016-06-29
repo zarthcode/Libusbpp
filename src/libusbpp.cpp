@@ -1,8 +1,27 @@
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "libusbpp.h"
-#include "deviceimpl.h"
-#include "libusbimpl.h"
+#include <libusbpp.hpp>
 
+#include "DeviceImpl.hpp"
+#include "LibusbImpl.hpp"
 
 
 std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t vendorID, uint16_t productID, DeviceFactory_t factory )
@@ -27,7 +46,7 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 		std::shared_ptr<Device> pDevice;
 		if(factory != nullptr)
 		{
-			
+
 			pDevice = factory(std::make_shared<DeviceImpl>(device_list[i]));
 
 		}
@@ -46,7 +65,7 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 		}
 
 	}
-	
+
 	// Free the device list
 	libusb_free_device_list(device_list, 1);
 
@@ -67,12 +86,12 @@ std::list<std::shared_ptr<LibUSB::Device>> LibUSB::LibUSB::FindDevice( uint16_t 
 	{
 		if(pDevice->SerialString() == serialStr)
 		{
-			
+
 			ResultList.push_back(pDevice);
 			break;
 		}
 	}
-	
+
 	return ResultList;
 }
 

@@ -1,10 +1,31 @@
-#include "device.h"
-#include "deviceimpl.h"
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libusbpp/Device.hpp>
+
+#include "DeviceImpl.hpp"
 
 
 LibUSB::Device::Device( std::shared_ptr<DeviceImpl> pInit )
 {
-	
+
 	m_pDeviceImpl_ = pInit;
 
 	// Obtain the descriptor
@@ -65,7 +86,7 @@ std::wstring LibUSB::Device::ProductString()
 	{
 
 		throw std::runtime_error("ProductString() - device must be open!");
-		
+
 	}
 
 	// Validate the descriptor index
@@ -138,7 +159,7 @@ void LibUSB::Device::Open()
 bool LibUSB::Device::isOpen()
 {
 	return m_pDeviceImpl_->isOpen();
-	
+
 }
 
 std::shared_ptr<LibUSB::Configuration> LibUSB::Device::getConfiguration( uint8_t ConfigValue )
@@ -175,7 +196,7 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::Device::getActiveConfiguration()
 		m_pActiveConfiguration.reset();
 	}
 
-	return m_pActiveConfiguration;	
+	return m_pActiveConfiguration;
 
 }
 

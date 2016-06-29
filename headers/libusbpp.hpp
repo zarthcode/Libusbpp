@@ -1,17 +1,40 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "device.h"
-#include "Transfer.h"
-#include "Endpointdefs.h"
+#ifndef LIBUSBPP_HPP
+#define LIBUSBPP_HPP
+
 #include <memory>
 #include <list>
+
+#include <libusbpp/Device.hpp>
+#include <libusbpp/Transfer.hpp>
+#include <libusbpp/EndpointDefs.hpp>
+
 
 namespace LibUSB
 {
 
 	/// LibUSBImpl forward declaration
 	class LibUSBImpl;
-	
+
 	/// Contains static methods for enumerating devices
 	class LibUSB
 	{
@@ -21,7 +44,7 @@ namespace LibUSB
 		/// Function pointer to a LibUSB device object factory.
 		/// \todo Replace with std::function?
 		typedef std::shared_ptr<Device> (*DeviceFactory_t)(std::shared_ptr<DeviceImpl>);
-	
+
 		/*!
 		 * \brief
 		 *
@@ -30,7 +53,7 @@ namespace LibUSB
 		 * \param vendorID (uint16_t): USB-IF vendor id of the desired device.
 		 * \param deviceID (uint16_t): USB-IF product id of the desired device.
 		 * \returns (std::list<std::shared_ptr<D>>): List of shared pointers to LibUSB::Device class objects.
-		 * \sa 
+		 * \sa
 		 * \note
 		 * \warning Multiple devices can be returned via this method, if attached.
 		 */
@@ -45,7 +68,7 @@ namespace LibUSB
 		 * \param deviceID (uint16_t): USB-IF product id of the desired device.
 		 * \param serialStr (std::wstring): Device unique serial number
 		 * \returns (std::list<std::shared_ptr<D>>): List of shared pointers to LibUSB::Device class objects.
-		 * \sa 
+		 * \sa
 		 * \note
 		 * \warning Multiple devices can be returned via this method, if attached.
 		 */
@@ -57,7 +80,7 @@ namespace LibUSB
 	private:
 
 		friend class TransferImpl;
-		
+
 		static void Initialize();
 
 
@@ -70,3 +93,5 @@ namespace LibUSB
 
 
 }
+
+#endif // LIBUSBPP_HPP

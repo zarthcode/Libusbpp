@@ -1,10 +1,33 @@
-#pragma once
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef LIBUSBPP_INTERFACE_HPP
+#define LIBUSBPP_INTERFACE_HPP
 
 #include <memory>
 #include <string>
 
-#include "Endpoint.h"
 #include <stdint.h>
+
+#include <libusbpp/Endpoint.hpp>
+
 
 namespace LibUSB
 {
@@ -57,7 +80,7 @@ namespace LibUSB
 
 		/// Returns the specified endpoint
 		std::shared_ptr<Endpoint> getEndpoint(int index);
-		
+
 	protected:
 	private:
 
@@ -67,3 +90,5 @@ namespace LibUSB
 	};
 
 }
+
+#endif // LIBUSBPP_INTERFACE_HPP

@@ -1,11 +1,34 @@
-#include "TransferImpl.h"
-#include "deviceimpl.h"
-#include "EndpointImpl.h"
-#include "Libusbpp.h"
-#include "LibusbImpl.h"
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <stdexcept>
-#include "usbexception.h"
 #include <sstream>
+
+#include <libusbpp.hpp>
+#include <libusbpp/Exception.hpp>
+
+#include "TransferImpl.hpp"
+#include "DeviceImpl.hpp"
+#include "EndpointImpl.hpp"
+#include "LibusbImpl.hpp"
+
 
 LibUSB::TransferImpl::TransferImpl(std::weak_ptr<EndpointImpl> pEndpointImpl)
 	: m_Timeout(0), m_Complete(false), m_Submitted(false), m_transferSize(0)
@@ -18,7 +41,7 @@ LibUSB::TransferImpl::TransferImpl(std::weak_ptr<EndpointImpl> pEndpointImpl)
 
 	m_pEndpointImpl = pEndpointImpl;
 
-	
+
 }
 
 LibUSB::TransferImpl::~TransferImpl()
@@ -58,7 +81,7 @@ std::shared_ptr<unsigned char> LibUSB::TransferImpl::getBuffer()
 {
 
 	/// \todo Operation must be complete.
-	
+
 
 	return m_pTransferBuffer;
 
@@ -113,7 +136,7 @@ void LibUSB::TransferImpl::Start()
 		throw LibUSBException("LibUSB::TransferImpl::Start() ", Result);
 		break;
 	}
-	
+
 
 	m_Submitted = true;
 
@@ -121,16 +144,16 @@ void LibUSB::TransferImpl::Start()
 	// 4. Perform the transfer right now.
 
 	m_eventCompleted = 0;
-		
+
 	int CancelReason = 0;
 
 	while (!m_Complete && (CancelReason == 0))
 	{
-		
+
 
 		int	Result = libusb_handle_events_completed(LibUSB::Impl_->m_pLibusb_context.get(), &m_eventCompleted );
 
-			
+
 
 		switch (Result)
 		{
@@ -144,7 +167,7 @@ void LibUSB::TransferImpl::Start()
 			break;
 
 		default:
-					
+
 			// Cancel the transfer.
 			int CancelResult = libusb_cancel_transfer(m_pTransfer.get());
 			CancelReason = Result;
@@ -181,9 +204,9 @@ void LibUSB::TransferImpl::Start()
 		}
 
 
-		
+
 	}
-	
+
 	// That's all.
 
 }
@@ -214,8 +237,8 @@ void LibUSB::TransferImpl::NotifyComplete()
 
 	// Ensure the async transfer ends.
 	m_eventCompleted++;
-	
-	
+
+
 	// Get a pointer to the parent device
 	std::shared_ptr<Device> pDevice = m_pEndpointImpl.lock()->getDeviceImpl().lock()->getDevice().lock();
 
@@ -266,7 +289,7 @@ void LibUSB::TransferImpl::Cancel()
 {
 
 	// This is going to require some more thought.
-	throw std::exception("Not implemented!");
+	throw std::runtime_error("Not implemented!");
 
 }
 
@@ -287,7 +310,7 @@ bool LibUSB::TransferImpl::isComplete() const
 {
 
 	return m_Complete;
-	
+
 }
 
 bool LibUSB::TransferImpl::isSuccessful() const
@@ -300,7 +323,7 @@ bool LibUSB::TransferImpl::isSuccessful() const
 
 	// Examine the transfer status
 	try {
-		
+
 		HandlePendingExceptions();
 
 	}
@@ -326,7 +349,7 @@ void LibUSB::TransferImpl::HandlePendingExceptions()const
 		// Transfer completed without error.
 		// Note that this does not indicate that the entire amount of requested data was transferred.
 
-		
+
 		break;
 
 	case LIBUSB_TRANSFER_ERROR:
@@ -364,7 +387,7 @@ void LibUSB::TransferImpl::HandlePendingExceptions()const
 		break;
 
 	default:
-		
+
 		throw std::logic_error("LibUSB::TransferImpl::HandlePendingExceptions() - Unknown Transfer Status");
 		break;
 	}
@@ -384,7 +407,7 @@ LibUSB::TransferResult_t LibUSB::TransferImpl::Result() const
 	switch(m_pTransfer->status)
 	{
 	case LIBUSB_TRANSFER_COMPLETED:
-		
+
 		// Transfer completed without error.
 		// Note that this does not indicate that the entire amount of requested data was transferred.
 		result = TransferResult_t::COMPLETED;
@@ -455,8 +478,8 @@ LibUSB::ControlTransferImpl::ControlTransferImpl(std::weak_ptr<EndpointImpl> pEn
 	m_wIndex(0),
 	m_Setup(false)
 {
-	
-	
+
+
 }
 
 LibUSB::ControlTransferImpl::~ControlTransferImpl()
@@ -472,7 +495,7 @@ void LibUSB::ControlTransferImpl::Setup()
 		throw std::logic_error("LibUSB::ControlTransferImpl::Setup() - Control Packet has not been filled out using LibUSB::ControlTransferImpl::Setup(...)");
 	}
 
-	
+
 
 	if (m_pTransfer.get() == nullptr)
 	{
@@ -495,15 +518,15 @@ void LibUSB::ControlTransferImpl::Setup()
 
 		// Allocate a transfer buffer for the setup packet plus expected-data to be received.
 		auto deleter=[&](unsigned char*ptr){ delete [] ptr; };
-		
+
 		m_pTransferBuffer.reset((unsigned char*)memset(new unsigned char [m_transferSize + 8], '\0', m_transferSize+8), deleter);
-		
+
 	}
 
 
 	// Setup a control transfer.
 	libusb_fill_control_setup(m_pTransferBuffer.get(), m_RequestType|m_RequestRecipient|m_DataTransferDirection, m_Request, m_wValue, m_wIndex, m_transferSize);
-	
+
 
 	// Fill the transfer object
 	libusb_fill_control_transfer(m_pTransfer.get(), m_pEndpointImpl.lock()->getDeviceImpl().lock()->m_pHandle.get(),
@@ -516,10 +539,10 @@ void LibUSB::ControlTransferImpl::SetupPacket( uint8_t Request, uint16_t wValue,
 {
 
 	m_Request = Request;
-	
+
 	m_wValue = wValue;
 	m_wIndex = wIndex;
-	
+
 	switch (transferDirection)
 	{
 	case DataTransferDirection_t::HOST_TO_DEVICE:
@@ -534,7 +557,7 @@ void LibUSB::ControlTransferImpl::SetupPacket( uint8_t Request, uint16_t wValue,
 	}
 	switch (requestType)
 	{
-	
+
 	case RequestType_t::REQ_STANDARD:
 		m_RequestType = LIBUSB_REQUEST_TYPE_STANDARD;
 		break;
@@ -550,7 +573,7 @@ void LibUSB::ControlTransferImpl::SetupPacket( uint8_t Request, uint16_t wValue,
 	case RequestType_t::REQ_RESERVED:
 		m_RequestType = LIBUSB_REQUEST_TYPE_RESERVED;
 		break;
-	
+
 	default:
 		throw std::logic_error("LibUSB::ControlTransferImpl::Setup(...) - Invalid request type.");
 		break;
@@ -578,7 +601,7 @@ void LibUSB::ControlTransferImpl::SetupPacket( uint8_t Request, uint16_t wValue,
 		throw std::logic_error("LibUSB::ControlTransferImpl::Setup(...) - Invalid recipient type.");
 		break;
 	}
-	
+
 	/// Force user to setup every time
 	m_Setup = true;
 }
@@ -604,19 +627,19 @@ LibUSB::InterruptTransferImpl::InterruptTransferImpl( std::weak_ptr<EndpointImpl
 	: TransferImpl(pEndpointImpl)
 {
 
-	
+
 }
 
 
 LibUSB::InterruptTransferImpl::~InterruptTransferImpl()
 {
 
-	
+
 }
 
 void LibUSB::InterruptTransferImpl::Setup()
 {
-	
+
 
 	if (m_pTransfer.get() == nullptr)
 	{
@@ -629,7 +652,7 @@ void LibUSB::InterruptTransferImpl::Setup()
 
 		if ((m_transferSize > 0))
 		{
-			
+
 			// This configuration is not valid.
 			throw std::logic_error("LibUSB::InterruptTransferImpl::Setup() - TransferBuffer has not been set, yet transfer size is > 0.");
 
@@ -639,7 +662,7 @@ void LibUSB::InterruptTransferImpl::Setup()
 
 	}
 
-	libusb_fill_interrupt_transfer(	m_pTransfer.get(), 
+	libusb_fill_interrupt_transfer(	m_pTransfer.get(),
 									m_pEndpointImpl.lock()->getDeviceImpl().lock()->m_pHandle.get(),
 									m_pEndpointImpl.lock()->Address(),
 									m_pTransferBuffer.get(),
@@ -671,7 +694,7 @@ LibUSB::BulkTransferImpl::BulkTransferImpl( std::weak_ptr<EndpointImpl> pEndpoin
 LibUSB::BulkTransferImpl::~BulkTransferImpl()
 {
 
-	
+
 }
 
 void LibUSB::BulkTransferImpl::Setup()
@@ -698,7 +721,7 @@ void LibUSB::BulkTransferImpl::Setup()
 
 	}
 
-	libusb_fill_bulk_transfer( m_pTransfer.get(), 
+	libusb_fill_bulk_transfer( m_pTransfer.get(),
 		m_pEndpointImpl.lock()->getDeviceImpl().lock()->m_pHandle.get(),
 		m_pEndpointImpl.lock()->Address(),
 		m_pTransferBuffer.get(),
@@ -716,13 +739,13 @@ LibUSB::IsochronousTransferImpl::IsochronousTransferImpl( std::weak_ptr<Endpoint
 	: TransferImpl(pEndpointImpl), m_numPackets(0)
 {
 
-	
+
 }
 
 LibUSB::IsochronousTransferImpl::~IsochronousTransferImpl()
 {
 
-	
+
 }
 
 void LibUSB::IsochronousTransferImpl::Reset()
@@ -756,7 +779,7 @@ void LibUSB::IsochronousTransferImpl::Setup()
 	}
 
 	// Fill the transfer
-	libusb_fill_iso_transfer( m_pTransfer.get(), 
+	libusb_fill_iso_transfer( m_pTransfer.get(),
 		m_pEndpointImpl.lock()->getDeviceImpl().lock()->m_pHandle.get(),
 		m_pEndpointImpl.lock()->Address(),
 		m_pTransferBuffer.get(),
