@@ -33,7 +33,7 @@ namespace LibUSB
 	class TransferImpl;
 
 	/// USB Data transfer object.
-	class Transfer : std::enable_shared_from_this<Transfer>
+	class Transfer : public std::enable_shared_from_this<Transfer>
 	{
 
 	public:
