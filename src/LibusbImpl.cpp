@@ -40,7 +40,7 @@ LibUSB::LibUSBImpl::LibUSBImpl()
 	int Result = libusb_init(&pContext);
 	if (Result != LIBUSB_SUCCESS)
 	{
-		throw std::exception("libusb_init() failed.");
+		throw std::runtime_error("libusb_init() failed.");
 	}
 
 	// Store in a shared_ptr

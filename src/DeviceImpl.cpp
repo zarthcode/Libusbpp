@@ -65,7 +65,7 @@ std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescripto
 
 		if (Result != LIBUSB_SUCCESS)
 		{
-			throw std::exception("libusb_get_device_descriptor() failed.");
+			throw std::runtime_error("libusb_get_device_descriptor() failed.");
 		}
 
 	}
@@ -87,7 +87,7 @@ void LibUSB::DeviceImpl::Open()
 
 	if (m_pDevice.get() == nullptr)
 	{
-		throw std::exception("Open() failed - (There is no device!)");
+		throw std::runtime_error("Open() failed - (There is no device!)");
 	}
 
 	if (m_pHandle.get() == nullptr)
