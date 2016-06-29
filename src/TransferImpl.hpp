@@ -122,7 +122,11 @@ namespace LibUSB
 		std::weak_ptr<EndpointImpl> m_pEndpointImpl;
 
 		/// Libusb asynchronous transfer callback function
-		static void __stdcall AsyncTransferCallback(libusb_transfer* pTransfer);
+		static void
+#if defined(_WIN32)
+		__stdcall
+#endif
+		AsyncTransferCallback(libusb_transfer* pTransfer);
 
 
 		/// Notifies the device that the usb transfer is completed.
