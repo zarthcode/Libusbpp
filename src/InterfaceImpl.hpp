@@ -25,7 +25,7 @@
 #include <memory>
 #include <map>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 #include <libusbpp/Endpoint.hpp>
 

@@ -20,7 +20,7 @@
 
 #include <sstream>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 #include <libusbpp/Exception.hpp>
 

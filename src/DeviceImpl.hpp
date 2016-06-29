@@ -25,7 +25,7 @@
 #include <string>
 #include <map>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 #include <libusbpp/Device.hpp>
 

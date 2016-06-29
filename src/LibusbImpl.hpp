@@ -26,7 +26,7 @@
 #include <atomic>
 #include <condition_variable>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 
 namespace LibUSB

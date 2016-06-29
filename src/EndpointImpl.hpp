@@ -24,7 +24,7 @@
 #include <memory>
 #include <stdint.h>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 #include <libusbpp/EndpointDefs.hpp>
 #include <libusbpp/Transfer.hpp>

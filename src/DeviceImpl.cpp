@@ -21,7 +21,7 @@
 #include <iosfwd>
 #include <sstream>
 
-#include <libusb/libusb.h>
+#include <libusb.h>
 
 #include <libusbpp/Configuration.hpp>
 #include <libusbpp/Endpoint.hpp>
