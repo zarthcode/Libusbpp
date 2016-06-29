@@ -20,7 +20,6 @@
 
 #include <stdexcept>
 #include <algorithm>
-#include <xlocale>
 
 #include <libusbpp/Interface.hpp>
 #include <libusbpp/Exception.hpp>
