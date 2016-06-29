@@ -20,6 +20,7 @@
 
 #include <iosfwd>
 #include <sstream>
+#include <cstring>
 
 #include <libusb.h>
 

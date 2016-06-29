@@ -20,6 +20,7 @@
 
 #include <stdexcept>
 #include <sstream>
+#include <cstring>
 
 #include <libusbpp.hpp>
 #include <libusbpp/Exception.hpp>
