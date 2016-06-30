@@ -280,9 +280,50 @@ uint8_t LibUSB::InterfaceImpl::NumEndpoints() const
 	return m_pInterface->altsetting[m_alternateSetting].bNumEndpoints;
 }
 
-std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t index )
+uint8_t LibUSB::InterfaceImpl::getEPNumberByIndex( uint8_t index ) const
 {
 	if (index == 0)
+	{
+		// Return the number zero of the device control endpoint.
+		return index;
+	}
+
+
+	if (index > NumEndpoints())
+	{
+		throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex() - index out of range.");
+	}
+
+
+	// Find the number of endpoint
+	EndpointContainer_t::const_iterator itEndpoint = m_EndpointContainer.begin();
+	std::advance(itEndpoint, index - 1);
+
+	std::shared_ptr<LibUSB::Endpoint> pEndpoint;
+	if (itEndpoint != m_EndpointContainer.end())
+	{
+
+		pEndpoint = itEndpoint->second;
+
+		/// \note #2 Validate endpoint number.
+		if (!pEndpoint->Number())
+		{
+			throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex() - endpoint has no number as expected! (note #2)");
+		}
+
+	}
+	else
+	{
+		throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex() - endpoint not found.");
+	}
+
+
+	return pEndpoint->Number();
+}
+
+std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t number )
+{
+	if (number == 0)
 	{
 
 		// Return the device control endpoint zero.
@@ -296,26 +337,21 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t in
 
 	}
 
-	if (index > m_pInterface->altsetting[m_alternateSetting].bNumEndpoints)
-	{
-		throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - index out of range.");
-	}
-
 
 	// Find the endpoint
-	EndpointContainer_t::iterator itEndpoint = m_EndpointContainer.find(index);
+	EndpointContainer_t::iterator itEndpoint = m_EndpointContainer.find(number);
 
 	std::shared_ptr<LibUSB::Endpoint> pEndpoint;
 
 	if (itEndpoint != m_EndpointContainer.end())
 	{
 
-		pEndpoint = m_EndpointContainer.find(index)->second;
+		pEndpoint = m_EndpointContainer.find(number)->second;
 
-		/// \note #1 Validate endpoint number against its index.
-		if (pEndpoint->Number() != index)
+		/// \note #1 Validate endpoint number against its number.
+		if (pEndpoint->Number() != number)
 		{
-			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - endpoint and index do not match as expected! (note #1)");
+			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint() - endpoint and number do not match as expected! (note #1)");
 		}
 
 	}
@@ -393,7 +429,7 @@ void LibUSB::InterfaceImpl::CreateEndpoints()
 	else
 	{
 
-		// I'm not positive that I want to disallow reusing already existing endpoints (ie, claim() the same interface
+		// I'm not positive that I want to disallow reusing already existing endpoints, i.e.: claim() the same interface
 
 	}
 

@@ -239,11 +239,12 @@ int main(int argc, char* argv[])
 						std::wcout << L"\t\tInterface descriptor:" << pInterface->DescriptorString() << std::endl;
 						std::wcout << L"\t\tInterface Number of endpoints: " << std::dec << pInterface->NumEndpoints() << std::endl << std::endl;
 
-						// Iterate over the interface endpoints (other than ep0!!)
-						for (int epnum = 1; epnum <= pInterface->NumEndpoints(); epnum++)
+						// Iterate over the interface endpoints (other than ep0!!) - by the index to number map
+						LibUSB::Interface::EndpointNumbers_t mEndpointNumbers = pInterface->getEndpointNumbers();
+						for (const auto &epnum : mEndpointNumbers)
 						{
 
-							std::shared_ptr<LibUSB::Endpoint> pEndpoint = pInterface->getEndpoint(epnum);
+							std::shared_ptr<LibUSB::Endpoint> pEndpoint = pInterface->getEndpoint(epnum.second);
 
 							/// Endpoint information
 							std::wcout << L"\t\t\tEndpoint number: " << std::dec << pEndpoint->Number() << std::endl;

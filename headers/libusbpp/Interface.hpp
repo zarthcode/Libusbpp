@@ -21,8 +21,9 @@
 #ifndef LIBUSBPP_INTERFACE_HPP
 #define LIBUSBPP_INTERFACE_HPP
 
-#include <memory>
 #include <string>
+#include <memory>
+#include <map>
 
 #include <stdint.h>
 
@@ -78,8 +79,17 @@ namespace LibUSB
 		/// Returns the number of endpoints this interface has.
 		int NumEndpoints()const;
 
+		/// Returns the number of a specified endpoint
+		int getEPNumberByIndex(int index)const;
+
+		/// Endpoint number container type (index -> number)
+		typedef std::map<int, int> EndpointNumbers_t;
+
+		/// Returns the number container of all endpoint indices
+		EndpointNumbers_t getEndpointNumbers()const;
+
 		/// Returns the specified endpoint
-		std::shared_ptr<Endpoint> getEndpoint(int index);
+		std::shared_ptr<Endpoint> getEndpoint(int number);
 
 	protected:
 	private:

@@ -87,8 +87,11 @@ namespace LibUSB
 		/// Returns the number of endpoints this interface/altsetting has.
 		uint8_t NumEndpoints()const;
 
+		/// Returns the number of a specified endpoint
+		uint8_t getEPNumberByIndex(uint8_t index)const;
+
 		/// Returns the specified endpoint
-		std::shared_ptr<Endpoint> getEndpoint(uint8_t index);
+		std::shared_ptr<Endpoint> getEndpoint(uint8_t number);
 
 	protected:
 
@@ -112,7 +115,7 @@ namespace LibUSB
 		/// Indicates that there has been through a successful Claim()
 		bool m_bClaimed;
 
-		/// Endpoint container type
+		/// Endpoint container type (number -> enpoint)
 		typedef std::map<uint8_t, std::shared_ptr<Endpoint>> EndpointContainer_t;
 
 		/// Endpoint container
