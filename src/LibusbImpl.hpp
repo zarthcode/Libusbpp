@@ -37,11 +37,15 @@ namespace LibUSB
 	{
 	public:
 
-		LibUSBImpl();
+		LibUSBImpl(bool debug = false);
 		~LibUSBImpl();
 
 		static std::shared_ptr<libusb_context> m_pLibusb_context;
 
+
+	protected:
+
+		const enum libusb_log_level m_LibUSBLogLevel;
 
 	};
 

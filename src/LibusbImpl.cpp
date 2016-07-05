@@ -33,7 +33,8 @@ public:
 
 };
 
-LibUSB::LibUSBImpl::LibUSBImpl()
+LibUSB::LibUSBImpl::LibUSBImpl( bool debugLibUSB /*=false*/ )
+    : m_LibUSBLogLevel ( debugLibUSB ? LIBUSB_LOG_LEVEL_DEBUG : LIBUSB_LOG_LEVEL_NONE )
 {
 	// Create the libusb context
 	libusb_context* pContext = nullptr;
@@ -42,6 +43,9 @@ LibUSB::LibUSBImpl::LibUSBImpl()
 	{
 		throw std::runtime_error("libusb_init() failed.");
 	}
+
+	// Set log message verbosity
+	libusb_set_debug(pContext, m_LibUSBLogLevel);
 
 	// Store in a shared_ptr
 	m_pLibusb_context.reset(pContext, ContextDeleter());
