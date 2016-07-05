@@ -144,8 +144,8 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 	// First character is the size of the string descriptor, in bytes
 	uint8_t descSize = descStr[0];
 
-	// Second character is 0x03, always
-	if (descStr[1] != 0x03)
+	// First character no zero size, second character is 0x03, always
+	if (descSize < 2 || descStr[1] != LIBUSB_DT_STRING)
 	{
 		throw std::runtime_error("USB string descriptor returned from device is invalid.");
 	}
@@ -153,7 +153,18 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 
 
 	std::wstring strResult;
-	strResult.assign((const wchar_t*)descStr + 1, (descSize-2)/2);
+	strResult.resize((descSize-2)/2);
+
+	for (size_t i = 0; i < (descSize-2)/2; ++i) {
+		unsigned char chr1 = (unsigned char)descStr[2 * i + 2];
+		unsigned char chr2 = (unsigned char)descStr[2 * i + 3];
+
+		// Note: this line suppose that you use `UTF-16-BE` both for
+		// the std::string and the std::wstring. You'll have to swap
+		// chr1 & chr2 if this is not the case.
+		unsigned short val = (chr2 << 8)|(chr1);
+		strResult[i] = (wchar_t)(val);
+	}
 
 	return strResult;
 }
@@ -162,6 +173,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 {
 
 	/// \note This descriptor is described here: http://www.beyondlogic.org/usbnutshell/usb5.shtml
+	///       and here: http://www.usb.org/developers/docs/USB_LANGIDs.pdf
 
 	if((languageId == 0) && isOpen())
 	{
