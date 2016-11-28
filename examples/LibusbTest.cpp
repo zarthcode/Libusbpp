@@ -29,10 +29,10 @@
 // Utility functions
 
 	/// Creates a std::shared_ptr<unsigned char> containing a wide string. (demo)
-	std::shared_ptr<unsigned char> allocWString(wchar_t* pString, size_t& outSize);
+	std::shared_ptr<unsigned char> allocWString(const wchar_t* pString, size_t& outSize);
 
 	/// Creates a std::shared_ptr<unsigned char> containing a string. (demo)
-	std::shared_ptr<unsigned char> allocString(char* pString, size_t& outSize);
+	std::shared_ptr<unsigned char> allocString(const char* pString, size_t& outSize);
 
 
 // Test results
@@ -914,7 +914,7 @@ int main(int argc, char* argv[])
 	return failBit ? EXIT_FAILURE : EXIT_SUCCESS;
 }
 
-std::shared_ptr<unsigned char> allocWString( wchar_t* pString, size_t& outSize )
+std::shared_ptr<unsigned char> allocWString( const wchar_t* pString, size_t& outSize )
 {
 
 	size_t strSize = wcslen(pString);
@@ -929,7 +929,7 @@ std::shared_ptr<unsigned char> allocWString( wchar_t* pString, size_t& outSize )
 
 }
 
-std::shared_ptr<unsigned char> allocString( char* pString, size_t& outSize )
+std::shared_ptr<unsigned char> allocString( const char* pString, size_t& outSize )
 {
 
 	size_t strSize = strlen(pString);
