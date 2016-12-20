@@ -41,7 +41,7 @@ LibUSB::LibUSBImpl::LibUSBImpl( bool debugLibUSB /*=false*/ )
 	int Result = libusb_init(&pContext);
 	if (Result != LIBUSB_SUCCESS)
 	{
-		throw std::runtime_error("libusb_init() failed.");
+		throw std::runtime_error("LibUSB::LibUSBImpl::LibUSBImpl(): libusb_init() failed.");
 	}
 
 	// Set log message verbosity

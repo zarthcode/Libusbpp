@@ -65,7 +65,7 @@ std::shared_ptr<libusb_device_descriptor> LibUSB::DeviceImpl::getDeviceDescripto
 
 		if (Result != LIBUSB_SUCCESS)
 		{
-			throw std::runtime_error("libusb_get_device_descriptor() failed.");
+			throw std::runtime_error("LibUSB::DeviceImpl::getDeviceDescriptor(): libusb_get_device_descriptor() failed.");
 		}
 
 	}
@@ -87,7 +87,7 @@ void LibUSB::DeviceImpl::Open()
 
 	if (m_pDevice.get() == nullptr)
 	{
-		throw std::runtime_error("Open() failed - (There is no device!)");
+		throw std::runtime_error("LibUSB::DeviceImpl::Open(): Failed, there is no device!");
 	}
 
 	if (m_pHandle.get() == nullptr)
@@ -100,7 +100,7 @@ void LibUSB::DeviceImpl::Open()
 		if (Result != LIBUSB_SUCCESS)
 		{
 
-			throw LibUSBException("libusb_open() failed.", Result);
+			throw LibUSBException("LibUSB::DeviceImpl::Open(): libusb_open() failed: ", Result);
 
 		}
 
@@ -120,7 +120,7 @@ std::string LibUSB::DeviceImpl::getStringDescriptor( uint8_t index )
 
 	if (Result < LIBUSB_SUCCESS)
 	{
-		throw LibUSBException("libusb_get_string_descriptor_ascii() failed.", Result);
+		throw LibUSBException("LibUSB::DeviceImpl::getStringDescriptor(): libusb_get_string_descriptor_ascii() failed: ", Result);
 	}
 
 	std::string strResult;
@@ -138,7 +138,7 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 
 	if (Result < LIBUSB_SUCCESS)
 	{
-		throw LibUSBException("libusb_get_string_descriptor() failed.", Result);
+		throw LibUSBException("LibUSB::DeviceImpl::getStringDescriptorW(): libusb_get_string_descriptor() failed: ", Result);
 	}
 
 	// First character is the size of the string descriptor, in bytes
@@ -147,7 +147,7 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 	// First character no zero size, second character is 0x03, always
 	if (descSize < 2 || descStr[1] != LIBUSB_DT_STRING)
 	{
-		throw std::runtime_error("USB string descriptor returned from device is invalid.");
+		throw std::runtime_error("LibUSB::DeviceImpl::getStringDescriptorW(): USB string descriptor returned from device is invalid.");
 	}
 
 
@@ -182,7 +182,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		int Result = libusb_get_string_descriptor(m_pHandle.get(), 0, 0, data, sizeof(data));
 		if (Result < LIBUSB_SUCCESS)
 		{
-			throw LibUSBException("libusb_get_string_descriptor() failed.", Result);
+			throw LibUSBException("LibUSB::DeviceImpl::getLangId(): libusb_get_string_descriptor() failed: ", Result);
 		}
 
 		// First element is the size of the descriptor, in bytes
@@ -191,7 +191,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		// Second element should be 0x03
 		if (data[1] != 0x03)
 		{
-			throw std::runtime_error("USB language string descriptor (index 0) is invalid.");
+			throw std::runtime_error("LibUSB::DeviceImpl::getLangId(): USB language string descriptor (index 0) is invalid.");
 		}
 
 		// Grab the first/default language.
@@ -222,7 +222,7 @@ bool LibUSB::DeviceImpl::getActiveConfiguration( uint8_t &ConfigValue )const
 			break;
 
 		default:
-			throw LibUSBException("libusb_get_active_config_descriptor() failed. ", Result);
+			throw LibUSBException("LibUSB::DeviceImpl::getActiveConfiguration(): libusb_get_active_config_descriptor() failed: ", Result);
 			return false;
 			break;
 		}
@@ -253,16 +253,18 @@ std::shared_ptr<LibUSB::Configuration> LibUSB::DeviceImpl::getConfiguration( uin
 	if (Result != LIBUSB_SUCCESS)
 	{
 		std::stringstream exceptionText;
-		exceptionText << "libusb_get_config_descriptor() failed";
+		exceptionText << "LibUSB::DeviceImpl::getConfiguration(): libusb_get_config_descriptor() failed (index " << (int)ConfigValue << "). ";
 
 		switch(Result)
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
 
-			exceptionText << "(index " << (int)ConfigValue << ")";
+			exceptionText << "The requested configuration does not exist: ";
 			break;
 
 		default:
+
+			exceptionText << "Uncategorized: ";
 			break;
 		}
 
@@ -290,26 +292,28 @@ void LibUSB::DeviceImpl::setActiveConfiguration( uint8_t ConfigValue )
 	if (Result != LIBUSB_SUCCESS)
 	{
 		std::stringstream exceptionText;
-		exceptionText << "libusb_set_configuration() failed. (index " << (int)ConfigValue << ") ";
+		exceptionText << "LibUSB::DeviceImpl::setActiveConfiguration(): libusb_set_configuration() failed (index " << (int)ConfigValue << "). ";
 
 		switch(Result)
 		{
 		case LIBUSB_ERROR_NOT_FOUND:
 
-			exceptionText << "The requested configuration does not exist.";
+			exceptionText << "The requested configuration does not exist: ";
 			break;
 
 		case LIBUSB_ERROR_BUSY:
 
-			exceptionText << "Interfaces are currently claimed.";
+			exceptionText << "Interfaces are currently claimed: ";
 			break;
 
 		case LIBUSB_ERROR_NO_DEVICE:
 
-			exceptionText << "Device has been disconnected.";
+			exceptionText << "Device has been disconnected: ";
 			break;
 
 		default:
+
+			exceptionText << "Uncategorized: ";
 			break;
 		}
 
@@ -324,7 +328,7 @@ std::weak_ptr<LibUSB::Device> LibUSB::DeviceImpl::getDevice() const
 
 	if (m_ParentDevice.expired())
 	{
-		throw std::logic_error("LibUSB::DeviceImpl::getDevice() - expired pointer to parent LibUSB::Device object.");
+		throw std::logic_error("LibUSB::DeviceImpl::getDevice(): Expired pointer to parent LibUSB::Device object.");
 	}
 
 	return m_ParentDevice;
@@ -336,7 +340,7 @@ void LibUSB::DeviceImpl::setParentDevice( std::weak_ptr<Device> pParentDevice )
 
 	if (pParentDevice.expired())
 	{
-		throw std::logic_error("LibUSB::DeviceImpl::setParentDevice() - new parent device pointer is expired.");
+		throw std::logic_error("LibUSB::DeviceImpl::setParentDevice(): New parent device pointer is expired.");
 	}
 
 	m_ParentDevice = pParentDevice;

@@ -31,7 +31,7 @@ LibUSB::EndpointImpl::EndpointImpl( const libusb_endpoint_descriptor* pDescripto
 
 	if (m_pDeviceImpl.expired())
 	{
-		throw std::logic_error("LibUSB::InterfaceImpl::CreateEndpoints() - DeviceImpl is expired.");
+		throw std::logic_error("LibUSB::EndpointImpl::EndpointImpl(): DeviceImpl is expired.");
 	}
 
 }
@@ -126,7 +126,7 @@ std::weak_ptr<LibUSB::DeviceImpl> LibUSB::EndpointImpl::getDeviceImpl() const
 
 	if (m_pDeviceImpl.expired())
 	{
-		throw std::logic_error("LibUSB::EndpointImpl::getDeviceImpl() - expired DeviceImpl.");
+		throw std::logic_error("LibUSB::EndpointImpl::getDeviceImpl(): Expired DeviceImpl.");
 	}
 
 	return m_pDeviceImpl;
@@ -194,7 +194,7 @@ std::shared_ptr<LibUSB::Transfer> LibUSB::EndpointImpl::CreateTransfer()
 
 	default:
 
-		throw std::logic_error("LibUSB::Endpoint::CreateTransfer() - Unrecognized transfer type!");
+		throw std::logic_error("LibUSB::EndpointImpl::CreateTransfer(): Unrecognized transfer type!");
 		break;
 	}
 
@@ -202,7 +202,7 @@ std::shared_ptr<LibUSB::Transfer> LibUSB::EndpointImpl::CreateTransfer()
 	// Validate the transfer object
 	if (pTransferObj.get() == nullptr)
 	{
-		throw std::logic_error("LibUSB::Endpoint::CreateTransfer() - Allocation failed!");
+		throw std::logic_error("LibUSB::EndpointImpl::CreateTransfer(): Allocation failed!");
 	}
 
 

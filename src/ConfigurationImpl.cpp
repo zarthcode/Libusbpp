@@ -39,7 +39,7 @@ LibUSB::ConfigurationImpl::ConfigurationImpl( libusb_config_descriptor* pConfigD
 	// Store parent device implementation.
 	if(pDeviceImpl.expired())
 	{
-		throw std::runtime_error("ConfigurationImpl constructor has an expired DeviceImpl.");
+		throw std::runtime_error("LibUSB::ConfigurationImpl::ConfigurationImpl(): Constructor has an expired DeviceImpl.");
 	}
 
 	m_pDeviceImpl = pDeviceImpl;
@@ -60,7 +60,7 @@ std::wstring LibUSB::ConfigurationImpl::DescriptorString( void ) const
 
 	if(m_pDeviceImpl.expired())
 	{
-		throw std::logic_error("LibUSB::ConfigurationImpl::DescriptorString() has an expired DeviceImpl");
+		throw std::logic_error("LibUSB::ConfigurationImpl::DescriptorString(): Has an expired DeviceImpl.");
 	}
 
 	if (m_pConfigDescriptor->iConfiguration == 0)
@@ -132,7 +132,7 @@ void LibUSB::ConfigurationImpl::SetAsActive()
 
 	if(m_pDeviceImpl.expired())
 	{
-		throw std::runtime_error("LibUSB::ConfigurationImpl::SetAsActive() has an expired DeviceImpl");
+		throw std::runtime_error("LibUSB::ConfigurationImpl::SetAsActive(): Has an expired DeviceImpl.");
 	}
 
 	m_pDeviceImpl.lock()->setActiveConfiguration(m_pConfigDescriptor->bConfigurationValue);
@@ -157,7 +157,7 @@ std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterfaceByInde
 
 		/// \note #1 Possibly iterate through the interfaces and check bInterfaceNumber instead???
 
-		throw std::logic_error("LibUSB::ConfigurationImpl::getInterfaceByIndex() - invalid index. [Perhaps you meant to use getInterface(int interfacenumber)?]");
+		throw std::logic_error("LibUSB::ConfigurationImpl::getInterfaceByIndex(): Invalid index. [Perhaps you meant to use getInterface(int interfacenumber)?]");
 	}
 
 
@@ -175,7 +175,7 @@ void LibUSB::ConfigurationImpl::CreateInterfaces()
 
 	if (!m_InterfaceMap.empty())
 	{
-		throw std::logic_error("LibUSB::ConfigurationImpl::CreateInterfaces() - Interfaces already present.");
+		throw std::logic_error("LibUSB::ConfigurationImpl::CreateInterfaces(): Interfaces already present.");
 	}
 
 	for (int i = 0; i < NumInterfaces(); i++)
@@ -195,7 +195,7 @@ std::shared_ptr<LibUSB::Interface> LibUSB::ConfigurationImpl::getInterface( int 
 
 	if (itInterface == m_InterfaceMap.end())
 	{
-		throw std::logic_error("LibUSB::ConfigurationImpl::getInterface() - interface number not found.");
+		throw std::logic_error("LibUSB::ConfigurationImpl::getInterface(): Interface number not found.");
 	}
 
 	return itInterface->second;

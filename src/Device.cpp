@@ -85,14 +85,14 @@ std::wstring LibUSB::Device::ProductString()
 	if (!isOpen())
 	{
 
-		throw std::runtime_error("ProductString() - device must be open!");
+		throw std::runtime_error("LibUSB::Device::ProductString(): Device must be open!");
 
 	}
 
 	// Validate the descriptor index
 	if(m_pDeviceImpl_->getDeviceDescriptor()->iProduct == 0)
 	{
-		// throw std::runtime_error("Serial Number is not supported on this device.");
+		// throw std::runtime_error("Product string is not supported on this device.");
 		return L"Not supported.";
 	}
 
@@ -108,14 +108,14 @@ std::wstring LibUSB::Device::ManufacturerString()
 	if (!isOpen())
 	{
 
-		throw std::runtime_error("ProductString() - device must be open!");
+		throw std::runtime_error("LibUSB::Device::ManufacturerString(): Device must be open!");
 
 	}
 
 	// Validate the descriptor index
 	if(m_pDeviceImpl_->getDeviceDescriptor()->iManufacturer == 0)
 	{
-		// throw std::runtime_error("Serial Number is not supported on this device.");
+		// throw std::runtime_error("Manufacturer string is not supported on this device.");
 		return L"Not supported.";
 	}
 
@@ -133,14 +133,14 @@ std::wstring LibUSB::Device::SerialString()
 	if (!isOpen())
 	{
 
-		throw std::runtime_error("ProductString() - device must be open!");
+		throw std::runtime_error("LibUSB::Device::SerialString(): Device must be open!");
 
 	}
 
 	// Validate the descriptor index
 	if(m_pDeviceImpl_->getDeviceDescriptor()->iSerialNumber == 0)
 	{
-		// throw std::runtime_error("Serial Number is not supported on this device.");
+		// throw std::runtime_error("Serial number is not supported on this device.");
 		return L"Not supported.";
 	}
 
