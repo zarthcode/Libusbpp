@@ -8,48 +8,14 @@
 # CMAKE_BUILD_TYPE can be: empty, Debug, Release, RelWithDebInfo or MinSizeRel
 #
 
-# Make sure the user doesn't play dirty with symlinks
-get_filename_component (srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
-get_filename_component (bindir "${CMAKE_BINARY_DIR}" REALPATH)
-
-# Disallow in-source builds
-if (${srcdir} STREQUAL ${bindir})
-	message(FATAL_ERROR "In-source builds are not allowed. "
-	"Please create a directory and run cmake from there, passing the path "
-	"to this source directory as the last argument. This process created "
-	"the file `CMakeCache.txt' and the directory `CMakeFiles' in ${srcdir}. "
-	"Please remove them.")
-endif (${srcdir} STREQUAL ${bindir})
-
 # Define minimum CMake version required
 cmake_minimum_required(VERSION 2.8.5 FATAL_ERROR)
 
-# Use NEW behavior with newer CMake releases
-foreach (p
-		CMP0025 # CMake 3.0: Compiler id for Apple Clang is now AppleClang
-		)
-	if (POLICY ${p})
-		cmake_policy(SET ${p} NEW)
-	endif()
-endforeach()
-
-# Use OLD behavior with newer CMake releases
-foreach (p
-		CMP0026 # CMake 3.0: Disallow use of the LOCATION target property
-		)
-	if (POLICY ${p})
-		cmake_policy(SET ${p} OLD)
-	endif()
-endforeach()
-
-# Define project name and language
-project (USBPP CXX)
-
-# The project package name.
-set (PROJECT_NAME "libusbpp")
-
-# a short description of the project (only a few words).
-set (PROJECT_DESCRIPTION "C++ wrapper API of C API for USB device access (libusb-1.0)")
+# Define the project name belong their language.
+# This top-leve project name can be refered by refered exactly by
+# ${CMAKE_PROJECT_NAME} -- any overwritten project name can be refered by
+# ${PROJECT_NAME}.
+project (libusbpp CXX)
 
 # The project package version.
 set (PROJECT_VERSION_MAJOR 1)
@@ -57,10 +23,19 @@ set (PROJECT_VERSION_MINOR 0)
 set (PROJECT_VERSION_PATCH 0)
 
 # The project package version.
-set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_MINOR}")
+set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+
+# The package configuration name.
+set (PACKAGE_NAME "${PROJECT_NAME}")
+
+# Define a short description of the project (only a few words).
+set (PACKAGE_DESCRIPTION "C++ wrapper API of C API for USB device access (libusb-1.0)")
 
 # The package configuration version.
 set (PACKAGE_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
+
+# The package full name with version
+set (PACKAGE "${PACKAGE_NAME}-${PACKAGE_VERSION}")
 
 # The API version (SOVERSION) of the USBPP libraries.
 # Increment this when more or fewer functions are included in the
@@ -80,16 +55,50 @@ set (PACKAGE_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
 # cmake --help-property SOVERSION
 # https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C++
 #
-set (USBPP_LIB_SOVERSION 0)
+set (LIBUSBPP_LIB_SOVERSION 0)
 
 # The build version (VERSION) of the USBPP libraries.
-set (USBPP_LIB_VERSION "${USBPP_LIB_SOVERSION}.${PACKAGE_VERSION}")
+set (LIBUSBPP_LIB_VERSION "${LIBUSBPP_LIB_SOVERSION}.${PACKAGE_VERSION}")
 
 # The build name (OUTPUT_NAME) of the USBPP libraries.
-set (USBPP_LIB_NAME "usbpp-${PACKAGE_VERSION}")
+set (LIBUSBPP_LIB_NAME "usbpp-${PACKAGE_VERSION}")
+
+# Make sure the user doesn't play dirty with symlinks
+get_filename_component (srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
+get_filename_component (bindir "${CMAKE_BINARY_DIR}" REALPATH)
+
+# Disallow in-source builds
+if (${srcdir} STREQUAL ${bindir})
+	message(FATAL_ERROR "In-source builds are not allowed. "
+	"Please create a directory and run cmake from there, passing the path "
+	"to this source directory as the last argument. This process created "
+	"the file `CMakeCache.txt' and the directory `CMakeFiles' in ${srcdir}. "
+	"Please remove them.")
+endif (${srcdir} STREQUAL ${bindir})
+
+# Use NEW behavior with newer CMake releases
+foreach (p
+		CMP0025 # CMake 3.0: Compiler id for Apple Clang is now AppleClang
+		)
+	if (POLICY ${p})
+		cmake_policy(SET ${p} NEW)
+	endif()
+endforeach()
+
+# Use OLD behavior with newer CMake releases
+foreach (p
+		CMP0026 # CMake 3.0: Disallow use of the LOCATION target property
+		)
+	if (POLICY ${p})
+		cmake_policy(SET ${p} OLD)
+	endif()
+endforeach()
 
 # Make it possible to locate CMake modules for finding libraries
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+# Use GNUInstallDirst to get canonical paths
+include(GNUInstallDirs)
 
 # Check for C++14 or at least C++11 support
 include (CheckCXXCompilerFlag)
@@ -115,17 +124,6 @@ else (COMPILER_SUPPORTS_CXX14)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -include backport_std_unique_ptr.hpp")
 endif (COMPILER_SUPPORTS_CXX14)
 
-# Find libraries
-message (STATUS "Searching dependent libraries. This may take a few minutes...")
-
-# Require libusb-1.0
-find_package (LibUSB-1.0 REQUIRED)
-if (LIBUSB1_FOUND)
-    include_directories (${LIBUSB1_INCLUDE_DIR})
-else (LIBUSB1_FOUND)
-    message (FATAL_ERROR "LibUSB-1.0 was not found.")
-endif (LIBUSB1_FOUND)
-
 # Setup CMake to run tests
 include (CTest)
 if (BUILD_TESTING)
@@ -137,9 +135,13 @@ if (BUILD_TESTING)
         "${CMAKE_CURRENT_BINARY_DIR}/CTestCustom.cmake"
         IMMEDIATE @ONLY)
     # Emulate GNU Autotools 'make check'
-    add_custom_target (check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure)
+    if (NOT TARGET check)
+        add_custom_target (check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure)
+    endif (NOT TARGET check)
     # Combine the fancy 'make ARGS=--verbose all test'
-    add_custom_target (build_and_test COMMAND ${CMAKE_CTEST_COMMAND} --verbose)
+    if (NOT TARGET build_and_test)
+        add_custom_target (build_and_test COMMAND ${CMAKE_CTEST_COMMAND} --verbose)
+    endif (NOT TARGET build_and_test)
     add_subdirectory (test)
 endif (BUILD_TESTING)
 
@@ -150,8 +152,15 @@ configure_file(
     "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
     IMMEDIATE @ONLY)
 
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+if (NOT TARGET uninstall)
+    add_custom_target(uninstall
+        COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+endif (NOT TARGET uninstall)
+
+# This makes the project importable from the install directory
+# Put config file in per-project dir (name MUST match), can also
+# just go into <prefix>/cmake.
+install(EXPORT ${PACKAGE_NAME}Config DESTINATION ${CMAKE_INSTALL_DATADIR}/${PACKAGE}/cmake)
 
 # Exporting dependencies towards external packages
 set (PKG_CONFIG_REQUIRES libusb-1.0)
@@ -159,10 +168,10 @@ set (PKG_CONFIG_LIBDIR
     "\${prefix}/lib"
 )
 set (PKG_CONFIG_INCLUDEDIR
-    "\${prefix}/include/${PROJECT_NAME}-${PACKAGE_VERSION}"
+    "\${prefix}/include/${PACKAGE}"
 )
 set (PKG_CONFIG_LIBS
-    "-L\${libdir} -l${USBPP_LIB_NAME}"
+    "-L\${libdir} -l${LIBUSBPP_LIB_NAME}"
 )
 set (PKG_CONFIG_CFLAGS
     "-I\${includedir}"
@@ -170,15 +179,12 @@ set (PKG_CONFIG_CFLAGS
 
 configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/pkg-config.pc.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-${PACKAGE_VERSION}.pc
+    ${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}.pc
 )
 
 # Install package configuration file
-install (FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-${PACKAGE_VERSION}.pc
-         DESTINATION lib/pkgconfig)
-
-# Preappend the local include search path
-include_directories (${CMAKE_SOURCE_DIR}/headers)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}.pc
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 ## Add subdirectories
 add_subdirectory (headers)

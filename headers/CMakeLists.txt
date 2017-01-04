@@ -2,11 +2,8 @@
 # headers/CMakeLists.txt
 #
 
-# Preappend the local include search path
-include_directories (${CMAKE_SOURCE_DIR})
-
 # Collect all library header files
-set (libheader
+set (libusbppheader
     libusbpp.hpp
     libusbpp/Configuration.hpp
     libusbpp/Device.hpp
@@ -26,15 +23,15 @@ file (GLOB_RECURSE allheader RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     *.hpp
 )
 foreach (_header ${allheader})
-    list (FIND libheader ${_header} matchidx)
+    list (FIND libusbppheader ${_header} matchidx)
     if (${matchidx} EQUAL -1)
         message (AUTHOR_WARNING "  ${_header}")
     endif ()
 endforeach ()
 
 # Install collected header files
-foreach (file ${libheader})
+foreach (file ${libusbppheader})
     get_filename_component( dir ${file} DIRECTORY )
-    install (FILES ${file} DESTINATION include/${PROJECT_NAME}-${PACKAGE_VERSION}/${dir})
+    install (FILES ${file} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE}/${dir})
 endforeach ()
 
