@@ -1,5 +1,26 @@
-#include "Transfer.h"
-#include "TransferImpl.h"
+/*
+ * Copyright (C) 2012, Anthony Clay, ZarthCode LLC, all rights reserved.
+ * Copyright (C) 2016, Stephan Linz, Li-Pro.Net, all rights reserved.
+ *
+ * This file is part of the LibUSB C++ wrapper library (libusbpp).
+ *
+ * libusbpp is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * libusbpp is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libusbpp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libusbpp/Transfer.hpp>
+
+#include "TransferImpl.hpp"
 
 
 LibUSB::Transfer::Transfer( std::shared_ptr<LibUSB::TransferImpl> pTransferImpl )
@@ -31,12 +52,12 @@ void LibUSB::Transfer::SetTimeout( std::chrono::milliseconds timeout )
 	{
 
 		// Cannot change timeout right now.
-		throw std::logic_error("LibUSB::Transfer::SetTimeout() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::SetTimeout(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
 	m_pTransferImpl->setTimeout(timeout);
-	
+
 }
 
 void LibUSB::Transfer::setTransferBuffer( std::shared_ptr<unsigned char> pBuffer, size_t bufferSize )
@@ -46,7 +67,7 @@ void LibUSB::Transfer::setTransferBuffer( std::shared_ptr<unsigned char> pBuffer
 	{
 
 		// Absolutely not.
-		throw std::logic_error("LibUSB::Transfer::setTransferBuffer() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::setTransferBuffer(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
@@ -63,7 +84,7 @@ std::shared_ptr<unsigned char> LibUSB::Transfer::getTransferBuffer()
 	{
 
 		// No way.
-		throw std::logic_error("LibUSB::Transfer::getTransferBuffer() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::getTransferBuffer(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
@@ -78,7 +99,7 @@ void LibUSB::Transfer::Init()
 	{
 
 		// Cannot change stuff right now.
-		throw std::logic_error("LibUSB::Transfer::Init() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::Init(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 	m_pTransferImpl->init(shared_from_this());
@@ -92,7 +113,7 @@ void LibUSB::Transfer::Start()
 	{
 
 		// What?  Maybe it would be proper to block, instead?
-		throw std::logic_error("LibUSB::Transfer::Start() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::Start(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
@@ -103,7 +124,7 @@ void LibUSB::Transfer::Start()
 	catch (...)
 	{
 		throw;
-	
+
 	}
 
 }
@@ -120,7 +141,7 @@ bool LibUSB::Transfer::isComplete()
 
 	if (m_AsynchronousTransferPending)
 	{
-		
+
 		// Check the status of the thread.
 		if (*m_TransferThreadRunning)
 		{
@@ -134,10 +155,10 @@ bool LibUSB::Transfer::isComplete()
 
 	}
 
-	
+
 
 	return m_pTransferImpl->isComplete();
-	
+
 }
 
 size_t LibUSB::Transfer::BytesTransferred() const
@@ -147,12 +168,12 @@ size_t LibUSB::Transfer::BytesTransferred() const
 	{
 
 		// Cannot change this right now.
-		throw std::logic_error("LibUSB::Transfer::BytesTransferred() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::BytesTransferred(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
 	return m_pTransferImpl->bytesTransferred();
-	
+
 }
 
 void LibUSB::Transfer::Reset()
@@ -162,7 +183,7 @@ void LibUSB::Transfer::Reset()
 	{
 
 		// Cannot change this right now.
-		throw std::logic_error("LibUSB::Transfer::Reset() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::Reset(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
@@ -177,7 +198,7 @@ bool LibUSB::Transfer::isSuccessful() const
 	{
 
 		// Cannot change this right now.
-		throw std::logic_error("LibUSB::Transfer::isSuccessful() - Method cannot be called while an asynchronous transfer is pending.");
+		throw std::logic_error("LibUSB::Transfer::isSuccessful(): Method cannot be called while an asynchronous transfer is pending.");
 
 	}
 
@@ -191,7 +212,7 @@ void LibUSB::Transfer::AsyncStart()
 	{
 
 		// Cannot change this right now.
-		throw std::logic_error("LibUSB::Transfer::AsyncStart() - Method cannot be called while an asynchronous transfer is already in progress!");
+		throw std::logic_error("LibUSB::Transfer::AsyncStart(): Method cannot be called while an asynchronous transfer is already in progress!");
 
 	}
 
@@ -204,10 +225,10 @@ void LibUSB::Transfer::AsyncStart()
 	m_TransferFuture = TransferPromise->get_future();
 
 	auto pPromisePending = std::make_shared<bool>(true);
-	
+
 	// Share a boolean as a signal.
 	m_TransferThreadRunning = pPromisePending;
-	
+
 	std::shared_ptr<LibUSB::TransferImpl> pTransferImplementation = m_pTransferImpl;
 
 	std::thread transferThread([=]()
@@ -222,16 +243,16 @@ void LibUSB::Transfer::AsyncStart()
 					catch (...)
 					{
 						TransferPromise->set_exception(std::current_exception());
-					
+
 					}
 
 					*pPromisePending = false;
-					
+
 				});
 
 	// Let it complete.
 	transferThread.detach();
-	
+
 }
 
 bool LibUSB::Transfer::WaitForCompletion()
@@ -240,7 +261,7 @@ bool LibUSB::Transfer::WaitForCompletion()
 	if (m_TransferFuture.valid())
 	{
 
-		// throw std::logic_error("LibUSB::Transfer::WaitForCompletion() - Invalid future");
+		// throw std::logic_error("LibUSB::Transfer::WaitForCompletion(): Invalid future.");
 		m_pTransferImpl = m_TransferFuture.get();
 
 	}
@@ -259,7 +280,7 @@ LibUSB::TransferResult_t LibUSB::Transfer::Result() const
 		/// \todo Add a "PENDING" or "IN_PROGRESS" result?
 
 		// Cannot change the data right now.
-		throw std::logic_error("LibUSB::Transfer::Result() - Method cannot be called while an asynchronous transfer is in progress!");
+		throw std::logic_error("LibUSB::Transfer::Result(): Method cannot be called while an asynchronous transfer is in progress!");
 
 	}
 
@@ -274,20 +295,20 @@ void LibUSB::ControlTransfer::SetupPacket( uint8_t Request, uint16_t wValue, uin
 	{
 
 		// Cannot change the data right now.
-		throw std::logic_error("LibUSB::Transfer::SetupPacket() - Method cannot be called while an asynchronous transfer is in progress!");
+		throw std::logic_error("LibUSB::ControlTransfer::SetupPacket(): Method cannot be called while an asynchronous transfer is in progress!");
 
 	}
 
 	std::static_pointer_cast<ControlTransferImpl>(m_pTransferImpl)->SetupPacket(Request, wValue, wIndex, transferDirection, requestType, recipient);
 
-	
+
 }
 
 LibUSB::ControlTransfer::ControlTransfer( std::shared_ptr<TransferImpl> pTransferImpl )
 	: Transfer(pTransferImpl)
 {
 
-	
+
 }
 
 LibUSB::ControlTransfer::~ControlTransfer()
@@ -299,7 +320,7 @@ LibUSB::InterruptTransfer::InterruptTransfer( std::shared_ptr<TransferImpl> pTra
 	: Transfer(pTransferImpl)
 {
 
-	
+
 }
 
 LibUSB::InterruptTransfer::~InterruptTransfer()
@@ -326,13 +347,13 @@ LibUSB::IsochronousTransfer::IsochronousTransfer( std::shared_ptr<LibUSB::Transf
 	:LibUSB::Transfer(pTransferImpl)
 {
 
-	
+
 }
 
 LibUSB::IsochronousTransfer::~IsochronousTransfer()
 {
 
-	
+
 }
 
 void LibUSB::IsochronousTransfer::setNumPackets( int Packets )
@@ -340,7 +361,7 @@ void LibUSB::IsochronousTransfer::setNumPackets( int Packets )
 
 	if (Packets < 0)
 	{
-		throw std::range_error("Cannot set number of packets to value below zero.");
+		throw std::range_error("LibUSB::IsochronousTransfer::setNumPackets(): Cannot set number of packets to value below zero.");
 	}
 
 	std::static_pointer_cast<IsochronousTransferImpl>(m_pTransferImpl)->setNumPackets(Packets);
