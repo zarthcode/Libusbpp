@@ -190,7 +190,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		}
 
 		// First element is the size of the descriptor, in bytes
-		//uint8_t descriptorSize = data[0];
+		uint8_t descriptorSize = data[0];
 
 		// Second element should be 0x03
 		if (data[1] != 0x03)
