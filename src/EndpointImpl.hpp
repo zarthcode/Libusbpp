@@ -24,7 +24,11 @@
 #include <memory>
 #include <stdint.h>
 
-#include <libusb.h>
+#ifdef __linux__
+  #include <libusb-1.0/libusb.h>
+#elif _WIN32
+  #include <libusb.h>
+#endif
 
 #include <libusbpp/EndpointDefs.hpp>
 #include <libusbpp/Transfer.hpp>

@@ -32,7 +32,7 @@
 
 
 LibUSB::TransferImpl::TransferImpl(std::weak_ptr<EndpointImpl> pEndpointImpl)
-	: m_Timeout(0), m_Complete(false), m_Submitted(false), m_transferSize(0)
+	: m_Timeout(0), m_transferSize(0), m_Complete(false), m_Submitted(false)
 {
 
 	if (pEndpointImpl.expired())

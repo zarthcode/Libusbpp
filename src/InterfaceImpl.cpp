@@ -29,7 +29,7 @@
 
 
 LibUSB::InterfaceImpl::InterfaceImpl( const libusb_interface* pInterface, std::weak_ptr<DeviceImpl> pDeviceImpl )
-	: m_pInterface(pInterface), m_alternateSetting(0), m_bClaimed(false)
+	: m_alternateSetting(0), m_pInterface(pInterface),  m_bClaimed(false)
 {
 
 	if (!pDeviceImpl.expired())

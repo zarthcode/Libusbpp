@@ -26,7 +26,11 @@
 #include <atomic>
 #include <condition_variable>
 
-#include <libusb.h>
+#ifdef __linux__
+  #include <libusb-1.0/libusb.h>
+#elif _WIN32
+  #include <libusb.h>
+#endif
 
 
 namespace LibUSB

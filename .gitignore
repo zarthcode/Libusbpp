@@ -22,6 +22,7 @@
 # Application Generated Files #
 ###############################
 *.cfg
+.*
 
 # Logs and databases #
 ######################
