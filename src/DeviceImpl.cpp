@@ -22,7 +22,11 @@
 #include <sstream>
 #include <cstring>
 
-#include <libusb.h>
+#ifdef __linux__
+  #include <libusb-1.0/libusb.h>
+#elif _WIN32
+  #include <libusb.h>
+#endif
 
 #include <libusbpp/Configuration.hpp>
 #include <libusbpp/Endpoint.hpp>
@@ -155,7 +159,7 @@ std::wstring LibUSB::DeviceImpl::getStringDescriptorW( uint8_t index )
 	std::wstring strResult;
 	strResult.resize((descSize-2)/2);
 
-	for (size_t i = 0; i < (descSize-2)/2; ++i) {
+	for (int i = 0; i < (descSize-2)/2; ++i) {
 		unsigned char chr1 = (unsigned char)descStr[2 * i + 2];
 		unsigned char chr2 = (unsigned char)descStr[2 * i + 3];
 
@@ -186,7 +190,7 @@ uint16_t LibUSB::DeviceImpl::getLangId()
 		}
 
 		// First element is the size of the descriptor, in bytes
-		uint8_t descriptorSize = data[0];
+		//uint8_t descriptorSize = data[0];
 
 		// Second element should be 0x03
 		if (data[1] != 0x03)

@@ -233,7 +233,7 @@ void LibUSB::Transfer::AsyncStart()
 
 	std::thread transferThread([=]()
 				{
-					bool Result = false;
+					//bool Result = false;
 
 					try
 					{
