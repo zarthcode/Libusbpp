@@ -1,3 +1,4 @@
+#
 # Makefile for Libusbpp
 #
 #
@@ -8,7 +9,7 @@ INCLUDE_PATH 	= ./headers
 #
 #	Compiler
 #
-#	By default, the GNU C++ compiler is used. 
+#	By default, the GNU C++ compiler is used.
 #
 
 COMPILER			=	g++
@@ -25,7 +26,7 @@ LINKER				=	g++
 #	the library (but this will make the final file much bigger, so
 #	you want to leave that flag out on production servers).
 #
-COMPILER_DEBUG_FLAGS = -Wall -c -ggdb3 -fpic -I${INCLUDE_PATH} -o
+#COMPILER_FLAGS = -Wall -c -ggdb3 -fpic -I${INCLUDE_PATH} -o
 COMPILER_FLAGS		=	-Wall -c -O2 -fpic -I${INCLUDE_PATH} -o
 LINKER_FLAGS		=	-lusb-1.0 -lpthread
 
@@ -37,7 +38,6 @@ RM	= rm -f
 CP	= cp -f
 MKDIR	= mkdir -p
 LS	= ls -1
-
 
 #
 #	All source files are simply all *.cpp files found in the current directory
