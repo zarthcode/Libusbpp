@@ -75,7 +75,7 @@ std::wstring LibUSB::Util::StringToWString( const std::string& ns )
 
 std::string LibUSB::Util::WStringToString( const std::wstring& ws )
 {
-#if defined(__zSTDC_LIB_EXT1__) || defined(_WIN32)
+#if defined(__STDC_LIB_EXT1__) || defined(_WIN32)
 	size_t bufferSize;
 
 	// first call to wcstombs_s to get the target buffer size
