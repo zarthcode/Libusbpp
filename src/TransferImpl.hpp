@@ -137,9 +137,29 @@ namespace LibUSB
 
 	private:
 
-
 		/// Weak pointers to all active transfer objects
-		static std::map<TransferImpl*, std::weak_ptr<TransferImpl>> m_TransferMap;
+		using TransferStorage = std::map<TransferImpl*, std::weak_ptr<TransferImpl>>;
+		static TransferStorage m_TransferMap;
+		static std::mutex m_TransferMap_mutex;
+
+		/// Adding a new transfer object to the storage.
+		template<class T>
+		inline static std::pair<TransferStorage::iterator, bool> InsertTransfer(T&& value) {
+			std::lock_guard<std::mutex> lk(m_TransferMap_mutex);
+			return m_TransferMap.insert(std::move(value));
+		}
+
+		/// Deleting an transfer object from storage.
+		inline static size_t EraseTransfer(TransferImpl* index) {
+			std::lock_guard<std::mutex> lk(m_TransferMap_mutex);
+			return m_TransferMap.erase(index);
+		}
+
+		/// Retrieving an transfer object from storage.
+		inline static std::weak_ptr<TransferImpl> GetTransfer(TransferImpl* index) {
+			std::lock_guard<std::mutex> lk(m_TransferMap_mutex);
+			return m_TransferMap[index];
+		}
 
 		/// Pointer to the Parent Transfer object
 		std::weak_ptr<Transfer> m_pParentTransfer;

@@ -109,7 +109,7 @@ void LibUSB::TransferImpl::Start()
 	}
 
 	// 3. Ensure that the callback can reach this transfer.
-	m_TransferMap.insert(make_pair(this, shared_from_this()));
+	InsertTransfer(make_pair(this, shared_from_this()));
 
 	// 4. Submit the transfer
 	int Result = libusb_submit_transfer(m_pTransfer.get());
@@ -225,7 +225,8 @@ void LibUSB::TransferImpl::AsyncTransferCallback( libusb_transfer* pTransfer )
 	TransferImpl* index = (TransferImpl*) pTransfer->user_data;
 
 	/// Obtain the transfer's shared_ptr
-	m_TransferMap[index].lock()->NotifyComplete();
+	auto transfer = GetTransfer(index);
+	transfer.lock()->NotifyComplete();
 
 
 }
@@ -248,7 +249,7 @@ void LibUSB::TransferImpl::NotifyComplete()
 
 
 	// Remove the TransferMap entry.
-	m_TransferMap.erase(this);
+	EraseTransfer(this);
 }
 
 void LibUSB::TransferImpl::Reset()
@@ -462,7 +463,8 @@ LibUSB::TransferResult_t LibUSB::TransferImpl::Result() const
 }
 
 
-std::map<LibUSB::TransferImpl*, std::weak_ptr<LibUSB::TransferImpl>> LibUSB::TransferImpl::m_TransferMap;
+LibUSB::TransferImpl::TransferStorage LibUSB::TransferImpl::m_TransferMap;
+std::mutex LibUSB::TransferImpl::m_TransferMap_mutex;
 
 
 // **********************************
