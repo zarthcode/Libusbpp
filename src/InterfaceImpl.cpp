@@ -280,18 +280,18 @@ uint8_t LibUSB::InterfaceImpl::NumEndpoints() const
 	return m_pInterface->altsetting[m_alternateSetting].bNumEndpoints;
 }
 
-uint8_t LibUSB::InterfaceImpl::getEPNumberByIndex( uint8_t index ) const
+uint8_t LibUSB::InterfaceImpl::getEPAddressByIndex( uint8_t index ) const
 {
 	if (index == 0)
 	{
-		// Return the number zero of the device control endpoint.
+		// Return the address zero of the device control endpoint.
 		return index;
 	}
 
 
 	if (index > NumEndpoints())
 	{
-		throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex(): Index out of range.");
+		throw std::logic_error("LibUSB::InterfaceImpl::getEPAddressByIndex(): Index out of range.");
 	}
 
 
@@ -308,22 +308,22 @@ uint8_t LibUSB::InterfaceImpl::getEPNumberByIndex( uint8_t index ) const
 		/// \note #2 Validate endpoint number.
 		if (!pEndpoint->Number())
 		{
-			throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex(): Endpoint has no number as expected! (note #2)");
+			throw std::logic_error("LibUSB::InterfaceImpl::getEPAddressByIndex(): Endpoint has no number as expected! (note #2)");
 		}
 
 	}
 	else
 	{
-		throw std::logic_error("LibUSB::InterfaceImpl::getEPNumberByIndex(): Endpoint not found.");
+		throw std::logic_error("LibUSB::InterfaceImpl::getEPAddressByIndex(): Endpoint not found.");
 	}
 
 
-	return pEndpoint->Number();
+	return pEndpoint->Address();
 }
 
-std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t number )
+std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t address )
 {
-	if (number == 0)
+	if (address == 0)
 	{
 
 		// Return the device control endpoint zero.
@@ -339,19 +339,19 @@ std::shared_ptr<LibUSB::Endpoint> LibUSB::InterfaceImpl::getEndpoint( uint8_t nu
 
 
 	// Find the endpoint
-	EndpointContainer_t::iterator itEndpoint = m_EndpointContainer.find(number);
+	EndpointContainer_t::iterator itEndpoint = m_EndpointContainer.find(address);
 
 	std::shared_ptr<LibUSB::Endpoint> pEndpoint;
 
 	if (itEndpoint != m_EndpointContainer.end())
 	{
 
-		pEndpoint = m_EndpointContainer.find(number)->second;
+		pEndpoint = m_EndpointContainer.find(address)->second;
 
-		/// \note #1 Validate endpoint number against its number.
-		if (pEndpoint->Number() != number)
+		/// \note #1 Validate endpoint address against its address.
+		if (pEndpoint->Address() != address)
 		{
-			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint(): Endpoint and number do not match as expected! (note #1)");
+			throw std::logic_error("LibUSB::InterfaceImpl::getEndpoint(): Endpoint and address do not match as expected! (note #1)");
 		}
 
 	}
@@ -421,7 +421,7 @@ void LibUSB::InterfaceImpl::CreateEndpoints()
 			std::shared_ptr<Endpoint> pEndpoint = std::make_shared<Endpoint>(pEPImpl);
 
 			// Store it
-			m_EndpointContainer.insert(std::make_pair(pEndpoint->Number(), pEndpoint));
+			m_EndpointContainer.insert(std::make_pair(pEndpoint->Address(), pEndpoint));
 
 		}
 

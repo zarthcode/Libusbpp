@@ -103,27 +103,27 @@ int LibUSB::Interface::NumEndpoints() const
 	return m_pInterfaceImpl->NumEndpoints();
 }
 
-int LibUSB::Interface::getEPNumberByIndex( int index ) const
+int LibUSB::Interface::getEPAddressByIndex( int index ) const
 {
-	return m_pInterfaceImpl->getEPNumberByIndex(index);
+	return m_pInterfaceImpl->getEPAddressByIndex(index);
 }
 
-LibUSB::Interface::EndpointNumbers_t LibUSB::Interface::getEndpointNumbers() const
+LibUSB::Interface::EndpointAddresses_t LibUSB::Interface::getEndpointAddresses() const
 {
-	EndpointNumbers_t mEndpointNumbers;
+	EndpointAddresses_t mEndpointAddresses;
 
 	// Create each endpoint number
 	for (int i = 1; i <= NumEndpoints(); i++)
 	{
-		mEndpointNumbers.insert(std::make_pair(i,getEPNumberByIndex(i)));
+		mEndpointAddresses.insert(std::make_pair(i,getEPAddressByIndex(i)));
 	}
 
-	return mEndpointNumbers;
+	return mEndpointAddresses;
 }
 
-std::shared_ptr<LibUSB::Endpoint> LibUSB::Interface::getEndpoint( int number )
+std::shared_ptr<LibUSB::Endpoint> LibUSB::Interface::getEndpoint( int address )
 {
-	return m_pInterfaceImpl->getEndpoint(number);
+	return m_pInterfaceImpl->getEndpoint(address);
 }
 
 bool LibUSB::Interface::isClaimed() const

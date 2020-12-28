@@ -79,17 +79,17 @@ namespace LibUSB
 		/// Returns the number of endpoints this interface has.
 		int NumEndpoints()const;
 
-		/// Returns the number of a specified endpoint
-		int getEPNumberByIndex(int index)const;
+		/// Returns the address of a specified endpoint
+		int getEPAddressByIndex(int index)const;
 
-		/// Endpoint number container type (index -> number)
-		typedef std::map<int, int> EndpointNumbers_t;
+		/// Endpoint address container type (index -> address)
+		typedef std::map<int, int> EndpointAddresses_t;
 
 		/// Returns the number container of all endpoint indices
-		EndpointNumbers_t getEndpointNumbers()const;
+		EndpointAddresses_t getEndpointAddresses()const;
 
 		/// Returns the specified endpoint
-		std::shared_ptr<Endpoint> getEndpoint(int number);
+		std::shared_ptr<Endpoint> getEndpoint(int address);
 
 	protected:
 	private:
