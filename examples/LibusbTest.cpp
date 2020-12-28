@@ -239,15 +239,15 @@ int main(int argc, char* argv[])
 						std::wcout << L"\t\tInterface descriptor:" << pInterface->DescriptorString() << std::endl;
 						std::wcout << L"\t\tInterface Number of endpoints: " << std::dec << pInterface->NumEndpoints() << std::endl << std::endl;
 
-						// Iterate over the interface endpoints (other than ep0!!) - by the index to number map
-						LibUSB::Interface::EndpointNumbers_t mEndpointNumbers = pInterface->getEndpointNumbers();
-						for (const auto &epnum : mEndpointNumbers)
+						// Iterate over the interface endpoints (other than ep0!!) - by the index to address map
+						LibUSB::Interface::EndpointAddresses_t mEndpointAddresses= pInterface->getEndpointAddresses();
+						for (const auto &epaddr : mEndpointAddresses)
 						{
 
-							std::shared_ptr<LibUSB::Endpoint> pEndpoint = pInterface->getEndpoint(epnum.second);
+							std::shared_ptr<LibUSB::Endpoint> pEndpoint = pInterface->getEndpoint(epaddr.second);
 
 							/// Endpoint information
-							std::wcout << L"\t\t\tEndpoint number: " << std::dec << pEndpoint->Number() << std::endl;
+							std::wcout << L"\t\t\tEndpoint address: " << std::dec << pEndpoint->Address() << std::endl;
 							std::wcout << L"\t\t\tMaxPacketSize: " << std::dec << pEndpoint->MaxPacketSize() << std::endl;
 							std::wcout << L"\t\t\tPolling Interval: " << std::dec << pEndpoint->PollingInterval() << std::endl;
 							std::wcout << L"\t\t\tTransfer Type: ";
